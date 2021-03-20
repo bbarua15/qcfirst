@@ -1,6 +1,7 @@
 # qcfirst
 
 ## [Site Map]
+![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/Web%201920%20%E2%80%93%20SITE%20MAP.png)
 
 ## [HOMEPAGE]
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/WEB/Web%201920%20%E2%80%93%201%20%5BHOMEPAGE%5D.jpg)
