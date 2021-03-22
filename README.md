@@ -97,38 +97,44 @@ It will also contain a search feature in the top left corner of the navigation b
 ## [ADD CLASS STUDENT]
 Students will be able to search for a specific class by the course title and course number. The course title will have a drop down menu with all of the subjects listed and the students can then search up the specific course number. Afterwards, a table of available classes and its information, such as instructor and time/day, will show up. From the options, students will be able to choose and add classes that fits to their liking by adding them to shopping cart.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Desktop/Desktop%20-%20Add%20Class.png)
-![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Add%20Class.png)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Tablet:iPad/Tablet:iPad%20-%20Add%20Class.png)
+![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Add%20Class.png)
+
 
 ## [CLASS DEADLINE STUDENT]
 The class deadline page will contain a table showing which term and what time/day the student(s) can start enrolling in class. With this, the students can keep track of when they can start enrolling and when is the last day to enroll in a class.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Desktop/Desktop%20-%20Class%20Deadline.png)
-![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Class%20Deadline.png)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Tablet:iPad/Tablet:iPad%20-%20Class%20Deadline.png)
+![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Class%20Deadline.png)
+
 
 ## [CREATE CLASS INSTRUCTOR]
 In this page, instructors will be able to create a class. The instructor must fill out the required information so that it can be found in the course directory. The reuquired information includes term, course name, course number, time and days, description of course and capacity. Clicking on submit will make the created class show up on Course Directory for student and instructor as well as Add Class page for students to see.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Desktop/Desktop%20-%20Create%20Class.png)
-![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Create%20Class.png)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Tablet:iPad/Tablet:iPad%20-%20Create%20Class.png)
+![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Create%20Class.png)
+
 
 ## [DELETE CLASS INSTRUCTOR]
 Instructors can delete a class they created. In a table, there will be a list of classes they have created to teach with it's information, such as time and days, and they can select a specific class they're deleting. After clicking on submit, the class will no longer show up on Course Directory and Add Class pages.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Desktop/Desktop%20-%20Delete%20Class.png)
-![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Delete%20Class.png)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Tablet:iPad/Tablet:iPad%20-%20Delete%20Class.png)
+![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Delete%20Class.png)
+
 
 ## [DROP CLASS STUDENT]
 This page has a table of classes that a student selected. The table has information about the classes they picked, such as instructor, credits and time/days. From the table, the student can select the checkbox to specify which class they want to drop.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Desktop/Desktop%20-%20Drop%20Class.png)
-![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Drop%20Class.png)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Tablet:iPad/Tablet:iPad%20-%20Drop%20Class.png)
+![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Drop%20Class.png)
+
 
 ## [SHOPPING CART STUDENT]
 Students will be able to view the classes they have selected to take and enroll in classes in the shopping cart page. This page has information on the class's instructor, credits, room and time/days which they have picked. If they don't want to take a certain class, they can select it and then delete it. They can also select all of the classes and enroll.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Desktop/Desktop%20-%20Shopping%20Cart.png)
-![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Shopping%20Cart.png)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Desktop/Desktop%20-%20Shopping%20Cart.png)
+![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Shopping%20Cart.png)
+
 
 ##### Contributors:
 Marinos Dakis (https://github.com/MarinosDakis)
