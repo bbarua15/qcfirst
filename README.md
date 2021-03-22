@@ -107,7 +107,7 @@ The class deadline page will contain a table showing which term and what time/da
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Tablet:iPad/Tablet:iPad%20-%20Class%20Deadline.png)
 
 ## [CREATE CLASS INSTRUCTOR]
-In this page, instructors will be able to create a class. The instructor must fill out the required information so that it can be found in the course directory. The reuquired information includes term, course name, course number, time and days, description of course and capacity. Clicking on submit will make the created class show up on Course Directory of student and instructor as well as Add Class page for students to see.
+In this page, instructors will be able to create a class. The instructor must fill out the required information so that it can be found in the course directory. The reuquired information includes term, course name, course number, time and days, description of course and capacity. Clicking on submit will make the created class show up on Course Directory for student and instructor as well as Add Class page for students to see.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Desktop/Desktop%20-%20Create%20Class.png)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Create%20Class.png)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Tablet:iPad/Tablet:iPad%20-%20Create%20Class.png)
