@@ -8,35 +8,36 @@ The following application will contain features of: **User Management**, **Cours
 **User Management** will focus on creating a responsive environment for both students and instructors when
 accessing the course enrollment application.
 
-**Course Management** will be managed by instructors that will allow them to create and delete courses inside of a database.
+**Course Management** will be managed by instructors and will allow them to create and delete courses through a database.
 
-**Enrollment Management** will focus on allowing students to register for classes.
+**Enrollment Management** will focus on allowing students to register for classes for an upcoming semester.
 
 
 
 ## [Site Map]
-This is the course enrollment's site map. It will contain fundamental pages to help a user navigate through all of the website's features.
-Below will contain wireframes for each individual section of the site map and will contain additional information about what a user will
-be able to access on each individual webpage (depending on whether they are signed in as a user or instructor).
-Each wireframe has its own responsive design transitioning from [Webpage -> Tablet -> Mobile] for an excellent responsive environment.
+This is the course enrollment's site map. It will contain essential pages to help a user navigate through all of the website's features.
+The rest of the README will contain wireframes for each individual page of the site map and will contain additional information about what a user will
+be able to do on each individual webpage(depending on whether they are signed in as a user or instructor).
+Each wireframe has its own responsive design transitioning from [Webpage -> Tablet -> Mobile] to ensure that the application is accessible on different platforms.
+Each arrow on the site map shows which pages are connected to each other via an internal link; for example, a user will be able to navigate to the Login Page and Create account page from the Home Page.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/Web%201920%20%E2%80%93%20SITE%20MAP.png)
 
 ## [HOMEPAGE]
-The Homepage is the root web page that a user will start at. Here a user will be able to click whether they want to sign in as a student or an instructor.
-If a user does not have an account, they will be able to press the sign up hyperlink underneath the buttons to go to the **[CREATE ACCOUNT]** page.
+The Homepage is the root web page that a user will start at. Here a user will be able to choose whether they want to sign in as a student or an instructor.
+If a user does not have an account, they will be able to press the sign up hyperlink underneath the buttons to go to the Create Account page.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/WEB/Web%201920%20%E2%80%93%201%20%5BHOMEPAGE%5D.jpg)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/TABLET/iPad%2C%20Nexus%209%20%E2%80%93%201%20%5BHOMEPAGE%5D.jpg)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/MOBILE/Samsung%20Galaxy%20S10%20%E2%80%93%201%20%5BHOMEPAGE%5D.jpg)
 
 ## [LOGIN PAGE]
-The Login Page contains textboxes for a user to enter their credentials. Once they enter the appropriate detail they will be redirected to their respected Dashboards.
-In the case that a user had forgotten their password, they will be able to press the hyperlink under the elements.
+The Login Page contains textboxes for a user to enter their credentials. Afterwards, they will be redirected to their respected Dashboards.
+In the case that a user had forgotten their password, they will be able to press the hyperlink under the textboxes to move to the forgot password page.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/WEB/Web%201920%20%E2%80%93%202%20%5BLOGIN%20PAGE%5D.jpg)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/TABLET/iPad%2C%20Nexus%209%20%E2%80%93%202%20%5BLOGIN%20PAGE%5D.jpg)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/MOBILE/Samsung%20Galaxy%20S10%20%E2%80%93%202%20%5BLOGIN%20PAGE%5D.jpg)
 
 ## [CREATE ACCOUNT]
-The create account page will contain appropriate form information for a user to enter that would allow for their account to be created and stored in the database.
+The create account page will contain a form for a user to enter their new account details to be stored in the database.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/WEB/Web%201920%20%E2%80%93%203%20%5BCREATE%20ACCOUNT%5D.jpg)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/TABLET/iPad%2C%20Nexus%209%20%E2%80%93%203%20%5BCREATE%20ACCOUNT%5D.jpg)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/MOBILE/Samsung%20Galaxy%20S10%20%E2%80%93%203%20%5BCREATE%20ACCOUNT%5D.jpg)
@@ -61,15 +62,15 @@ The footer will contain information about the signed in user, whenever a user is
 
 ## [INSTRUCTOR DASHBOARD]
 Similarly an Instructor dashboard will contain similar features to the student dashboard.
-The differences being that the navigation bar will have a create class and delete class hyperlink to those pages.
+The only difference being that the navigation bar will have a create class and delete class hyperlink to those pages.
 The center of the Dashboard will contain classes that the instructor has created.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/WEB/Web%201920%20%E2%80%93%206%20%5BINSTRUCTOR%20DASHBOARD%5D.jpg)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/TABLET/iPad%2C%20Nexus%209%20%E2%80%93%206%20%5BINSTRUCTOR%20DASHBOARD%5D.jpg)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/MOBILE/Samsung%20Galaxy%20S10%20%E2%80%93%206%20%5BINSTRUCTOR%20DASHBOARD%5D.jpg)
 
 ## [CHANGE PASSWORD INSTRUCTOR]
-The change password page is straight forward. Here a user will be able to change their password by entering the correct credentials and then inputting a new password.
-The password will then be validated to make sure that it is secure (similarly this happens when a user creates their account).
+The change password page will allow a user to change their password by validating their current password and then inputting a new password.
+The new password will then be validated to make sure that it is secure (similarly this happens when a user creates their account).
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/WEB/Web%201920%20%E2%80%93%207%20%5BCHANGE%20PASSWORD%20INSTRUCTOR%5D.jpg)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/TABLET/iPad%2C%20Nexus%209%20%E2%80%93%207%20%5BCHANGE%20PASSWORD%20INSTRUCTOR%5D.jpg)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Marinos%20Images/MOBILE/Samsung%20Galaxy%20S10%20%E2%80%93%207%20%5BCHANGE%20PASSWORD%20INSTRUCTOR%5D.jpg)
