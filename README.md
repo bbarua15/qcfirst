@@ -104,8 +104,8 @@ Students will be able to search for a specific class by the course title and cou
 ## [CLASS DEADLINE STUDENT]
 The class deadline page will contain a table showing which term and what time/day the student(s) can start enrolling in class. With this, the students can keep track of when they can start enrolling and when is the last day to enroll in a class.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Desktop/Desktop%20-%20Class%20Deadline.png)
-![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Tablet:iPad/Tablet:iPad%20-%20Class%20Deadline.png)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Tablet/Tablet%20-%20Class%20Deadline.png)
+![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Class%20Deadline.png)
 
 
 ## [CREATE CLASS INSTRUCTOR]
