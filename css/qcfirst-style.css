@@ -1,14 +1,20 @@
 /*
 Adapted from:[3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials
  */
+
+nav {
+    background-color: #cc3444;
+}
+
 ul {
     position: center;
     margin: 0;
     padding: 20px;
-    background-color: white;
     display: flex;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background-color: #cc3444;
+
 }
 
 ul li {
@@ -27,7 +33,7 @@ ul li a {
     text-decoration: none;
     padding: 0 50px;
     display: block;
-    color: #4ea3f1;
+    color: #ffffff;
 }
 
 ul li a:hover {
