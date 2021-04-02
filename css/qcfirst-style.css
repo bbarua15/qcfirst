@@ -1,0 +1,179 @@
+/*
+Adapted from:[3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials
+ */
+ul {
+    position: center;
+    margin: 0;
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+ul li {
+    list-style: none;
+    text-align: center;
+    display: block;
+    border-right: 1px solid rgba(0,0,0,0.3);
+}
+
+ul li:last-child {
+    border-right: none;
+}
+
+
+ul li a {
+    text-decoration: none;
+    padding: 0 50px;
+    display: block;
+    color: #4ea3f1;
+}
+
+ul li a:hover {
+    text-decoration: none;
+    padding: 0 50px;
+    display: block;
+    color: #000000;
+}
+/*
+end of adaptation
+ */
+
+/*
+<!--adapted from [4/1/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+footer {
+    position: absolute;
+    width: 100vw;
+    display: block;
+    overflow: hidden;
+    padding: 20px 0;
+    box-sizing: border-box;
+    background-color: #000000;
+}
+
+.inner-footer {
+    display: block;
+    margin: 0 auto;
+    width: 1100px;
+    height: 100%;
+}
+
+.inner-footer .logo-container {
+    width: 35%;
+    float: left;
+    height:  100%;
+    display: block;
+}
+
+.inner-footer .logo-container img {
+    width: 200px;
+    height: auto;
+}
+
+.inner-footer .footer-third {
+    width: calc(21.6666666667% - 20px);
+    margin-right: 10px;
+    float: left;
+    height: 100px
+}
+
+.inner-footer .footer-third:last-child {
+    margin-right: 0;
+}
+
+.inner-footer .footer-third h1 {
+    font-family: Arial;
+    font-size: 20px;
+    color: white;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.inner-footer .footer-third span {
+    font-family: Arial;
+    font-size: 18px;
+    color: white;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.inner-footer .footer-third a {
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: 200;
+    color: white;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+}
+
+.inner-footer .footer-third li {
+    display: inline-block;
+    padding: 0 5px;
+    font-size: 30px;
+}
+
+.user-info {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-family: Arial;
+    font-size: large;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+    .footer .inner-footer {
+        width: 90%;
+    }
+
+    .inner-footer .logo-container, .inner-footer .footer-third, .inner-footer .footer-third span {
+        width: 100%;
+        margin-bottom: 30px;
+        margin-left: 10px;
+    }
+
+    .inner-footer .logo-container {
+        display: flex;
+        justify-content: left;
+        margin-left: 8%;
+    }
+
+    /*
+  end of adaptation
+   */
+    /*
+    Adapted from: https://mdbootstrap.com/docs/b4/jquery/navigation/hamburger-menu/
+     */
+    .header-flexbox {
+        display: none;
+    }
+
+    .navbar.navbar-1 .navbar-toggler-icon {
+        background-image: url('https://mdbcdn.b-cdn.net/img/svg/hamburger6.svg?color=000');
+    }
+}
+    /*
+end of adaptation
+*/
+
+    @media (min-width: 600px) {
+        .navbar.navbar-1 {
+            display: none;
+        }
+    }
+
+
