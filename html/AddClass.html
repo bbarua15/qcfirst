@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Add Class</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap">
+      <script src = "../js/jquery-3.6.0.js"></script>
+
+   <!-- adapted from [4/1/2021]: https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file -->
+
+    <!-- load header -->
+    <script>
+        $(function(){
+            $("#header").load("header-student.html");
+        });
+    </script>
+
+    <!-- load footer -->
+    <script>
+        $(function(){
+            $("#footer").load("footer.html");
+        });
+    </script>
+    <!-- end adapt -->
+
+   </head>
+   <body>
+      <!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
+      <header id="header"></header>
+
+      <h2>Add Class</h2>
+      <form action="/action_page.php">
+         <label for="coursename">Course:</label>
+            <select name="course" id="cour">
+               <option value="Biology">Biology</option>
+               <option value="Computer Science">Computer Science</option>
+               <option value="Math">Math</option>
+               <option value="English">English</option>
+            </select>
+            <br><br>
+      </form>
+
+      <form id="course-number">
+          <label for="cournum">Course Number:</label>
+          <input type="text" id="number" name="number" placeholder="Course Number">
+          <input type="submit" id="confirm" name="confirm">
+      </form>
+   
+      <table>
+        <thead>
+          <tr>
+            <th>Select</th>
+            <th>Class</th>
+            <th>Instructor</th>
+            <th>Credits</th>
+            <th>Room</th>
+            <th>Time/Days</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <td><input type="checkbox" name="name1" />&nbsp;</td>
+      </tbody>
+      
+      <tbody>
+        <td><input type="checkbox" name="name1" />&nbsp;</td>
+      </tbody>
+   
+    </table>
+
+    <footer id="footer"></footer>
+
+  </body>
+</html>
