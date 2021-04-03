@@ -161,6 +161,7 @@ footer {
     /*
   end of adaptation
    */
+
     /*
     Adapted from: https://mdbootstrap.com/docs/b4/jquery/navigation/hamburger-menu/
      */
@@ -170,6 +171,19 @@ footer {
 
     .navbar.navbar-1 .navbar-toggler-icon {
         background-image: url('https://mdbcdn.b-cdn.net/img/svg/hamburger7.svg?color=000');
+    }
+
+    .navbar-nav{
+        background-color: white;
+        font-family: Arial;
+        font-size: large;
+    }
+
+    .navbar-brand {
+        font-family: Arial;
+        background-color: white;
+        font-weight: bold;
+        border: black solid 4px;
     }
 }
     /*
