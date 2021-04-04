@@ -14,3 +14,8 @@ table, th, td {
 th, td {
 	padding: 10px;
 }
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
