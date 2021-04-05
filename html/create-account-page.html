@@ -1,82 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Create Account</title>
-    <link rel="stylesheet" href="../css/qcfirst-style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <title>Create Account</title>
+        <link rel="stylesheet" href="../css/qcfirst-style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src = "../js/jquery-3.6.0.js"></script>
+        <script src = "../js/jquery-3.6.0.js"></script>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <!-- Bootstrap JavaScript -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-    <!-- font-awesome -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-    <!-- adapted from [4/1/2021]: https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file -->
-
-    <!-- load header -->
-    <script>
-        $(function(){
-            $("#header").load("header.html");
-        });
-    </script>
-
-    <!-- load footer -->
-    <script>
-        $(function(){
-            $("#footer").load("footer.html");
-        });
-    </script>
-    <!-- end adapt -->
-</head>
+        <!-- font-awesome -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+        <!-- adapted from [4/1/2021]: https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file -->
 
-<body>
+        <!-- load header -->
+        <script>
+            $(function(){
+                $("#header").load("header.html");
+            });
+        </script>
 
-<!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
-<header id="header">
+        <!-- load footer -->
+        <script>
+            $(function(){
+                $("#footer").load("footer.html");
+            });
+        </script>
+        <!-- end adapt -->
+    </head>
 
-</header>
+    <body>
 
-<!-- QCFirst in middle of page -->
-<h1 class="qcfirst">QC First</h1>
+    <!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
+    <header id="header">
 
-<!-- additional heading -->
-<h2>Create Account</h2>
+    </header>
+    <!-- end adaptation -->
 
-<!-- Create Account Details -->
-<form id="create-account-details">
-    <label for="firstName">First Name</label>
-    <input type="text" id="firstName" name="firstName" placeholder="First Name">
-    <label for="lastName">Last Name</label>
-    <input type="text" id="lastName" name="lastName" placeholder="Last Name">
-    <label for="username">Username</label>
-    <input type="email" id="username" name="username" placeholder="Username">
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" placeholder="Password">
-    <select name="user-type">
-        <option value="Student">Student</option>
-        <option value="Instructor">Instructor</option>
-    </select>
-    <input type="submit" id="create" name="create">
-</form>
+    <!-- heading in middle of page -->
+    <h1 class="heading">Please enter your new account details!</h1>
 
-<!--footer-->
-<!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
-<footer id="footer">
+    <!-- Create Account Details -->
+    <form id="create-account-details">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" placeholder="First Name">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+        <label for="username">Username</label>
+        <input type="email" id="username" name="username" placeholder="Username">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password">
+        <select name="user-type">
+            <option value="Student">Student</option>
+            <option value="Instructor">Instructor</option>
+        </select>
+        <input type="submit" id="create" name="create">
+    </form>
 
-</footer>
+    <!--footer-->
+    <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
+    <footer id="footer">
 
-</body>
+    </footer>
+    <!-- end adaptation -->
+
+    </body>
 
 </html>

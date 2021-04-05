@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
 
     <head>
         <meta charset="UTF-8">
-        <title>Student Dashboard</title>
+        <title>Course Dictionary Student</title>
         <link rel="stylesheet" href="../css/qcfirst-style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,13 +20,12 @@
         <!-- font-awesome -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
         <!-- adapted from [4/1/2021]: https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file -->
 
         <!-- load header -->
         <script>
             $(function(){
-                $("#header").load("header-student.html");
+                $("#header").load("header-instructor.html");
             });
         </script>
 
@@ -47,16 +46,33 @@
     </header>
     <!-- end adaptation -->
 
+    <!-- search bar -->
+    <!-- Taken from [4/1/2021]: https://mdbootstrap.com/docs/standard/forms/search/-->
+    <div class="input-group">
+        <div class="form-outline">
+            <input id="search-input" type="search" id="form1" class="form-control" />
+            <label class="form-label" for="form1">Search</label>
+        </div>
+        <button id="search-button" type="button" class="btn btn-primary">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+    </div>
+    <!-- end of taken code -->
+
     <!-- additional heading -->
-    <h1 class="courses">Courses</h1>
+    <h1 class="header">Course Dictionary</h1>
 
     <!-- display courses -->
     <container class="table">
         <table class="courses-table">
             <tr>
-                <th>Course Name</th>
                 <th>Course Id</th>
+                <th>Semester</th>
+                <th>Course Name</th>
+                <th>Department</th>
                 <th>Instructor</th>
+                <th>Student Roster</th>
+                <th>Description</th>
                 <th>Schedule</th>
                 <th>Enrollment Deadline</th>
             </tr>
@@ -66,13 +82,13 @@
                 <td>Test c</td>
                 <td>Test d</td>
                 <td>Test e</td>
+                <td>Test f</td>
+                <td>Test g</td>
+                <td>Test h</td>
+                <td>Test i</td>
             </tr>
         </table>
     </container>
-
-    <!-- Buttons -->
-    <button type="button" class="buttons">Course Dictionary</button>
-    <button type="button" class="buttons">Course Deadlines</button>
 
     <!--need to add -->
     <h2>Use DOM manipulation to display in the footer which user is logged in</h2>
