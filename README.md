@@ -137,6 +137,30 @@ Students will be able to view the classes they have selected to take and enroll 
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Shopping%20Cart.png)
 
 
+## Add Class Page (With HTML)
+At first, the HTML form is used for user input so that the student can search for a specific class by the course and course number. Once there search has been filtered, the table will show specific details of classes they're looking for. They can select which class they prefer by adding it to shopping cart.
+![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Desktop/Desktop%20-%20Shopping%20Cart.png)
+
+## Class Deadline Page (With HTML)
+A table has been created to show the time/day when a student can start enrolling for class.
+![alt text]()
+
+## Create Class Page (With HTML)
+HTML form has been used here so that the instructor can input details based on what is required of them to input. The sumbit button will be clicked on once they're finished putting in all of the details.
+![alt text]()
+
+## Delete Class Page (With HTML)
+In the table, it shows an example of what it would look like if there were classes created by an instrcutor and when they want to delete a class they've created. They would select the class they want to delete and click on the submit button.
+![alt text]()
+
+## Drop Class Page (With HTML)
+A table has been created with examples to show how it would look like once there are actual classes and details inputted. The student can select the class they're dropping by clicking on submit.
+![alt text]()
+
+## Shopping Cart Page (With HTML)
+In a table, it shows which classes a student put in their shopping cart through the Add Class Page. Students can select which class to enroll in or delete it from the shopping cart. This page can only be accessed through the Add Class Page once they've added the class to shopping cart.
+![alt text]()
+
 ##### Contributors:
 Marinos Dakis (https://github.com/MarinosDakis)
 Badhan Barua (https://github.com/bbarua15)
