@@ -172,7 +172,7 @@ One modification I may make in the future is to substitute the textfields with B
 
 ***Footer:*** https://bbarua15.github.io/qcfirst/html/footer.html
 
-The original HTML files for these pages do not contain <html> or <head> tags since they are inserted into pages that already contain such tags.
+The original HTML files for these pages do not contain HTML or head tags since they are inserted into pages that already contain such tags.
 
 
 __________________________________________________________________________________________________
