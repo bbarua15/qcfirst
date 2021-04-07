@@ -174,6 +174,9 @@ One modification I may make in the future is to substitute the textfields with B
 
 The original HTML files for these pages do not contain HTML or head tags since they are inserted into pages that already contain such tags.
 
+Moreover, I created 2 custom images in Adobe Illustrator for the logo of the website and included royalty free images to be used later in the web application's design. 
+
+
 
 __________________________________________________________________________________________________
 ## Add Class Page (With HTML)
