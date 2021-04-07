@@ -136,10 +136,34 @@ Students will be able to view the classes they have selected to take and enroll 
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Tablet/Tablet%20-%20Shopping%20Cart.png)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Shopping%20Cart.png)
 
+## HTML Deliverable:
+
+For the first project deliverable we split up the task of creating the HTML for the pages from how we divided the site map originally.
+For the navigation bars, I created 3 separate versions for each instance (i.e. no user, student user, and instructor user) of the web application using online resources.
+Each instance has different html pages associated with them and will contain their corresponding navigation bar inserted using Javascript.
+Similarly, this is done with the footer for the website as well; however it will be placed on all pages of the web application and then modified once a user logs in. 
+
+
+***Below are some images depicting the custom navigation bars circled in blue:***
+(also the html pages for students and instructors can be accessed temporarily via the urls below to look through their associated pages from the navigation bars).
+
+url: https://bbarua15.github.io/qcfirst/html/homepage-html.html
+![alt text]()
+
+url: https://bbarua15.github.io/qcfirst/html/student-dashboard-html.html
+![alt text]()
+
+url: https://bbarua15.github.io/qcfirst/html/instructor-dashboard-html.html
+![alt text]()
+
+The tables located in the HTML contain placeholder values until a database is connected using Node.js.
+One modification I may make in the future is to substitute the textfields with Bootstrap to make them more aesthetic to users.
+
 
 ## Add Class Page (With HTML)
 At first, the HTML form is used for user input so that the student can search for a specific class by the course and course number. Once there search has been filtered, the table will show specific details of classes they're looking for. They can select which class they prefer by adding it to shopping cart.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Images%20(with%20HTML)/Add%20Class%20-%20Student.png)
+
 
 ## Class Deadline Page (With HTML)
 A table has been created to show the time/day when a student can start enrolling for class.
