@@ -162,6 +162,19 @@ url: https://bbarua15.github.io/qcfirst/html/instructor-dashboard-html.html
 The tables located in the HTML contain placeholder values until a database is connected using Node.js.
 One modification I may make in the future is to substitute the textfields with Bootstrap to make them more aesthetic to users.
 
+### Navigation bar urls and footer url:
+
+***No-user:*** https://bbarua15.github.io/qcfirst/html/header.html
+
+***Student:*** https://bbarua15.github.io/qcfirst/html/header-student.html
+
+***Instructor:*** https://bbarua15.github.io/qcfirst/html/header-instructor.html
+
+***Footer:*** https://bbarua15.github.io/qcfirst/html/footer.html
+
+The original HTML files for these pages do not contain <html> or <head> tags since they are inserted into pages that already contain such tags.
+
+
 __________________________________________________________________________________________________
 ## Add Class Page (With HTML)
 At first, the HTML form is used for user input so that the student can search for a specific class by the course and course number. Once there search has been filtered, the table will show specific details of classes they're looking for. They can select which class they prefer by adding it to shopping cart.
