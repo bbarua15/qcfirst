@@ -147,19 +147,22 @@ Similarly, this is done with the footer for the website as well; however it will
 ***Below are some images depicting the custom navigation bars circled in blue:***
 (also the html pages for students and instructors can be accessed temporarily via the urls below to look through their associated pages from the navigation bars).
 
+### No user Instance
 url: https://bbarua15.github.io/qcfirst/html/homepage-html.html
-![alt text]()
+![alt text](https://github.com/bbarua15/qcfirst/blob/main/Images%20(with%20HTML)/no-user%20instance.png)
 
+### Student Instance
 url: https://bbarua15.github.io/qcfirst/html/student-dashboard-html.html
-![alt text]()
+![alt text](https://github.com/bbarua15/qcfirst/blob/main/Images%20(with%20HTML)/student%20instance.png)
 
+### Instructor Instance
 url: https://bbarua15.github.io/qcfirst/html/instructor-dashboard-html.html
-![alt text]()
+![alt text](https://github.com/bbarua15/qcfirst/blob/main/Images%20(with%20HTML)/instructor%20instance.png)
 
 The tables located in the HTML contain placeholder values until a database is connected using Node.js.
 One modification I may make in the future is to substitute the textfields with Bootstrap to make them more aesthetic to users.
 
-
+__________________________________________________________________________________________________
 ## Add Class Page (With HTML)
 At first, the HTML form is used for user input so that the student can search for a specific class by the course and course number. Once there search has been filtered, the table will show specific details of classes they're looking for. They can select which class they prefer by adding it to shopping cart.
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Images%20(with%20HTML)/Add%20Class%20-%20Student.png)
