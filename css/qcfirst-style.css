@@ -1,4 +1,104 @@
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-container {
+
+}
+
 /*
+[layout design]
+Adapted from [4/13/2021]: https://www.youtube.com/watch?v=fYq5PXgSsbE&ab_channel=WebDevSimplified
+ */
+
+.flexbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-1 {
+    align-self: center;
+    min-height: 100px;
+}
+
+.container-2 {
+    align-self: center;
+}
+
+.container-3 {
+    align-self: center;
+    min-height: 50px;
+}
+
+/*
+[select select dropdown]
+Adapted from [4/12/21]: https://www.w3schools.com/howto/howto_custom_select.asp
+*/
+
+select {
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font: 18px "Arial";
+}
+
+/*
+[input forms]
+Adapted from [4/12/21]: https://www.w3schools.com/css/css_form.asp
+*/
+
+label {
+    font: 18px "Arial";
+}
+
+[type=text], [type=email], [type=password] {
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font: 18px "Arial";
+}
+
+[type=text]:focus, [type=email]:focus, [type=password]:focus {
+    background-color: #fccece;
+    border: 2px solid #d9162e;
+}
+
+/*
+[Buttons]
+Adapted from [4/12/21]: https://www.w3schools.com/css/css3_buttons.asp, https://www.w3schools.com/howto/howto_css_round_buttons.asp, https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
+*/
+[type=button], [type=submit], [type=reset] {
+    background-color: #cc3444;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: black 2px solid;
+    font: 18px "Arial";
+    width: 150px;
+    padding: 10px;
+}
+
+[type=button]:hover, [type=submit]:hover, [type=reset]:hover {
+    background-color: #d9162e;
+    cursor: pointer;
+}
+
+
+/*
+[nav bars]
 Adapted from:[3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials
  */
 
@@ -47,6 +147,7 @@ end of adaptation
  */
 
 /*
+[footer]
 <!--adapted from [4/1/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
 */
 
@@ -163,6 +264,7 @@ footer {
    */
 
     /*
+    [hamburger menu]
     Adapted from: https://mdbootstrap.com/docs/b4/jquery/navigation/hamburger-menu/
      */
     .header-flexbox {
