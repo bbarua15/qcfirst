@@ -53,7 +53,7 @@
     <h1 class="courses">Courses</h1>
 
     <!-- display courses -->
-        <table class="container">
+        <table class="table">
             <tr>
                 <th>Course Name</th>
                 <th>Course Id</th>
@@ -71,8 +71,9 @@
         </table>
 
     <!-- Buttons -->
-    <button type="button" class="buttons">Course Dictionary</button>
-    <button type="button" class="buttons">Course Deadlines</button>
+    <!-- adapted from: [4/14/2021]: https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
+    <button type="button" class="buttons" onclick="location.href='instructor-course-dictionary-html.html'">Course Dictionary</button>
+    <button type="button" class="buttons" onclick="location.href='ClassDeadline-instructor.html'">Course Deadlines</button>
 
     <!--need to add -->
     <h2>Use DOM manipulation to display in the footer which user is logged in</h2>

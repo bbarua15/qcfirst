@@ -26,3 +26,14 @@ th, td {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+/*
+Adapted from [4/14/2021]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Backgrounds_and_Borders/Resizing_background_images
+ */
+/*
+.shopping-cart {
+	background-image: url("../img/shopping-cart-1923313_1920.png");
+	background-size: 200px;
+	opacity: 0.7;
+}
+/*

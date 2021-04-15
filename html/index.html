@@ -39,7 +39,8 @@
         <!-- end adapt -->
     </head>
 
-    <body class>
+    <div class = flex>
+    <body>
 
     <!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
         <header id="header">
@@ -47,6 +48,7 @@
         </header>
     <!-- end adaptation -->
 
+    <div id="inner-remaining">
         <div class="flexbox">
 
             <div class="container-1">
@@ -56,8 +58,9 @@
 
             <div class="container-2">
                 <!-- Buttons -->
-                <button type="button" class="buttons">Student</button>
-                <button type="button" class="buttons">Instructor</button>
+                <!-- adapted from: [4/14/2021]: https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
+                <button type="button" class="buttons" onclick="location.href='login-page-html.html'">Student</button>
+                <button type="button" class="buttons" onclick="location.href='login-page-html.html'">Instructor</button>
             </div>
 
             <div class="container-3">
@@ -66,7 +69,7 @@
             </div>
 
         </div>
-
+    </div>
         <!--footer-->
         <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
         <footer id="footer">
@@ -75,5 +78,5 @@
     <!-- end adaptation -->
 
     </body>
-
+    </div>
 </html>
