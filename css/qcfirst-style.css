@@ -167,8 +167,8 @@ ul li a:hover {
 
 footer {
     position:absolute;
-    width:100%;
-    bottom:0px;
+    width: 100%;
+    bottom: 0;
     display: block;
     overflow: hidden;
     padding: 20px 0;
