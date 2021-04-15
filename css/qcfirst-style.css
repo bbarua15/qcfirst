@@ -5,6 +5,7 @@ Adapted from [4/14/2021]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_B
 
 .library {
 	background-image: url("../img/library-869061_1920.jpg");
+    background-size: auto;
 }
 
 /*
@@ -272,6 +273,10 @@ footer {
     [hamburger menu]
     Adapted from: https://mdbootstrap.com/docs/b4/jquery/navigation/hamburger-menu/
      */
+    .navbar-toggler {
+        width: 50px;
+    }
+
     .header-flexbox {
         display: none;
     }
@@ -280,7 +285,7 @@ footer {
         background-image: url('https://mdbcdn.b-cdn.net/img/svg/hamburger7.svg?color=000');
     }
 
-    .navbar-nav{
+    .navbar-nav {
         background-color: white;
         font-family: Arial, sans-serif;
         font-size: large;
