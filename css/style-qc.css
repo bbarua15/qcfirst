@@ -31,6 +31,11 @@ tbody {
 	background: white;
 }
 
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
 /*
 Adapted from [4/14/2021]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Backgrounds_and_Borders/Resizing_background_images
  */
