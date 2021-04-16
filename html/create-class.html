@@ -39,36 +39,39 @@
       <header id="header"></header>
       <!-- end adaptation -->
 
-      <h2>Create Class</h2>
+      <div class="flexbox">
+          <h2>Create Class</h2>
+          <!-- Input details to create class -->
+              <form id="create-class">
+                  <div class="vertical-container">
+                      <label for="term">Term</label>
+                      <input type="text" id="term" name="term" placeholder="">
+                      <label for="courname">Course Name</label>
+                      <input type="text" id="courname" name="courname" placeholder="">
+                  </div>
+              </form>
 
-      <!-- Input details to create class -->
-      <form id="create-class">
-          <label for="term">Term</label>
-          <input type="text" id="term" name="term" placeholder="">
-          <br>
-          <label for="courname">Course Name</label>
-          <input type="text" id="courname" name="courname" placeholder="">
-      </form>
-      
-      <h3>Class Information</h3>
-        <form id="create-class1">
-          <label for="cournum">Course Number</label>
-          <input type="text" id="cournum" name="cournum" placeholder="">
-          <br>
-          <label for="time">Time and Days</label>
-          <input type="text" id="time" name="time" placeholder="">
-        </form>
+          <h3>Class Information</h3>
+            <form id="create-class1">
+                <div class="vertical-container">
+                    <label for="cournum">Course Number</label>
+                    <input type="text" id="cournum" name="cournum" placeholder="">
+                    <label for="time">Time and Days</label>
+                    <input type="text" id="time" name="time" placeholder="">
+                </div>
+            </form>
 
-      <h3>Additional Class Information</h3>
-        <form id="create-class2">
-          <label for="desc">Description of Course</label>
-          <input type="text" id="desc" name="desc" placeholder="">
-          <br>
-          <label for="capac">Capacity</label>
-          <input type="text" id="capac" name="capac" placeholder="">
-          <br>
-          <input type="submit" id="confirm" name="confirm">
-        </form>
+          <h3>Additional Class Information</h3>
+            <form id="create-class2">
+                <div class="vertical-container">
+                    <label for="desc">Description of Course</label>
+                    <input type="text" id="desc" name="desc" placeholder="">
+                    <label for="capac">Capacity</label>
+                    <input type="text" id="capac" name="capac" placeholder="">
+                    <input type="submit" id="confirm" name="confirm">
+                </div>
+            </form>
+      </div>
 
         <!--footer-->
         <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->

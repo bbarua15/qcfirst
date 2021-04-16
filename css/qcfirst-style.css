@@ -7,6 +7,7 @@ Adapted from [4/14/2021]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_B
 	background-image: url("../img/library-869061_1920.jpg");
     background-size: auto;
 }
+/* end of adaptation */
 
 /*
 [select custom dropdown]
@@ -23,6 +24,7 @@ select {
 select:focus {
     background-color: #fccece;
 }
+/* end of adaptation */
 
 /*
 [input forms]
@@ -44,6 +46,7 @@ label {
     background-color: #fccece;
     border: 2px solid #d9162e;
 }
+/* end of adaptation */
 
 /*
 [Buttons]
@@ -66,6 +69,7 @@ Adapted from [4/12/21]: https://www.w3schools.com/css/css3_buttons.asp, https://
     background-color: #d9162e;
     cursor: pointer;
 }
+/* end of adaptation */
 
 /*
 [layout design]
@@ -82,31 +86,38 @@ Adapted from [4/13/2021]: https://www.youtube.com/watch?v=fYq5PXgSsbE&ab_channel
     display: flex;
     justify-content: center;
 }
+/* end of adaptation */
 
+/*
+Adapted from [4/15/2021]: https://www.youtube.com/watch?v=HqU-MjgKVAI&ab_channel=CodyHouse, https://coryrylan.com/blog/css-gap-space-with-flexbox
+ */
 /* center */
 .flexbox {
     display: flex;
     flex-direction: column;
+    --gap: 1rem;
+}
+
+.flexbox > * {
+    margin-top: var(--gap);
+    margin-bottom: var(--gap);
+    align-self: center;
+}
+
+.vertical-container {
+    display: flex;
+    gap: var(--gap);
+    flex-direction: column;
     justify-content: center;
 }
 
-.container-1 {
-    align-self: center;
-    min-height: 100px;
+.horizontal-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
 }
-
-.container-2 {
-    align-self: center;
-}
-
-.container-3 {
-    align-self: center;
-    min-height: 50px;
-}
-
-#inner_remaining {
-    height: 100vh;
-}
+/* end of adaptation */
 
 /*
 [nav bars]
@@ -156,7 +167,7 @@ ul li a:hover {
 
 /*
 [footer]
-<!--adapted from [4/1/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
+<!--adapted from [4/1/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton, https://www.w3docs.com/snippets/css/how-to-make-a-div-vertically-scrollable.html -->
 */
 
 * {
@@ -169,9 +180,10 @@ ul li a:hover {
 footer {
     position:absolute;
     width: 100%;
-    bottom: 0;
-    display: block;
-    overflow: hidden;
+    bottom: auto;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
     padding: 20px 0;
     box-sizing: border-box;
     background-color: #000000;
