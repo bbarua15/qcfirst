@@ -56,49 +56,53 @@
     </header>
     <!-- end adaptation -->
 
-    <!-- search bar -->
-    <!-- Taken from [4/1/2021]: https://mdbootstrap.com/docs/standard/forms/search/-->
-    <div class="input-group">
+    <div class="flexbox library">
+
+        <!-- search bar -->
+        <!-- Adapted from [4/1/2021]: https://mdbootstrap.com/docs/standard/forms/search/-->
         <div class="form-outline">
-            <input id="search-input" type="search" class="form-control" />
-            <label class="form-label" for="search-input">Search</label>
+            <input type="search" id="form1" class="form-control" placeholder="Type query"
+                       aria-label="Search" />
         </div>
-        <button id="search-button" type="button" class="btn btn-primary">
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
+        <!-- end adaptation -->
+
+        <!-- display courses -->
+        <section>
+                <!-- Adapted from [4/16/2021]:https://getbootstrap.com/docs/4.0/content/tables/, https://medium.com/appnroll-publication/5-practical-solutions-to-make-responsive-data-tables-ff031c48b122 -->
+            <table class="table table-striped table-bordered table-sm">
+
+                <div class="container">
+                    <!-- additional heading -->
+                    <h1 class="header">Course Dictionary</h1>
+                </div>
+
+                <tr>
+                    <th>Course Id</th>
+                    <th>Semester</th>
+                    <th>Course Name</th>
+                    <th>Department</th>
+                    <th>Instructor</th>
+                    <th>Student Roster</th>
+                    <th>Description</th>
+                    <th>Schedule</th>
+                    <th>Enrollment Deadline</th>
+                </tr>
+                <tr>
+                    <td>Test a</td>
+                    <td>Test b</td>
+                    <td>Test c</td>
+                    <td>Test d</td>
+                    <td>Test e</td>
+                    <td>Test f</td>
+                    <td>Test g</td>
+                    <td>Test h</td>
+                    <td>Test i</td>
+                </tr>
+            </table>
+            <!-- end adaptation -->
+        </section>
+
     </div>
-    <!-- end of taken code -->
-
-    <section class="library">
-    <!-- additional heading -->
-    <h1 class="header">Course Dictionary</h1>
-
-    <!-- display courses -->
-        <table class="center">
-            <tr>
-                <th>Course Id</th>
-                <th>Semester</th>
-                <th>Course Name</th>
-                <th>Department</th>
-                <th>Instructor</th>
-                <th>Student Roster</th>
-                <th>Description</th>
-                <th>Schedule</th>
-                <th>Enrollment Deadline</th>
-            </tr>
-            <tr>
-                <td>Test a</td>
-                <td>Test b</td>
-                <td>Test c</td>
-                <td>Test d</td>
-                <td>Test e</td>
-                <td>Test f</td>
-                <td>Test g</td>
-                <td>Test h</td>
-                <td>Test i</td>
-            </tr>
-        </table>
-    </section>
 
     <!--
     [need to add]

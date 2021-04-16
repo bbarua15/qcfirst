@@ -1,3 +1,12 @@
+
+/* table headings */
+.container > * {
+    font: 4em "Arial", sans-serif;
+    font-weight: bolder;
+    color: black;
+    text-align: center;
+}
+
 /*
 [background images]
 Adapted from [4/14/2021]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Backgrounds_and_Borders/Resizing_background_images
@@ -32,7 +41,7 @@ Adapted from [4/12/21]: https://www.w3schools.com/css/css_form.asp
 */
 
 label {
-    font: 18px "Arial";
+    font: 18px "Arial", sans-serif;
 }
 
 [type=text], [type=email], [type=password] {
@@ -106,7 +115,6 @@ Adapted from [4/15/2021]: https://www.youtube.com/watch?v=HqU-MjgKVAI&ab_channel
 
 .vertical-container {
     display: flex;
-    gap: var(--gap);
     flex-direction: column;
     justify-content: center;
 }
@@ -220,8 +228,7 @@ footer {
 }
 
 .inner-footer .footer-third h1 {
-    font-family: Arial, sans-serif;
-    font-size: 20px;
+    font: 20px Arial, sans-serif;
     color: white;
     display: block;
     width: 100%;

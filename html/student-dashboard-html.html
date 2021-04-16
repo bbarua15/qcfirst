@@ -10,7 +10,7 @@
   Moreover, below the table with the registered class information a user will be able to navigate to the course dictionary page and the course deadline page.
   The footer will contain information about the signed in user, whenever a user is in an active session.
 -->
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
     <head>
         <meta charset="UTF-8">
@@ -60,33 +60,43 @@
     <!-- end adaptation -->
 
     <div class="flexbox">
-    <!-- additional heading -->
-        <h1 class="courses">Courses</h1>
 
-        <!-- display courses -->
-            <table class="center">
-                    <tr>
-                        <th>Course Name</th>
-                        <th>Course Id</th>
-                        <th>Instructor</th>
-                        <th>Schedule</th>
-                        <th>Enrollment Deadline</th>
-                    </tr>
-                    <tr>
-                        <td>Test a</td>
-                        <td>Test b</td>
-                        <td>Test c</td>
-                        <td>Test d</td>
-                        <td>Test e</td>
-                    </tr>
-            </table>
-    </div>
+            <!-- display courses -->
+            <section>
+                <!-- Adapted from [4/16/2021]:https://getbootstrap.com/docs/4.0/content/tables/, https://medium.com/appnroll-publication/5-practical-solutions-to-make-responsive-data-tables-ff031c48b122 -->
+                <table class="table table-striped table-bordered table-sm">
 
-    <div class="horizontal-container">
-        <!-- Buttons -->
-        <!-- adapted from: [4/14/2021]: https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
-        <button type="button" class="buttons" onclick="location.href='student-course-dictionary-html.html'">Course Dictionary</button>
-        <button type="button" class="buttons" onclick="location.href='ClassDeadline-student.html'">Course Deadlines</button>
+                    <div class="container">
+                        <!-- additional heading -->
+                        <h1 class="header">Courses</h1>
+                    </div>
+
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Course Id</th>
+                                <th>Instructor</th>
+                                <th>Schedule</th>
+                                <th>Enrollment Deadline</th>
+                            </tr>
+                            <tr>
+                                <td>Test a</td>
+                                <td>Test b</td>
+                                <td>Test c</td>
+                                <td>Test d</td>
+                                <td>Test e</td>
+                            </tr>
+                    </table>
+                    <!-- end adaptation -->
+        </section>
+
+
+        <div class="horizontal-container">
+            <!-- Buttons -->
+            <!-- adapted from: [4/14/2021]: https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
+            <button type="button" class="buttons" onclick="location.href='student-course-dictionary-html.html'">Course Dictionary</button>
+            <button type="button" class="buttons" onclick="location.href='ClassDeadline-student.html'">Course Deadlines</button>
+        </div>
+
     </div>
 
     <!--

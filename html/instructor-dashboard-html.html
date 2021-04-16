@@ -58,11 +58,17 @@
     <!-- end adaptation -->
 
     <div class="flexbox">
-        <!-- additional heading -->
-        <h1 class="courses">Courses</h1>
 
         <!-- display courses -->
-            <table class="center">
+        <section>
+            <!-- Adapted from [4/16/2021]:https://getbootstrap.com/docs/4.0/content/tables/, https://medium.com/appnroll-publication/5-practical-solutions-to-make-responsive-data-tables-ff031c48b122 -->
+            <table class="table table-striped table-bordered table-sm">
+
+                <div class="container">
+                    <!-- additional heading -->
+                    <h1 class="header">Courses</h1>
+                </div>
+
                 <tr>
                     <th>Course Name</th>
                     <th>Course Id</th>
@@ -78,13 +84,17 @@
                     <td>Test e</td>
                 </tr>
             </table>
-    </div>
+            <!-- end adaptation -->
+        </section>
 
-    <div class="horizontal-container">
-        <!-- Buttons -->
-        <!-- adapted from: [4/14/2021]: https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
-        <button type="button" class="buttons" onclick="location.href='instructor-course-dictionary-html.html'">Course Dictionary</button>
-        <button type="button" class="buttons" onclick="location.href='ClassDeadline-instructor.html'">Course Deadlines</button>
+
+        <div class="horizontal-container">
+            <!-- Buttons -->
+            <!-- adapted from: [4/14/2021]: https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
+            <button type="button" class="buttons" onclick="location.href='student-course-dictionary-html.html'">Course Dictionary</button>
+            <button type="button" class="buttons" onclick="location.href='ClassDeadline-student.html'">Course Deadlines</button>
+        </div>
+
     </div>
 
     <!--
