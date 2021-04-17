@@ -16,6 +16,19 @@ Adapted from [4/14/2021]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_B
 	background-image: url("../img/library-869061_1920.jpg");
     background-size: auto;
 }
+
+.shopping-cart {
+    background-image: url("../img/shopping-cart-1923313_1920.png");
+    background-size: 150px;
+}
+
+.shopping-cart h2 {
+    font: 4em "Arial", sans-serif;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    background-color: #1F1F1F;
+}
 /* end of adaptation */
 
 /*
