@@ -85,6 +85,7 @@ Adapted from [4/12/21]: https://www.w3schools.com/css/css3_buttons.asp, https://
     width: 150px;
     padding: 10px;
     justify-content: center;
+    align-self: center;
 }
 
 [type=button]:hover, [type=submit]:hover, [type=reset]:hover {
