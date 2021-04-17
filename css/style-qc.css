@@ -6,6 +6,7 @@
 
 table {
 	width: 600px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
 }
 
 th {
@@ -24,6 +25,17 @@ th, td {
 .center {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#headline {
+  background-color: #D3D3D3;
+  color: black;
+}
+
+@media only screen and (max-width: 780px) {
+  table {
+    width: 90%;
+  }
 }
 
 /*
