@@ -1,8 +1,7 @@
 #submit {
 	text-align: center;
-  	padding-right: 20px;
-  	padding-bottom: 10px;
-
+  padding-right: 20px;
+	padding-bottom: 10px;
 }
 
 table {
@@ -29,7 +28,7 @@ th, td {
 
 /*
 [Create Class]
-<!--adapted from [4/16/2021]: https://freshdesignweb.com/css-registration-form-templates/ -->
+<!--adapted from [4/16/2021]: Matthew Largent -->
 */
 
 #create-class {
