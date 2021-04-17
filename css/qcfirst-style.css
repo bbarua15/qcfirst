@@ -80,11 +80,11 @@ Adapted from [4/12/21]: https://www.w3schools.com/css/css3_buttons.asp, https://
     color: white;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     border: black 2px solid;
     font: 18px "Arial", sans-serif;
     width: 150px;
     padding: 10px;
+    justify-content: center;
 }
 
 [type=button]:hover, [type=submit]:hover, [type=reset]:hover {
@@ -176,14 +176,14 @@ ul li a {
     text-decoration: none;
     padding: 0 50px;
     display: block;
-    color: #ffffff;
+    color: #fff;
 }
 
 ul li a:hover {
     text-decoration: none;
     padding: 0 50px;
     display: block;
-    color: #000000;
+    color: #000;
 }
 /* end of adaptation */
 
@@ -208,7 +208,7 @@ footer {
     overflow-y: auto;
     padding: 20px 0;
     box-sizing: border-box;
-    background-color: #000000;
+    background-color: #000;
 }
 
 .inner-footer {
@@ -285,6 +285,7 @@ footer {
 }
 
 @media (max-width: 600px) {
+
     .footer .inner-footer {
         width: 90%;
     }
@@ -301,6 +302,24 @@ footer {
         margin-left: 8%;
     }
     /* end of adaptation */
+
+    /* external headings */
+    .flexbox > h1 {
+        font: 2em "Arial", sans-serif;
+        text-align: center;
+        font-weight: bolder;
+    }
+
+    .container h1 {
+        font: 2em "Arial", sans-serif;
+        font-weight: bolder;
+    }
+
+    h6 {
+        font: 0.5em "Arial", sans-serif;
+        text-align: center;
+    }
+    /* end of section */
 
     /*
     [hamburger menu]
@@ -330,8 +349,8 @@ footer {
         font-weight: bold;
         border: black solid 4px;
     }
+    /* end of adaptation */
 }
-/* end of adaptation */
 
     @media (min-width: 600px) {
         .navbar.navbar-1 {
