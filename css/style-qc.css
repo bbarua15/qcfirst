@@ -32,6 +32,10 @@ th, td {
   color: black;
 }
 
+.hscroll {
+  overflow-x: auto; /* Horizontal */
+}
+
 @media only screen and (max-width: 780px) {
   table {
     width: 90%;
