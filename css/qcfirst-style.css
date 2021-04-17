@@ -130,6 +130,7 @@ Adapted from [4/15/2021]: https://www.youtube.com/watch?v=HqU-MjgKVAI&ab_channel
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 10px;
 }
 
 .horizontal-container {
