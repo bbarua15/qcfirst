@@ -43,19 +43,13 @@ th, td {
   }
 }
 
-@media only screen and (max-width: 768px) {
-  html, body {
-    overflow-x: hidden;
-  }
-}
-
 /*
 [Create Class]
 <!--adapted from [4/16/2021]: https://codepen.io/matthu185/pen/myyvgr -->
 */
 
 #create-class {
-  max-width: 750px;
+  max-width: 500px;
   margin: 10px auto;
   padding: 10px 20px;
   background: #f4f7f8;
@@ -112,7 +106,7 @@ label {
 #desc {
 	 margin: 0px 0px 30px; 
 	 height: 100px; 
-	 width: 500px;"
+	 width:  400px;"
 }
 
 .sign-up {
@@ -121,7 +115,7 @@ label {
 
 @media screen and (min-width: 480px) {
   form {
-    max-width: 500px;
+    max-width: 480px;
   }
 }
 
