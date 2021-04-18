@@ -51,38 +51,38 @@
       <!-- end adaptation -->
 
       <div class="flexbox">
-      <h2>Create Class</h2>
-      <form id="create-class">
-      <fieldset>
-        <legend>
-          <h2 class="number">1</h2>Class Information
-        </legend>
-        
-        <!-- Input details to create class --> 
-        <div class="vertical-container">
-          <label for="term">Term</label>
-          <input type="text" id="term" name="term" placeholder="">
-          <label for="courname">Course Name</label>
-          <input type="text" id="courname" name="courname" placeholder="">
-          <label for="cournum">Course Number</label>
-          <input type="text" id="cournum" name="cournum" placeholder="">
-          <label for="time">Time and Days</label>
-          <input type="text" id="time" name="time" placeholder="">
-        </div>
-      </fieldset>
+        <h2>Create Class</h2>
+        <form id="create-class">
+        <fieldset>
+          <legend>
+            <h2 class="info">1</h2>Class Information
+          </legend>
+          
+          <!-- Input details to create class --> 
+          <div class="vertical-container">
+            <label for="term">Term</label>
+            <input type="text" id="term" name="term" placeholder="">
+            <label for="courname">Course Name</label>
+            <input type="text" id="courname" name="courname" placeholder="">
+            <label for="cournum">Course Number</label>
+            <input type="text" id="cournum" name="cournum" placeholder="">
+            <label for="time">Time and Days</label>
+            <input type="datetime-local" id="time" name="time">
+          </div>
+        </fieldset>
 
-      <fieldset>
-        <legend>
-          <h2 class="number">2</h2>Additional Class Information</legend>
-            <div class="vertical-container">
-              <label for="desc">Description of Course</label>
-              <input type="text" id="desc" name="desc" placeholder="">
-              <label for="capac">Capacity</label>
-              <input type="text" id="capac" name="capac" placeholder="">
-              <input type="submit" id="confirm" name="confirm">
-            </div>
-      </fieldset>
-    </form>
+        <fieldset>
+          <legend>
+            <h2 class="info">2</h2>Additional Class Information</legend>
+              <div class="vertical-container">
+                <label for="desc">Description of Course</label>
+                <textarea id="desc" name="desc"></textarea>
+                <label for="capac">Capacity</label>
+                <input type="text" id="capac" name="capac" placeholder="">
+                <input type="submit" id="confirm" name="confirm">
+              </div>
+        </fieldset>
+      </form>
     </div>
       
     <!--footer-->
