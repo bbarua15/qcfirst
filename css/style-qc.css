@@ -43,6 +43,7 @@ th, td {
   }
 }
 
+
 /*
 [Create Class]
 <!--adapted from [4/16/2021]: https://codepen.io/matthu185/pen/myyvgr -->
@@ -98,13 +99,13 @@ label {
   margin: 0 0 30px;
 }
 
-#create-class [type=text]:focus, [type="datetime-local"]:focus, #desc:focus {
+#create-class [type=text]:focus, [type="datetime-local"]:focus {
 	background-color: #fccece;
 	border: 2px solid #d9162e;
 }
 
 #desc {
-	 margin: 0px 0px 30px; 
+	 margin: 0px 0px 0px; 
 	 height: 100px; 
 	 width:  350px;"
 }
