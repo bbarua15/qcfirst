@@ -292,7 +292,7 @@ footer {
     margin-bottom: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 
     .footer .inner-footer {
         width: 90%;
@@ -360,7 +360,7 @@ footer {
     /* end of adaptation */
 }
 
-    @media (min-width: 600px) {
+    @media (min-width: 800px) {
         .navbar.navbar-1 {
             display: none;
         }
