@@ -91,19 +91,21 @@ label {
   border-radius: 100%;
 }
 
-#create-class input[type="text"],textarea, select {
-  background: rgba(255,255,255,0.1);
+#create-class input[type="text"], #create-class input[type="email"], #create-class input[type="password"], textarea, select {
   border: none;
   font-size: 16px;
   height: auto;
-  margin: 0;
   outline: 0;
   padding: 15px;
   width: 100%;
-  background-color: #e8eeef;
+  background: #e8eeef;
   color: black;
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-  margin-bottom: 30px;
+  margin: 0 0 30px;
+}
+
+.sign-up {
+  text-align: center;
 }
 
 @media screen and (min-width: 480px) {

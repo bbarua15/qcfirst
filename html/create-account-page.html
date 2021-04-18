@@ -12,6 +12,7 @@
         <meta charset="UTF-8">
         <title>Create Account</title>
         <link rel="stylesheet" href="../css/qcfirst-style.css">
+        <link rel="stylesheet" href="../css/style-qc.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <script src = "../js/jquery-3.6.0.js"></script>
@@ -58,7 +59,8 @@
 
         <!-- Create Account Details -->
         <form id="create-account-details">
-            <div class="vertical-container">
+            <fieldset>
+                <div class="vertical-container" id="create-class">
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" placeholder="First Name">
                 <label for="lastName">Last Name</label>
@@ -72,7 +74,8 @@
                     <option value="Instructor">Instructor</option>
                 </select>
                 <input type="submit" id="create" name="create">
-            </div>
+                </div>
+            </fieldset>
         </form>
     </div>
 

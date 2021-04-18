@@ -14,6 +14,7 @@
         <meta charset="UTF-8">
         <title>Login Page</title>
         <link rel="stylesheet" href="../css/qcfirst-style.css">
+        <link rel="stylesheet" href="../css/style-qc.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <script src = "../js/jquery-3.6.0.js"></script>
@@ -61,19 +62,17 @@
         <h1 class="header">Please enter your login details!</h1>
 
         <!-- Log In Details -->
-        <form id="login-details">
-            <div class="vertical-container">
+        <fieldset>
+            <div class="vertical-container" id="create-class">
                 <label for="username">Username</label>
                 <input type="email" id="username" name="username" placeholder="Username">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Password">
                 <input type="submit" id="login" name="login">
+                <!-- Sign up -->
+                <a href="forgot-password-html.html" class="sign-up">Forgot Your Password?</a>
             </div>
-
-        </form>
-
-        <!-- Sign up -->
-        <a href="forgot-password-html.html" class="sign-up">Forgot Your Password?</a>
+        </fieldset>
     </div>
 
     <!--footer-->
