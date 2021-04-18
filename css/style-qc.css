@@ -1,9 +1,12 @@
+
+/* button */
 #submit {
   text-align: center;
   padding-right: 20px;
   padding-bottom: 10px;
 }
 
+/* table headings */
 table {
   width: 600px;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
@@ -42,7 +45,6 @@ th, td {
     width: 90%;
   }
 }
-
 
 /*
 [Create Class]
@@ -99,13 +101,13 @@ label {
   margin: 0 0 30px;
 }
 
-#create-class [type=text]:focus, [type="datetime-local"]:focus {
+#create-class [type=text]:focus, #create-class [type=email]:focus, #create-class [type=password]:focus, [type="datetime-local"]:focus {
 	background-color: #fccece;
 	border: 2px solid #d9162e;
 }
 
 #desc {
-	 margin: 0px 0px 0px; 
+	 margin: 0 0 0;
 	 height: 100px; 
 	 width:  350px;"
 }
@@ -119,5 +121,4 @@ label {
     max-width: 480px;
   }
 }
-
 /* end of adaptation */
