@@ -114,9 +114,7 @@ label {
 }
 
 #desc {
-	 margin: 0 0 0;
-	 height: 100px; 
-	 width:  350px;
+	resize: none;
 }
 
 .sign-up {

@@ -159,6 +159,7 @@ nav {
 }
 
 ul {
+    position: center;
     margin: 0;
     padding: 20px;
     display: flex;
