@@ -56,36 +56,35 @@
 
           <!-- Add course -->
           <h2>Add Class</h2>
-          <form id="class">
-             <label for="coursename">Course:</label>
-                <select name="course" id="coursename">
-                	<option value="Art History">Art History</option>
-                	<option value="Accounting">Accounting</option>
-    	            <option value="Art History">Art History</option>
-    	            <option value="Biology">Biology</option>
-    	            <option value="Computer Science">Computer Science</option>
-    	            <option value="English">English</option>
-    	            <option value="History">History</option>
-    	            <option value="Math">Math</option>
-    	            <option value="Music">Music</option>
-    	            <option value="Psychology">Psychology</option>
-    	            <option value="Spanish">Spanish</option>         
-                </select>
-                <br>
-          </form>
+          <div id="create-class">
+	          <form class="course">
+	             <label for="coursename">Course:</label>
+	                <select name="course" id="coursename">
+	                	<option value="Art History">Art History</option>
+	                	<option value="Accounting">Accounting</option>
+	    	            <option value="Biology">Biology</option>
+	    	            <option value="Computer Science">Computer Science</option>
+	    	            <option value="English">English</option>
+	    	            <option value="History">History</option>
+	    	            <option value="Math">Math</option>
+	    	            <option value="Music">Music</option>
+	    	            <option value="Psychology">Psychology</option>
+	    	            <option value="Spanish">Spanish</option>         
+	                </select>
+	            <br><br>
 
-          <!-- Input course details-->
-          <form class="course-number">
-              <div class="vertical-container">
-                  <label for="cournum">Course Number:</label>
-                  <input type="text" id="cournum" name="cournum" placeholder="Course Number">
-                  <input type="submit" id="confirm" name="confirm">
-              </div>
-          </form>
+	          	<!-- Input course details-->
+	            <div class="vertical-container">
+	                <label for="cournum">Course Number:</label>
+	                <input type="text" id="cournum" name="cournum" placeholder="Course Number">
+	                <input type="submit" id="confirm" name="confirm">
+	            </div>
+	          </form>
+      	</div>
           
-          <div class="table-responsive">
-            <!-- Table with all of the course details-->
-            <table class="center">
+        <div class="table-responsive">
+        	<!-- Table with all of the course details-->
+        	<table class="center table-hover">
               <tr id="headline">
                 <th>Select</th>
                 <th>Class</th>
@@ -96,7 +95,7 @@
               </tr>
 
               <tr>
-                <td><input type="checkbox" name="name1" /></td>
+                <td><input type="checkbox" name="name1"/></td>
                 <td>Example a</td>
                 <td>Example b</td>
                 <td>Example c</td>
@@ -105,7 +104,7 @@
               </tr>
             
               <tr>
-                <td><input type="checkbox" name="name1" /></td>
+                <td><input type="checkbox" name="name1"/></td>
                 <td>Example a</td>
                 <td>Example b</td>
                 <td>Example c</td>
@@ -114,7 +113,7 @@
               </tr>
 
               <tr>
-                <td><input type="checkbox" name="name1" /></td>
+                <td><input type="checkbox" name="name1"/></td>
                 <td>Example a</td>
                 <td>Example b</td>
                 <td>Example c</td>
