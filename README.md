@@ -219,7 +219,7 @@ For the most part our web application follows our wireframes closely. Some notic
 
 Marinos: For this deliverable we were able to use the navigation bars and footer I created using online resources from the previous HTML deliveriable which included its CSS with it. Then, I created some images for the logo to add to the header and footer of the webpages. In addition, I created some classes to help utilize flexbox functionality for the elements used throughout the pages. Moreover, additional CSS was adapted to help improve the overall design of the website, including its responsiveness for mobile and tablets. Some functionality using Bootstrap were also implemented to improve the look of some of the tables.
 
-
+Badhan: Using CSS, we implemented styling to the form (such as the log in, sign up, change password, create class for instructor and add class for student pages) so that it would look more presentable to the user. With media queries and sizing, we made sure it's responsive in mobile and tablet. In order to make the table responsive, we used bootstrap so that when it's on mobile and tablet, the tables are scrollable horizontally. Overall, we implemented design to the website and made it responsive for mobile and tablet.  
 
 
 ##### Contributors:
