@@ -47,5 +47,42 @@ const NEWUSER = new Schema({
 let userCreate = mongoose.model("userCreate", NEWUSER);
 let classCreate = mongoose.model("classCreate", CLASS);
 
+// create post request because of form
+app.post("qcfirst/html/create-account-page.html", bodyParser.urlencoded({extended: false}), function (req, res) {
+
+    // storage variables for new user (based on name="information" from the respected html file)
+    let firstname = req.body.firstName;
+    let lastname = req.body.lastName;
+    let username = req.body.username;
+    let password_orig = req.body.password;
+    let confirmPassword = req.body["confirm-password"];
+    let userType = req.body["user-type"];
+
+    // see if user is already in database, otherwise display error and create a new user
+    NEWUSER.findOne({username: username}, function(err, foundUser){
+        if(err) return res.json({error: "error occurred"});
+        if (foundUser) return res.json({error:"Username already taken"});
+        else {
+
+            // checks on data
+
+            // add attributes to new user
+            let new_user = new NEWUSER({
+                firstName: firstname,
+                lastName: lastname,
+                userName: username,
+                password: password_orig,
+                passwordConfirm: confirmPassword,
+                userType: userType
+            });
+
+            new_user.save((err, data) => {
+                if (err) return console.error(err);
+                done(null, data);
+            });
+        }
+    });
+});
+
 
 
