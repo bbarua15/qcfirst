@@ -1,11 +1,8 @@
 {
-  "name": "QcFirst CS355 project",
+  "name": "qcfirst",
   "version": "1.0.0",
-  "description": "A Web application used for class registration",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
+  "description": "**QCFirst** is a prototype course enrollment application where users (i.e. students and instructors) can access features to help simulate an online enrollment environment.",
+  "main": "index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -13,5 +10,21 @@
     "express": "^4.17.1",
     "mongodb": "^3.6.6",
     "mongoose": "^5.12.7"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./js/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbarua15/qcfirst.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bbarua15/qcfirst/issues"
+  },
+  "homepage": "https://github.com/bbarua15/qcfirst#readme"
 }
