@@ -1,20 +1,19 @@
 const express = require('express')
 const app = express()
-const cors = require('cors')
 require('dotenv').config()
 let mongodb = require('mongodb');
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
 
-app.use(cors())
-app.use(express.static('css'));
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '../html/index.html')
+app.listen(3000, () => {
+	console.log(`App listening on port ${3000}`);
 });
 
-const listener = app.listen(process.env.PORT || 3000, () => {
-    console.log('Your app is listening on port ' + listener.address().port)
-})
+app.get('/', (req, res) => { 
+
+  res.sendFile(process.cwd() + 'html/index.html'); 
+
+});
 
 // database information
 mongoose.connect("mongodb+srv://marinos:open123@cluster0.7pdeb.mongodb.net/Cluster0?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true});
