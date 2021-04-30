@@ -7,9 +7,9 @@ let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
 
 app.use(cors())
-app.use(express.static('public'))
+app.use(express.static('css'));
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/html/index.html')
+    res.sendFile(__dirname + '../html/index.html')
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {
@@ -83,6 +83,10 @@ app.post("qcfirst/html/create-account-page.html", bodyParser.urlencoded({extende
         }
     });
 });
+
+app.get("/", (req, res) => {
+    req.json({});
+})
 
 
 
