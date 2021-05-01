@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+  Name: Marinos Dakis
+  Date: 04.20.2021
+  Section: CS 355
+
+  The Course Dictionary will contain a table with all the classes that have been created.
+  Here each user will be able to view what classes are available.
+  It will also contain a search feature in the top left corner of the navigation bar that will allow users to filter the results.
+-->
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Course Dictionary Student</title>
+        <link rel="stylesheet" href="../../public/css/qcfirst-style.css">
+        <link rel="stylesheet" href="../../public/css/style-qc.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src = "../../public/js/jquery-3.6.0.js"></script>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <!-- Bootstrap JavaScript -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <!-- font-awesome -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- adapted from [4/1/2021]: https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file -->
+
+        <!-- load header -->
+        <script>
+            $(function(){
+                $("#header").load("header-instructor.html");
+            });
+        </script>
+
+        <!-- load footer -->
+        <script>
+            $(function(){
+                $("#footer").load("footer.html");
+            });
+        </script>
+        <!-- end adapt -->
+    </head>
+
+    <body>
+
+    <!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
+    <header id="header">
+
+    </header>
+    <!-- end adaptation -->
+
+    <div class="flexbox library">
+
+        <!-- search bar -->
+        <!-- Adapted from [4/1/2021]: https://mdbootstrap.com/docs/standard/forms/search/-->
+        <div class="form-outline">
+            <input type="search" id="form1" class="form-control" placeholder="Type query"
+                       aria-label="Search" />
+        </div>
+        <!-- end adaptation -->
+
+        <div class="table-responsive">
+            <!-- display courses -->
+            <section id="input">
+
+                <div class="container">
+                    <!-- additional heading -->
+                    <h1 class="header">Course Dictionary</h1>
+                </div>
+
+                <!-- Adapted from [4/16/2021]:https://getbootstrap.com/docs/4.0/content/tables/, https://medium.com/appnroll-publication/5-practical-solutions-to-make-responsive-data-tables-ff031c48b122 -->
+                <table class="table-dark table-bordered table-sm center">
+                    <tr>
+                        <th>Course Id</th>
+                        <th>Semester</th>
+                        <th>Course Name</th>
+                        <th>Department</th>
+                        <th>Instructor</th>
+                        <th>Student Roster</th>
+                        <th>Description</th>
+                        <th>Schedule</th>
+                        <th>Enrollment Deadline</th>
+                    </tr>
+                    <tr>
+                        <td>Test a</td>
+                        <td>Test b</td>
+                        <td>Test c</td>
+                        <td>Test d</td>
+                        <td>Test e</td>
+                        <td>Test f</td>
+                        <td>Test g</td>
+                        <td>Test h</td>
+                        <td>Test i</td>
+                    </tr>
+                    <tr>
+                        <td>Test a</td>
+                        <td>Test b</td>
+                        <td>Test c</td>
+                        <td>Test d</td>
+                        <td>Test e</td>
+                        <td>Test f</td>
+                        <td>Test g</td>
+                        <td>Test h</td>
+                        <td>Test i</td>
+                    </tr>
+                    <tr>
+                        <td>Test a</td>
+                        <td>Test b</td>
+                        <td>Test c</td>
+                        <td>Test d</td>
+                        <td>Test e</td>
+                        <td>Test f</td>
+                        <td>Test g</td>
+                        <td>Test h</td>
+                        <td>Test i</td>
+                    </tr>
+                </table>
+                <!-- end adaptation -->
+            </section>
+        </div>
+
+    </div>
+
+    <!--
+    [need to add]
+    Use DOM manipulation to display in the footer which user is logged in
+    -->
+
+    <!--footer-->
+    <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
+    <footer id="footer">
+
+    </footer>
+    <!-- end adaptation -->
+
+    </body>
+
+</html>

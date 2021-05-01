@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+  Name: Marinos Dakis
+  Date: 04.20.2021
+  Section: CS 355
+
+  The Index page is the root web page that a user will start at. Here a user will be able to choose whether they want to sign in as a student or an instructor.
+  If a user does not have an account, they will be able to press the sign up hyperlink underneath the buttons to go to the Create Account page.
+-->
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Homepage</title>
+        <link rel="stylesheet" href="../../public/css/qcfirst-style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src = "../../public/js/jquery-3.6.0.js"></script>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <!-- Bootstrap JavaScript -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <!-- font-awesome -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- adapted from [4/1/2021]: https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file -->
+
+        <!-- load header -->
+        <script>
+            $(function(){
+                $("#header").load("header.html");
+            });
+        </script>
+
+        <!-- load footer -->
+        <script>
+            $(function(){
+                $("#footer").load("footer.html");
+            });
+        </script>
+        <!-- end adapt -->
+    </head>
+
+    <body>
+    <!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
+        <header id="header">
+
+        </header>
+    <!-- end adaptation -->
+
+        <div class="flexbox">
+            <!-- Header in middle of page -->
+            <h1 class="header">Please pick your respected user!</h1>
+
+            <div class="vertical-container">
+                <!-- Buttons -->
+                <!-- adapted from: [4/14/2021]: https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
+                <button type="button" class="buttons" onclick="location.href='login-page-html.html'">Student</button>
+                <button type="button" class="buttons" onclick="location.href='login-page-html.html'">Instructor</button>
+            </div>
+
+            <!-- Sign up -->
+            <a href="create-account-page.html" class="sign-up">Sign Up</a>
+        </div>
+
+        <!--footer-->
+        <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
+        <footer id="footer">
+
+        </footer>
+    <!-- end adaptation -->
+    </body>
+
+</html>
