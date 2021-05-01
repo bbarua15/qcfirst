@@ -1,23 +1,26 @@
+/*
+Adapted from: https://replit.com/talk/learn/NodeJs-Express-tutorial/23519
+ */
 const express = require('express')
 const app = express()
-const cors = require('cors')
 require('dotenv').config()
 let mongodb = require('mongodb');
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
 
-app.use(cors())
-app.use(express.static('css'));
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '../html/index.html')
+app.listen(3000, () => {
+    console.log(`App listening on port ${3000}`);
 });
 
-const listener = app.listen(process.env.PORT || 3000, () => {
-    console.log('Your app is listening on port ' + listener.address().port)
-})
+app.get('/', (req, res) => {
+
+    res.sendFile(process.cwd() + "/html/index.html"); // This sends a file to the client, Often on repl.it, you will get an error about a root directory is requires, this is why, you may need to add '/home/runner/<replname>' then the directory, in this case, 'public/index.html'
+
+});
 
 // database information
-mongoose.connect("mongodb+srv://marinos:open123@cluster0.7pdeb.mongodb.net/Cluster0?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://marinos:open123@cluster0.7pdeb.mongodb.net/Cluster0?retryWrites=true&w=majority",
+    { useNewUrlParser: true, useUnifiedTopology: true });
 
 // create schema
 const { Schema } = mongoose;
@@ -48,7 +51,8 @@ let userCreate = mongoose.model("userCreate", NEWUSER);
 let classCreate = mongoose.model("classCreate", CLASS);
 
 // create post request because of form
-app.post("qcfirst/html/create-account-page.html", bodyParser.urlencoded({extended: false}), function (req, res) {
+app.post("qcfirst/html/create-account-page.html", bodyParser.urlencoded({extended: false}),
+    function (req, res) {
 
     // storage variables for new user (based on name="information" from the respected html file)
     let firstname = req.body.firstName;
@@ -83,10 +87,6 @@ app.post("qcfirst/html/create-account-page.html", bodyParser.urlencoded({extende
         }
     });
 });
-
-app.get("/", (req, res) => {
-    req.json({});
-})
 
 
 
