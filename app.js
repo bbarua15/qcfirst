@@ -11,14 +11,16 @@ app.listen(3000, () => {
 
 // loading static files
 // adapted from: https://www.youtube.com/watch?v=A01KtJTv1oc&ab_channel=RaddyTheBrand
-app.use(express.static("public"));
-app.use('/css', express.static(__dirname + "/public/css"));
-app.use('/js', express.static(__dirname + "/public/js"));
-app.use('/img', express.static(__dirname + "/public/img"));
+//app.use(express.static(__dirname +"/public"));
+var path = require('path');
+app.use(express.static(path.join(__dirname, '/public')));
+//app.use('/css', express.static(__dirname + "/public/css"));
+//app.use('/js', express.static(__dirname + "/public/js"));
+//app.use('/img', express.static(__dirname + "/public/img"));
 
 // set views
-app.set('views', __dirname + '/views');
-app.set('view engine', 'html');
+//app.set('views', __dirname + '/views');
+//app.set('view engine', 'html');
 
 app.get('/', (req, res) => {
     // load html file
