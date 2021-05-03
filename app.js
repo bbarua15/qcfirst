@@ -4,6 +4,11 @@ require('dotenv').config()
 let mongodb = require('mongodb');
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
+const bcrypt = require('bcryptjs')
+const passport = require('passport')
+const flash = require('express-flash')
+const session = require('express-session')
+const methodOverride = require('method-override')
 
 app.listen(3000, () => {
     console.log(`App listening on port ${3000}`);
@@ -14,9 +19,10 @@ app.listen(3000, () => {
 //app.use(express.static(__dirname +"/public"));
 var path = require('path');
 app.use(express.static(path.join(__dirname, '/public')));
-//app.use('/css', express.static(__dirname + "/public/css"));
-//app.use('/js', express.static(__dirname + "/public/js"));
-//app.use('/img', express.static(__dirname + "/public/img"));
+app.use('/css', express.static(__dirname + "/public/css/style-qc.css"));
+app.use('/css', express.static(__dirname + "/public/css/qcfirst-style.css"));
+app.use('/js', express.static(__dirname + "/public/js"));
+app.use('/img', express.static(__dirname + "/public/img"));
 
 // set views
 //app.set('views', __dirname + '/views');
@@ -94,3 +100,87 @@ app.post("qcfirst/html/create-account-page.html", bodyParser.urlencoded({extende
         }
     });
 });
+
+// Adapted from: https://www.youtube.com/watch?v=-RCnNyD0L-s
+// if (process.env.NODE_ENV !== 'production') {
+//   require('dotenv').config()
+// }
+
+// const initializePassport = require('./passport-config')
+// initializePassport(
+//   passport,
+//   email => users.find(user => user.email === email),
+//   id => users.find(user => user.id === id)
+// )
+
+// const users = []
+
+// app.set('view-engine', 'html')
+// app.use(express.urlencoded({ extended: false}))
+// app.use(flash())
+// app.use(session({
+//   secret: process.env.SESSION_SECRET,
+//   resave: false,
+//   saveUninitialized: false
+// }))
+// app.use(passport.initialize())
+// app.use(passport.session())
+// app.use(methodOverride('_method'))
+
+// app.get('/', checkAuthenticated, (req, res) => {
+//   res.render('index.html', { name: req.user.name })
+// })
+
+// app.get('/login',  checkNotAuthenticated, (req, res) => {
+//   res.render('login-page-html.html')
+// })
+
+// app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+//   successRedirect: '/',
+//   failureRedirect: '/login',
+//   failureFlash: true
+// }))
+
+
+// app.get('/create-account-page', checkNotAuthenticated, (req, res) => {
+//   res.render('create-account-page.html')
+// })
+
+// app.post('/create-account-page', checkNotAuthenticated, (req, res) => {
+//   try {
+//     const hashedPassword = await bcrypt.hash(req.body.password, 10)
+//     users.push({
+//       id: Date.now().toString(),
+//       name: req.body.name,
+//       email: req.body.email,
+//       password: hashedPassword
+//     })
+//     res.redirect('/login')
+//   } catch {
+//     res.redirect('/create-account-page')
+
+//   }
+//   req.body.username
+
+// })
+
+// // app.delete('/logout', (req, res) => {
+// //   req.logOut()
+// //   res.redirect('/login')
+// // })
+
+// function checkAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) { // if true
+//     return next()
+//   }
+
+//   res.redirect('/login')
+// }
+
+// // if false
+// function checkNotAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return res.redirect('/')
+//   }
+//   next()
+// }
