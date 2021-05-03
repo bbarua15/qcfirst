@@ -5,7 +5,7 @@ class ClassInput {
         return ClassModel.find({}).sort({ createdAt: -1 }).exec();
     }
 
-    static async getOne(itemId) {
+    static async getOne(classId) {
         return ClassModel.findById(classId).exec();
     }
 
@@ -14,11 +14,11 @@ class ClassInput {
         return course.save();
     }
 
-    static async update(itemId, data) {
+    static async update(classId, data) {
         return ClassModel.findByIdAndUpdate(classId, data).exec();
     }
 
-    static async remove(itemId) {
+    static async remove(classId) {
         return ClassModel.deleteOne({ _id: classId }).exec();
     }
 }
