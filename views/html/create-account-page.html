@@ -11,11 +11,11 @@
     <head>
         <meta charset="UTF-8">
         <title>Create Account</title>
-        <link rel="stylesheet" href="../../public/css/qcfirst-style.css">
-        <link rel="stylesheet" href="../../public/css/style-qc.css">
+        <link rel="stylesheet" href="/css/qcfirst-style.css">
+        <link rel="stylesheet" href="/css/style-qc.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script src = "../../public/js/jquery-3.6.0.js"></script>
+        <script src = "/js/jquery-3.6.0.js"></script>
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -49,6 +49,92 @@
 
     <!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
     <header id="header">
+        <div class="header-flexbox">
+            <!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
+            <!-- nav -->
+            <nav class="navbar-desktop">
+                <div class="logo">
+                    <a href = "/index.html">
+                        <img src="/img/logo.svg" alt="logo" height="100" width="150">
+                    </a>
+                </div>
+                <div class="nav-flex">
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                <div class="icon">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                </div>
+                                <div class="name" data-text="home">Home</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="login-page-html.html">
+                                <div class="icon">
+                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                </div>
+                                <div class="name" data-text="login">Login Page</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="create-account-page.html">
+                                <div class="icon">
+                                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                </div>
+                                <div class="name" data-text="sign-up">Signup</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forgot-password-html.html">
+                                <div class="icon">
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                </div>
+                                <div class="name" data-text="forgot-password">Forgot Password</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- end adaptation -->
+
+        <!-- Adapted from [4/1/2021] https://mdbootstrap.com/docs/b4/jquery/navigation/hamburger-menu/ -->
+        <!--Navbar-->
+        <nav class="navbar navbar-light navbar-1 white">
+
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="index.html">Qc First</a>
+
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15"
+                    aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent15">
+
+                <!-- Links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login-page-html.html">Login Page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="create-account-page.html">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forgot-password-html.html">Forgot Password</a>
+                    </li>
+                </ul>
+                <!-- Links -->
+
+            </div>
+            <!-- Collapsible content -->
+
+        </nav>
+        <!--/.Navbar-->
+        <!-- end of adaption -->
 
     </header>
     <!-- end adaptation -->
@@ -84,6 +170,46 @@
     <!--footer-->
     <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
     <footer id="footer">
+        <!--footer-->
+        <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
+        <div class="footer-container">
+            <div class="user-info">
+                <p>Welcome to QC First</p>
+            </div>
+
+            <div class="inner-footer">
+
+                <div class="logo-container">
+                    <img src="/img/logo%20footer.png" alt="logo">
+                </div>
+
+                <div class="footer-third">
+                    <h1>Need Help?</h1>
+                    <a href="http://www.cuny.edu/about/university-resources/tech-resources-help-desks/" target="_blank">Visit the Help Desk</a>
+                </div>
+
+                <div class="footer-third">
+                    <h1>Follow Us:</h1>
+                    <ol>
+                        <li><a href="https://www.facebook.com/QueensCollege/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/queenscollegeofficial/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://twitter.com/QC_News?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank"><i class="fa fa-twitter"></i></a></li>
+
+                    </ol>
+                </div>
+
+                <div class="footer-third">
+                    <h1>Information:</h1>
+                    <span>
+                                Address:<br>
+                                65-30 Kissena Blvd,<br>
+                                Flushing, NY 11367<br>
+                                Phone: (718) 997-5000<br>
+                            </span>
+                </div>
+            </div>
+        </div>
+        <!-- end adaptation -->
 
     </footer>
     <!-- end adaptation -->

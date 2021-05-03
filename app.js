@@ -19,10 +19,6 @@ app.listen(3000, () => {
 //app.use(express.static(__dirname +"/public"));
 var path = require('path');
 app.use(express.static(path.join(__dirname, '/public')));
-app.use('/css', express.static(__dirname + "/public/css/style-qc.css"));
-app.use('/css', express.static(__dirname + "/public/css/qcfirst-style.css"));
-app.use('/js', express.static(__dirname + "/public/js"));
-app.use('/img', express.static(__dirname + "/public/img"));
 
 // set views
 //app.set('views', __dirname + '/views');
@@ -63,6 +59,14 @@ let classCreate = mongoose.model("classCreate", CLASS);
 app.get('/', (req, res) => {
     // load html file
     res.sendFile(__dirname + "/views/html/index.html");
+
+});
+
+// GET REQUESTS
+app.get('/index.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/index.html");
+
 });
 
 app.get('/login-page-html.html', (req, res) => {
