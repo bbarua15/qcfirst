@@ -183,84 +183,73 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
 });
 
 // Adapted from: https://www.youtube.com/watch?v=-RCnNyD0L-s
-// if (process.env.NODE_ENV !== 'production') {
-//   require('dotenv').config()
-// }
+// app.set('view engine', 'html');
+// app.use(bodyParser.urlencoded({extended:true}));
 
-// const initializePassport = require('./passport-config')
-// initializePassport(
-//   passport,
-//   email => users.find(user => user.email === email),
-//   id => users.find(user => user.id === id)
-// )
 
-// const users = []
+// const mySecret = process.env['SESSION_SECRET']
+// app.use(require("express-session")({
+//     secret: process.env.SESSION_SECRET, 
+//     resave: false,
+//     saveUninitialized: false
+// }));
 
-// app.set('view-engine', 'html')
-// app.use(express.urlencoded({ extended: false}))
-// app.use(flash())
-// app.use(session({
-//   secret: process.env.SESSION_SECRET,
-//   resave: false,
-//   saveUninitialized: false
-// }))
-// app.use(passport.initialize())
-// app.use(passport.session())
-// app.use(methodOverride('_method'))
+// // set passport up to use in the application
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-// app.get('/', checkAuthenticated, (req, res) => {
-//   res.render('index.html', { name: req.user.name })
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+// passport.use(new LocalStrategy(User.authenticate()));
+
+// app.get('/', (req, res) => {
+//   res.sendFile('index.html')
 // })
 
-// app.get('/login',  checkNotAuthenticated, (req, res) => {
-//   res.render('login-page-html.html')
-// })
+// app.get("/student-dashboard-html.html", isLoggedIn, function(req, res){
+//     res.sendFile("student-dashboard-html.html");
+// });
 
-// app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-//   successRedirect: '/',
-//   failureRedirect: '/login',
-//   failureFlash: true
-// }))
+// app.get("/create-account-page.html", function(req, res){
+//     res.sendFile("/create-account-page.html");
+// });
 
-// app.get('/create-account-page', checkNotAuthenticated, (req, res) => {
-//   res.render('create-account-page.html')
-// })
+// // passport will authenticate the user using local and redirect the page to the student dashboard
+// app.post("//create-account-page.html", function(req, res){
+//     User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+//         if(err){
+//             console.log(err);
+//             return res.sendFile("/create-account-page.html");
+//         } else {
+//             passport.authenticate("local")(req, res, function(){
+//                 res.redirect("/student-dashboard-html.html");
+//             });
+//         }
+//     });
+// });
 
-// app.post('/create-account-page', checkNotAuthenticated, (req, res) => {
-//   try {
-//     const hashedPassword = await bcrypt.hash(req.body.password, 10)
-//     users.push({
-//       id: Date.now().toString(),
-//       name: req.body.name,
-//       email: req.body.email,
-//       password: hashedPassword
-//     })
-//     res.redirect('/login')
-//   } catch {
-//     res.redirect('/create-account-page')
+// app.get("/login-page-html.html", function(req, res){
+//     res.sendFile("login-page-html.html");
+// });
 
-//   }
-//   req.body.username
+// //login 
+// app.post("/login-page-html.html", passport.authenticate("local", {
+//     successRedirect: "/student-dashboard-html.html",
+//     failureRedirect: "/login-page-html.html"
+// }), function(req, res){
+//     //Do nothing
+// });
 
-// })
+// //sign out
+// app.get("/logout", function(req, res){
+//     req.logout();
+//     res.redirect("/");
+// });
 
-// // app.delete('/logout', (req, res) => {
-// //   req.logOut()
-// //   res.redirect('/login')
-// // })
-
-// function checkAuthenticated(req, res, next) {
-//   if (req.isAuthenticated()) { // if true
-//     return next()
-//   }
-
-//   res.redirect('/login')
-// }
-
-// // if false
-// function checkNotAuthenticated(req, res, next) {
-//   if (req.isAuthenticated()) {
-//     return res.redirect('/')
-//   }
-//   next()
+// //check to see if user is loggen in 
+// function isLoggedIn(req, res, next){
+//     if(req.isAuthenticated()){
+//         return next();
+//     } 
+//     res.redirect("/login-page-html.html");
 // }
