@@ -28,11 +28,6 @@ app.use('/img', express.static(__dirname + "/public/img"));
 //app.set('views', __dirname + '/views');
 //app.set('view engine', 'html');
 
-app.get('/', (req, res) => {
-    // load html file
-    res.sendFile(__dirname + "/views/html/index.html");
-});
-
 // database information
 mongoose.connect("mongodb+srv://marinos:open123@cluster0.7pdeb.mongodb.net/Cluster0?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -64,8 +59,89 @@ const NEWUSER = new Schema({
 let userCreate = mongoose.model("userCreate", NEWUSER);
 let classCreate = mongoose.model("classCreate", CLASS);
 
+// GET REQUESTS
+app.get('/', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/index.html");
+});
+
+app.get('/login-page-html.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/login-page-html.html");
+});
+
+app.get('/forgot-password-html.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/forgot-password-html.html");
+});
+
+app.get('/create-account-page.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/create-account-page.html");
+});
+
+app.get('/views/html/add-class.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/add-class.html");
+});
+
+app.get('/change-password-instructor.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/change-password-instructor.html");
+});
+
+app.get('/change-password-student.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/change-password-student.html");
+});
+
+app.get('/class-deadline-instructor.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/class-deadline-instructor.html");
+});
+
+app.get('/class-deadline-student.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/class-deadline-student.html");
+});
+
+app.get('/delete-class.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/delete-class.html");
+});
+
+app.get('/drop-class.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/drop-class.html");
+});
+
+app.get('/instructor-course-dictionary-html.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/instructor-course-dictionary-html.html");
+});
+
+app.get('/student-course-dictionary-html.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/student-course-dictionary-html.html");
+});
+
+app.get('/instructor-dashboard-html.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/instructor-dashboard-html.html");
+});
+
+app.get('/student-dashboard-html.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/student-dashboard-html.html");
+});
+
+app.get('/shopping-cart.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/shopping-cart.html");
+});
+
 // create post request because of form
-app.post("qcfirst/html/create-account-page.html", bodyParser.urlencoded({extended: false}), function (req, res) {
+app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), function (req, res) {
 
     // storage variables for new user (based on name="information" from the respected html file)
     let firstname = req.body.firstName;
@@ -95,6 +171,7 @@ app.post("qcfirst/html/create-account-page.html", bodyParser.urlencoded({extende
 
             new_user.save((err, data) => {
                 if (err) return console.error(err);
+                console.log("user saved");
                 done(null, data);
             });
         }
@@ -140,7 +217,6 @@ app.post("qcfirst/html/create-account-page.html", bodyParser.urlencoded({extende
 //   failureRedirect: '/login',
 //   failureFlash: true
 // }))
-
 
 // app.get('/create-account-page', checkNotAuthenticated, (req, res) => {
 //   res.render('create-account-page.html')
