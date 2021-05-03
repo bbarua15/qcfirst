@@ -37,7 +37,7 @@ const { Schema } = mongoose;
 const CLASS  = new Schema({
     term: {type: String, required: true},
     courseName: {type: String, required: true},
-    courseNumber: {type: Number, required: true},
+    courseNumber: {type: Number, required: true, index: {unique: true}},
     classDate: {type: Date, default: Date.now},
     classDescription: {type: String, required: true},
     capacity: {type: Number, required: true}
