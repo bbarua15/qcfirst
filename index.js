@@ -1,18 +1,18 @@
 // const express = require("express");
 
-// const ItemService = require("class-input");
+// const ClassInput = require("class-input");
 
 // module.exports = () => {
 //   const router = express.Router();
 
 //   router.get("/:classId?", async (req, res, next) => {
 //     try {
-//       const courses = await ItemService.getAll();
+//       const courses = await ClassInput.getAll();
 //       let course = null;
 
 //       // The optional param classId is present
 //       if (req.params.classId) {
-//         item = await ItemService.getOne(req.params.classId);
+//         course = await ClassInput.getOne(req.params.classId);
 //       }
 
 //       return res.render("app", {
