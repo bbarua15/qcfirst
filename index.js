@@ -10,9 +10,9 @@
 //       const courses = await ItemService.getAll();
 //       let course = null;
 
-//       // The optional param itemId is present
-//       if (req.params.itemId) {
-//         item = await ItemService.getOne(req.params.itemId);
+//       // The optional param classId is present
+//       if (req.params.classId) {
+//         item = await ItemService.getOne(req.params.classId);
 //       }
 
 //       return res.render("app", {
@@ -44,21 +44,21 @@
 //     }
 
 
-//   // Delete item
+//   // Delete class
 //   router.get("/delete/:classId", async (req, res) => {
 
 //     try {
-//       await ClassInput.remove(req.params.itemId);
+//       await ClassInput.remove(req.params.classId);
 //     } catch (err) {
 //       // Error handling
 //       req.session.messages.push({
 //         type: "danger",
-//         text: "There was an error while deleting the item!",
+//         text: "There was an error while deleting the class!",
 //       });
 //       console.error(err);
 //       return res.redirect("app");
 //     }
-//     // Let the item knows that everything went fine
+//     // Let the class knows that everything went fine
 //     req.session.messages.push({
 //       type: "success",
 //       text: "The class was successfully deleted!",
