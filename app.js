@@ -205,7 +205,7 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
         });
 
     } catch {
-        res.redirect("/register");
+        res.redirect("/create-account-page");
     }
 
 });
