@@ -18,12 +18,19 @@ Our website can be viewed here:
 
 ## Contributors:
 Marinos Dakis (https://github.com/MarinosDakis)
+
 Badhan Barua (https://github.com/bbarua15) 
 
+***HTML Deliverable***
 For the first project deliverable we split up the task of creating the HTML for the pages from how we divided the site map originally.
 For the navigation bars, I created 3 separate versions for each instance (i.e. no user, student user, and instructor user) of the web application using online resources.
 Each instance has different html pages associated with them and will contain their corresponding navigation bar inserted using Javascript.
 Similarly, this is done with the footer for the website as well; however it will be placed on all pages of the web application and then modified once a user logs in. 
+
+***CSS Deliverable***
+Marinos: For this deliverable we were able to use the navigation bars and footer I created using online resources from the previous HTML deliveriable which included its CSS with it. Then, I created some images for the logo to add to the header and footer of the webpages. In addition, I created some classes to help utilize flexbox functionality for the elements used throughout the pages. Moreover, additional CSS was adapted to help improve the overall design of the website, including its responsiveness for mobile and tablets. Some functionality using Bootstrap were also implemented to improve the look of some of the tables.
+
+Badhan: Using CSS, we implemented styling to the form (such as the log in, sign up, change password, create class for instructor and add class for student pages) so that it would look more presentable to the user. With media queries and sizing, we made sure it's responsive in mobile and tablet. In order to make the table responsive, we used bootstrap so that when it's on mobile and tablet, the tables are scrollable horizontally. Overall, we implemented design to the website and made it responsive for mobile and tablet. 
 
 
 ## Features
@@ -164,8 +171,6 @@ Students will be able to view the classes they have selected to take and enroll 
 
 For the most part our web application follows our wireframes closely. Some noticeable differences are: the structure of some elements (i.e. they follow more of a vertical placement on top of each other as opposed to being horizontal in some cases); a navigation bar has been added to the first 4 pages of the site map for users who have not logged in; additional footer details have been added; more images utilized throughout the website (and can be seen on the footer, header, shopping-cart page, and the course dictionary pages); additional textboxes added in the account creation page; and lastly, the log out button was integrated into the navigation bar.
 
-Marinos: For this deliverable we were able to use the navigation bars and footer I created using online resources from the previous HTML deliveriable which included its CSS with it. Then, I created some images for the logo to add to the header and footer of the webpages. In addition, I created some classes to help utilize flexbox functionality for the elements used throughout the pages. Moreover, additional CSS was adapted to help improve the overall design of the website, including its responsiveness for mobile and tablets. Some functionality using Bootstrap were also implemented to improve the look of some of the tables.
 
-Badhan: Using CSS, we implemented styling to the form (such as the log in, sign up, change password, create class for instructor and add class for student pages) so that it would look more presentable to the user. With media queries and sizing, we made sure it's responsive in mobile and tablet. In order to make the table responsive, we used bootstrap so that when it's on mobile and tablet, the tables are scrollable horizontally. Overall, we implemented design to the website and made it responsive for mobile and tablet.  
 
 
