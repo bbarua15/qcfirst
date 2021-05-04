@@ -8,7 +8,6 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
-const methodOverride = require('method-override')
 
 app.listen(3000, () => {
     console.log(`App listening on port ${3000}`);
@@ -109,6 +108,11 @@ app.get('/class-deadline-student.html', (req, res) => {
     res.sendFile(__dirname + "/views/html/class-deadline-student.html");
 });
 
+app.get('/create-class.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/create-class.html");
+});
+
 app.get('/delete-class.html', (req, res) => {
     // load html file
     res.sendFile(__dirname + "/views/html/delete-class.html");
@@ -203,15 +207,15 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
 // passport.use(new LocalStrategy(User.authenticate()));
 
 // app.get('/', (req, res) => {
-//   res.sendFile('index.html')
-// })
-
-// app.get("/student-dashboard-html.html", isLoggedIn, function(req, res){
-//     res.sendFile("student-dashboard-html.html");
+//     res.sendFile(__dirname + "/views/html/index.html");
 // });
 
-// app.get("/create-account-page.html", function(req, res){
-//     res.sendFile("/create-account-page.html");
+// app.get('/student-dashboard-html.html', isLoggedIn, (req, res) => {
+//     res.sendFile(__dirname + "/views/html/student-dashboard-html.html");
+// });
+
+// app.get('/create-account-page.html', (req, res) => {
+//     res.sendFile(__dirname + "/views/html/create-account-page.html");
 // });
 
 // // passport will authenticate the user using local and redirect the page to the student dashboard
@@ -219,22 +223,22 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
 //     User.register(new User({username: req.body.username}), req.body.password, function(err, user){
 //         if(err){
 //             console.log(err);
-//             return res.sendFile("/create-account-page.html");
+//             return res.sendFile(__dirname + "/views/html/create-account-page.html");
 //         } else {
 //             passport.authenticate("local")(req, res, function(){
-//                 res.redirect("/student-dashboard-html.html");
+//                 res.redirect("/views/html/student-dashboard-html.html");
 //             });
 //         }
 //     });
 // });
 
-// app.get("/login-page-html.html", function(req, res){
-//     res.sendFile("login-page-html.html");
+// app.get('/login-page-html.html', (req, res) => {
+//     res.sendFile(__dirname + "/views/html/login-page-html.html");
 // });
 
 // //login 
 // app.post("/login-page-html.html", passport.authenticate("local", {
-//     successRedirect: "/student-dashboard-html.html",
+//     successRedirect: "/views/html/student-dashboard-html.html",
 //     failureRedirect: "/login-page-html.html"
 // }), function(req, res){
 //     //Do nothing
@@ -253,3 +257,4 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
 //     } 
 //     res.redirect("/login-page-html.html");
 // }
+
