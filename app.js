@@ -62,7 +62,6 @@ app.get('/', (req, res) => {
 
 });
 
-// GET REQUESTS
 app.get('/index.html', (req, res) => {
     // load html file
     res.sendFile(__dirname + "/views/html/index.html");
@@ -142,6 +141,11 @@ app.get('/student-dashboard-html.html', (req, res) => {
 app.get('/shopping-cart.html', (req, res) => {
     // load html file
     res.sendFile(__dirname + "/views/html/shopping-cart.html");
+});
+
+app.get('/create-class.html', (req, res) => {
+    // load html file
+    res.sendFile(__dirname + "/views/html/create-class.html");
 });
 
 // create post request because of form
