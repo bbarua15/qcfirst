@@ -1,13 +1,14 @@
 const express = require('express')
 const app = express()
 require('dotenv').config()
-let mongodb = require('mongodb');
-let mongoose = require('mongoose');
-let bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
-//const passport = require('passport');
-//const flash = require('express-flash');
-//const session = require('express-session');
+// taken from [5/4/2021]: https://www.npmjs.com/package/jquery
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
+// end adaption
 
 app.listen(3000, () => {
     console.log(`App listening on port ${3000}`);
@@ -15,7 +16,7 @@ app.listen(3000, () => {
 
 // loading static files
 // adapted from: https://expressjs.com/en/starter/static-files.html [5/3/2021]
-var path = require('path');
+const path = require('path');
 app.use(express.static(path.join(__dirname, '/public')));
 
 // database information
@@ -130,10 +131,9 @@ app.get('/create-class.html', (req, res) => {
 // create a post request for the login page
 app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
 
+    // store input data
     let entered_username = req.body.username;
     let entered_password = req.body.password;
-
-    console.log(req.body);
 
     // get user with same name from database
     userCreate.findOne({userName: entered_username}, async function(err, foundUser){
@@ -152,13 +152,13 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
                     let usertype = foundUser.userType;
 
                     // Student Case
-                    if (usertype == "Student") {
+                    if (usertype === "Student") {
                         console.log("login sucess to student");
                         res.redirect("/student-dashboard-html.html");
                     }
 
                     // Instructor Case
-                    if (usertype == "Instructor") {
+                    if (usertype === "Instructor") {
                         console.log("login sucess to instructor");
                         res.redirect("/instructor-dashboard-html.html")
                     }
@@ -168,13 +168,17 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
                     console.log("wrong username of password");
                 }
 
-            } catch (e) {console.log(e)};
+            } catch (e) {console.log(e)}
 
         } // end if foundUser
 
         // if the user is not in the database
         else {
             console.log("This account does not exist, please create an account to log in")
+
+            $(".password").after("<p>This account does not exist, please create an account to log in</p>");
+
+            return;
         }
     });
 });
@@ -183,6 +187,34 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
 app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
 
     // check to see if username and password are suitable
+    let regex = /^".*@login.cuny.edu"$/
+
+    // if the regex is not secure enough
+    if (regex.test(req.body.username) === false) {
+        console.log("username must end with \"@login.cuny.edu\"");
+
+        //display message under to tell user criteria
+        $(".password").after("<p>Usernames must end with \"@login.cuny.edu\"</p>");
+
+        return;
+    }
+
+    // adapted from: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+
+    // Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
+    regex = /^"(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}"$/
+    // end adaptation
+
+    // if the regex is not secure enough
+    if (regex.test(req.body.password) === false) {
+
+        console.log("password must contain a minimum eight characters, at least one uppercase letter, one lowercase letter and one number");
+
+        //display message under to tell password criteria
+        $(".password").after("<p>password must contain a minimum eight characters, at least one uppercase letter, one lowercase letter and one number</p>");
+
+        return;
+    }
 
     try {
         // hashing password
@@ -227,81 +259,7 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
 
     } catch (err) {
         console.log(err);
-        //res.redirect("/create-account-page.html");
     }
 
 });
 // end adaptation
-
-// Adapted from: https://www.youtube.com/watch?v=-RCnNyD0L-s
-// app.set('view engine', 'html');
-// app.use(bodyParser.urlencoded({extended:true}));
-
-
-// const mySecret = process.env['SESSION_SECRET']
-// app.use(require("express-session")({
-//     secret: process.env.SESSION_SECRET, 
-//     resave: false,
-//     saveUninitialized: false
-// }));
-
-// // set passport up to use in the application
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-// passport.use(new LocalStrategy(User.authenticate()));
-
-// app.get('/', (req, res) => {
-//     res.sendFile(__dirname + "/views/html/index.html");
-// });
-
-// app.get('/student-dashboard-html.html', isLoggedIn, (req, res) => {
-//     res.sendFile(__dirname + "/views/html/student-dashboard-html.html");
-// });
-
-// app.get('/create-account-page.html', (req, res) => {
-//     res.sendFile(__dirname + "/views/html/create-account-page.html");
-// });
-
-// // passport will authenticate the user using local and redirect the page to the student dashboard
-// app.post("//create-account-page.html", function(req, res){
-//     User.register(new User({username: req.body.username}), req.body.password, function(err, user){
-//         if(err){
-//             console.log(err);
-//             return res.sendFile(__dirname + "/views/html/create-account-page.html");
-//         } else {
-//             passport.authenticate("local")(req, res, function(){
-//                 res.redirect("/views/html/student-dashboard-html.html");
-//             });
-//         }
-//     });
-// });
-
-// app.get('/login-page-html.html', (req, res) => {
-//     res.sendFile(__dirname + "/views/html/login-page-html.html");
-// });
-
-// //login 
-// app.post("/login-page-html.html", passport.authenticate("local", {
-//     successRedirect: "/views/html/student-dashboard-html.html",
-//     failureRedirect: "/login-page-html.html"
-// }), function(req, res){
-//     //Do nothing
-// });
-
-// //sign out
-// app.get("/logout", function(req, res){
-//     req.logout();
-//     res.redirect("/");
-// });
-
-// //check to see if user is loggen in 
-// function isLoggedIn(req, res, next){
-//     if(req.isAuthenticated()){
-//         return next();
-//     } 
-//     res.redirect("/login-page-html.html");
-// }
-
