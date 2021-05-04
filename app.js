@@ -82,7 +82,7 @@ app.get('/create-account-page.html', (req, res) => {
     res.sendFile(__dirname + "/views/html/create-account-page.html");
 });
 
-app.get('/views/html/add-class.html', (req, res) => {
+app.get('/add-class.html', (req, res) => {
     // load html file
     res.sendFile(__dirname + "/views/html/add-class.html");
 });
