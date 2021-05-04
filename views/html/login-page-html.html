@@ -3,7 +3,6 @@
   Name: Marinos Dakis
   Date: 04.20.2021
   Section: CS 355
-
   The Login Page contains textboxes for a user to enter their credentials.
   Afterwards, they will be redirected to their respected Dashboards. In the case that a user had forgotten their password,
   they will be able to press the hyperlink under the textboxes to move to the forgot password page.
@@ -18,6 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <script src = "/js/jquery-3.6.0.js"></script>
+        <script src="script.js"></script>
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -147,17 +147,19 @@
         <h1 class="header">Please enter your login details!</h1>
 
         <!-- Log In Details -->
-        <fieldset>
-            <div class="vertical-container" id="input-background">
-                <label for="username">Username</label>
-                <input type="email" id="username" name="username" placeholder="Username">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Password">
-                <input type="submit" id="login" name="login">
-                <!-- Sign up -->
-                <a href="forgot-password-html.html" class="sign-up">Forgot Your Password?</a>
-            </div>
-        </fieldset>
+        <form id="form" action="/" method="GET">
+            <fieldset>
+                <div class="vertical-container" id="input-background">
+                    <label for="username">Username</label>
+                    <input type="email" id="username" name="username" placeholder="Username">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password">
+                    <input type="submit" id="login" name="login">
+                    <!-- Sign up -->
+                    <a href="forgot-password-html.html" class="sign-up">Forgot Your Password?</a>
+                </div>
+            </fieldset>
+        </form>
     </div>
 
     <!--footer-->
