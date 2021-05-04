@@ -1,3 +1,4 @@
+/*
 const ClassModel = require("app");
 
 class ClassInput {
@@ -24,3 +25,4 @@ class ClassInput {
 }
 
 module.exports = ClassInput;
+*/

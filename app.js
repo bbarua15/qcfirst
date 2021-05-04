@@ -24,19 +24,19 @@ app.use(express.static(path.join(__dirname, '/public')));
 //app.set('view engine', 'html');
 
 // database information
-mongoose.connect("mongodb+srv://marinos:open123@cluster0.7pdeb.mongodb.net/Cluster0?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://marinos:open123@cluster0.7pdeb.mongodb.net/Cluster0?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true});
 
 // create schema
 const { Schema } = mongoose;
 
 // schema for new Classes
 const CLASS  = new Schema({
-    term: {type: String, required: true},
-    courseName: {type: String, required: true},
-    courseNumber: {type: Number, required: true, index: {unique: true}},
+    term: {type: String,},
+    courseName: {type: String},
+    courseNumber: {type: Number},
     classDate: {type: Date, default: Date.now},
-    classDescription: {type: String, required: true},
-    capacity: {type: Number, required: true}
+    classDescription: {type: String},
+    capacity: {type: Number}
 });
 
 // schema for new users
@@ -48,7 +48,7 @@ const NEWUSER = new Schema({
     passwordConfirm: {type: String, required: true},
     userType: {type: String, required: true},
     creationDate: {type: Date, default: Date.now},
-    classes: {type: [CLASS]}
+    classes: [CLASS]
 });
 
 // create model
@@ -178,13 +178,13 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
         let userType = req.body["user-type"];
 
         // see if user is already in database, otherwise display error and create a new user
-        NEWUSER.findOne({username: username}, function(err, foundUser){
+        userCreate.findOne({username: username}, function(err, foundUser){
             if(err) return res.json({error: "error occurred"});
             if (foundUser) return res.json({error:"Username already taken"});
             else {
 
                 // add attributes to new user
-                let new_user = new NEWUSER({
+                let new_user = new userCreate({
                     firstName: firstname,
                     lastName: lastname,
                     userName: username,
@@ -198,14 +198,14 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
                 new_user.save((err, data) => {
                     if (err) return console.error(err);
                     console.log("user saved");
-                    res.redirect("/login-page-html")
-                    done(null, data);
+                    res.redirect("/login-page-html.html")
                 });
             }
         });
 
-    } catch {
-        res.redirect("/create-account-page");
+    } catch (err) {
+        console.log(err);
+        //res.redirect("/create-account-page.html");
     }
 
 });
