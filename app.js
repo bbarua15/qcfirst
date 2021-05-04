@@ -166,6 +166,10 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
                 } else {
                     // display message "Incorrect username or password"
                     console.log("wrong username of password");
+
+                    $(".password").after("<p>Wrong username or Password</p>");
+
+                    return;
                 }
 
             } catch (e) {console.log(e)}
