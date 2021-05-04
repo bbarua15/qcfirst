@@ -47,6 +47,7 @@ const NEWUSER = new Schema({
     password: {type: String, required: true},
     passwordConfirm: {type: String, required: true},
     userType: {type: String, required: true},
+    creationDate: {type: Date, default: Date.now},
     classes: {type: [CLASS]}
 });
 
@@ -152,43 +153,63 @@ app.get('/create-class.html', (req, res) => {
     res.sendFile(__dirname + "/views/html/create-class.html");
 });
 
-// create post request because of form
-app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), function (req, res) {
+// adapted from [5/3/2021]: https://www.youtube.com/watch?v=-RCnNyD0L-s&ab_channel=WebDevSimplified
+// create a post request for the login page
+app.post("/login-page.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
 
-    // storage variables for new user (based on name="information" from the respected html file)
-    let firstname = req.body.firstName;
-    let lastname = req.body.lastName;
-    let username = req.body.username;
-    let password_orig = req.body.password;
-    let confirmPassword = req.body["confirm-password"];
-    let userType = req.body["user-type"];
-
-    // see if user is already in database, otherwise display error and create a new user
-    NEWUSER.findOne({username: username}, function(err, foundUser){
-        if(err) return res.json({error: "error occurred"});
-        if (foundUser) return res.json({error:"Username already taken"});
-        else {
-
-            // checks on data
-
-            // add attributes to new user
-            let new_user = new NEWUSER({
-                firstName: firstname,
-                lastName: lastname,
-                userName: username,
-                password: password_orig,
-                passwordConfirm: confirmPassword,
-                userType: userType
-            });
-
-            new_user.save((err, data) => {
-                if (err) return console.error(err);
-                console.log("user saved");
-                done(null, data);
-            });
-        }
-    });
 });
+
+// create a post request for the create account page
+app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
+
+    // check to see if username and password are suitable
+
+
+    try {
+        // hashing password
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+        // storage variables for new user (based on name="information" from the respected html file)
+        let firstname = req.body.firstName;
+        let lastname = req.body.lastName;
+        let username = req.body.username;
+        let password_orig = hashedPassword;
+        let confirmPassword = req.body["confirm-password"];
+        let userType = req.body["user-type"];
+
+        // see if user is already in database, otherwise display error and create a new user
+        NEWUSER.findOne({username: username}, function(err, foundUser){
+            if(err) return res.json({error: "error occurred"});
+            if (foundUser) return res.json({error:"Username already taken"});
+            else {
+
+                // add attributes to new user
+                let new_user = new NEWUSER({
+                    firstName: firstname,
+                    lastName: lastname,
+                    userName: username,
+                    password: password_orig,
+                    passwordConfirm: confirmPassword,
+                    userType: userType
+                });
+
+                console.log(new_user);
+
+                new_user.save((err, data) => {
+                    if (err) return console.error(err);
+                    console.log("user saved");
+                    res.redirect("/login-page-html")
+                    done(null, data);
+                });
+            }
+        });
+
+    } catch {
+        res.redirect("/register");
+    }
+
+});
+// end adaptation
 
 // Adapted from: https://www.youtube.com/watch?v=-RCnNyD0L-s
 // app.set('view engine', 'html');
