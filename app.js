@@ -167,6 +167,8 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
                     // display message "Incorrect username or password"
                     console.log("wrong username of password");
 
+                    res.send("Wrong username or Password")
+
                     $(".password").after("<p>Wrong username or Password</p>");
 
                     return;
@@ -179,6 +181,8 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
         // if the user is not in the database
         else {
             console.log("This account does not exist, please create an account to log in")
+
+            res.send("This account does not exist, please create an account to log in")
 
             $(".password").after("<p>This account does not exist, please create an account to log in</p>");
 
@@ -197,6 +201,8 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
     if (regex.test(req.body.username) === false) {
         console.log("username must end with \"@login.cuny.edu\"");
 
+        res.send("Usernames must end with \"@login.cuny.edu\"")
+
         //display message under to tell user criteria
         $(".password").after("<p>Usernames must end with \"@login.cuny.edu\"</p>");
 
@@ -213,6 +219,8 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
     if (regex.test(req.body.password) === false) {
 
         console.log("password must contain a minimum eight characters, at least one uppercase letter, one lowercase letter and one number");
+
+        res.send("Password must contain a minimum eight characters, at least one uppercase letter, one lowercase letter and one number")
 
         //display message under to tell password criteria
         $(".password").after("<p>password must contain a minimum eight characters, at least one uppercase letter, one lowercase letter and one number</p>");
