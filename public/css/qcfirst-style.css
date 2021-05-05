@@ -3,8 +3,11 @@
 .container > * {
     font: 4em "Arial", sans-serif;
     font-weight: bolder;
-    color: black;
+    color: #fff;
     text-align: center;
+    background-color: #212529;
+    display: table;
+    margin: auto;
 }
 
 /*

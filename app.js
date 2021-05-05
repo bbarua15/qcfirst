@@ -26,14 +26,13 @@ mongoose.connect("mongodb+srv://marinos:open123@cluster0.7pdeb.mongodb.net/Clust
 
 // session 
 app.use(session({
-  secret: 'secret',
-  resave: true,
-  saveUninitialized: false,
-  store: MongoStore.create ({ 
-    mongoUrl: "mongodb+srv://marinos:open123@cluster0.7pdeb.mongodb.net/Cluster0?retryWrites=true&w=majority" 
-  })
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: false,
+    store: MongoStore.create ({
+        mongoUrl: "mongodb+srv://marinos:open123@cluster0.7pdeb.mongodb.net/Cluster0?retryWrites=true&w=majority"
+    })
 }));
-
 
 // create schema
 const { Schema } = mongoose;
@@ -163,6 +162,7 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
             try {
 
                 if (await bcrypt.compare(entered_password, foundUser.password)) {
+
                     // check to see if the user is a student or instructor and then direct them to the appropriate page
                     let usertype = foundUser.userType;
 
@@ -195,6 +195,7 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
 
         // if the user is not in the database
         else {
+
             console.log("This account does not exist, please create an account to log in")
 
             res.send("This account does not exist, please create an account to log in")
@@ -210,10 +211,14 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
 app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
 
     // check to see if username and password are suitable
-    let regex = /^".*@login.cuny.edu"$/
+    let regex = /^.*@login.cuny.edu$/
+
+    console.log(req.body.username);
+    console.log(regex.test(req.body.username))
 
     // if the regex is not secure enough
     if (regex.test(req.body.username) === false) {
+
         console.log("username must end with \"@login.cuny.edu\"");
 
         res.send("Usernames must end with \"@login.cuny.edu\"")
@@ -227,7 +232,7 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
     // adapted from: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
 
     // Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
-    regex = /^"(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}"$/
+    regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
     // end adaptation
 
     // if the regex is not secure enough
@@ -257,6 +262,7 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
 
         // see if user is already in database, otherwise display error and create a new user
         userCreate.findOne({username: username}, function(err, foundUser) {
+
             if(err) return res.json({error: "error occurred"});
             if (foundUser) return res.json({error:"Username already taken"});
 
