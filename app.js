@@ -4,6 +4,8 @@ require('dotenv').config()
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 // taken from [5/4/2021]: https://www.npmjs.com/package/jquery
 const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
@@ -21,6 +23,16 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 // database information
 mongoose.connect("mongodb+srv://marinos:open123@cluster0.7pdeb.mongodb.net/Cluster0?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true });
+
+// session 
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    url: 'mongodb+srv://marinos:open123@cluster0.7pdeb.mongodb.net/Cluster0?retryWrites=true&w=majority'
+  })
+}));
 
 // create schema
 const { Schema } = mongoose;
@@ -143,6 +155,8 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
         if (foundUser) {
 
             console.log("user found");
+            
+            // req.session.username = user.dataUser;
 
             // comparing passwords
             try {
