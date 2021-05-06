@@ -6,6 +6,17 @@ Marinos Dakis (https://github.com/MarinosDakis)
 
 Badhan Barua (https://github.com/bbarua15) 
 ____________
+***User Management Deliverable***
+
+Marinos: For this deliverable I integrated the current webpage we had to Replit so that Nodejs could be integrated. Initially, I had major issues in getting the website to show its attributes, but learned after searching online that the root issue was due to pathing mistakes. Moreover, I was unable to find a solution to send multiple html files to users so I added the header and footer attributes to each HTML page. 
+
+Afterwards I created the GET methods to all the HTML pages and worked on creating the post requests for the user creation page, and the login page. I used the body-parser module to help get information from the forms and then integrated Mongodb to store the user's account details. When I got the account creation and user login POST requests working I then focused on the additional detail required for the deliverable, i.e. using regex to make sure a user puts a secure password and their starting email ends like a CUNY (@login.cuny.edu) email. All passwords in the database are also secured by the bcrypt module to make sure that each user's password is secure.
+
+What stands next is to get user sessions to work effectively so that only authorized users can go to their respected pages and I believe I will have to integrate some middleware functions to accomplish this. Also, getting JQuery to work as intended for user login errors.
+
+
+
+
 ***HTML Deliverable***
 
 For the first project deliverable we split up the task of creating the HTML for the pages from how we divided the site map originally.
