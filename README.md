@@ -71,6 +71,20 @@ Instructor Dashboard:
 Student Dashboard:
 
 ___
+
+## Client-side Technologies:
+* HTML
+* CSS
+* JavaScript
+* jQuery
+___
+## Server-side Technologies:
+* Node-js
+___
+## Database management system:
+* MongoDB/Mongoose
+
+___
 ## Visual Designs
 
 ### Site Map
