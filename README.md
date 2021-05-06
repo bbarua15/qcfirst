@@ -1,26 +1,11 @@
-# qcfirst
-
-**QCFirst** is a prototype course enrollment application where users (i.e. students and instructors)
-can access features to help simulate an online enrollment environment. 
-
-The following application will contain features of: **User Management**, **Course Management**, and **Enrollment Management**.
-
-**User Management** will focus on creating a responsive environment for both students and instructors when
-accessing the course enrollment application.
-
-**Course Management** will be managed by instructors and will allow them to create and delete courses through a database.
-
-**Enrollment Management** will focus on allowing students to register for classes for an upcoming semester.
-
-
 ## Link to app
-Our website can be viewed here: 
-
+Our website can be viewed here: https://replit.com/@marinosdakis/qcfirst#index.js
+_______________________________
 ## Contributors:
 Marinos Dakis (https://github.com/MarinosDakis)
 
 Badhan Barua (https://github.com/bbarua15) 
-
+____________
 ***HTML Deliverable***
 
 For the first project deliverable we split up the task of creating the HTML for the pages from how we divided the site map originally.
@@ -33,18 +18,48 @@ Similarly, this is done with the footer for the website as well; however it will
 Marinos: For this deliverable we were able to use the navigation bars and footer I created using online resources from the previous HTML deliveriable which included its CSS with it. Then, I created some images for the logo to add to the header and footer of the webpages. In addition, I created some classes to help utilize flexbox functionality for the elements used throughout the pages. Moreover, additional CSS was adapted to help improve the overall design of the website, including its responsiveness for mobile and tablets. Some functionality using Bootstrap were also implemented to improve the look of some of the tables.
 
 Badhan: Using CSS, we implemented styling to the form (such as the log in, sign up, change password, create class for instructor and add class for student pages) so that it would look more presentable to the user. With media queries and sizing, we made sure it's responsive in mobile and tablet. In order to make the table responsive, we used bootstrap so that when it's on mobile and tablet, the tables are scrollable horizontally. Overall, we implemented design to the website and made it responsive for mobile and tablet. 
+____
+# qcfirst
 
+**QCFirst** is a prototype course enrollment application where users (i.e. students and instructors)
+can access features to help simulate an online enrollment environment.
+
+The following application will contain features of: **User Management**, **Course Management**, and **Enrollment Management**.
+
+**User Management** will focus on creating a responsive environment for both students and instructors when
+accessing the course enrollment application.
+
+**Course Management** will be managed by instructors and will allow them to create and delete courses through a database.
+
+**Enrollment Management** will focus on allowing students to register for classes for an upcoming semester.
 
 ## Features
 * Students and instructors can access our website by creating an account and then logging in
 * Students can enroll in classes, drop classes and view their current enrolled courses.
 * Instructors are able to create and delete classes. They can view which classes they're teaching and the roster of students. 
-* The website is repsonive to mobile, tablet and desktop
+* The website is responsive to mobile, tablet and desktop
 
-## Additional links
-* Login Page: 
-* Create Account Page: 
+___
+## Feature links
+Login Page: https://qcfirst.marinosdakis.repl.co/login-page-html.html
 
+Create Account Page: https://qcfirst.marinosdakis.repl.co/create-account-page.html
+
+**TBA:**
+
+Enroll Class Page:
+
+Drop Class Page:
+
+Create Class Page:
+
+Delete Class Page:
+
+Instructor Dashboard:
+
+Student Dashboard:
+
+___
 ## Visual Designs
 
 ### Site Map
@@ -169,6 +184,7 @@ Students will be able to view the classes they have selected to take and enroll 
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Tablet/Tablet%20-%20Shopping%20Cart.png)
 ![alt text](https://github.com/bbarua15/qcfirst/blob/main/Deliverable%201%20-%20Images/Mobile/Mobile%20-%20Shopping%20Cart.png)
 
+___
 ## Differences between wireframes and final outcome:
 
 For the most part our web application follows our wireframes closely. Some noticeable differences are: the structure of some elements (i.e. they follow more of a vertical placement on top of each other as opposed to being horizontal in some cases); a navigation bar has been added to the first 4 pages of the site map for users who have not logged in; additional footer details have been added; more images utilized throughout the website (and can be seen on the footer, header, shopping-cart page, and the course dictionary pages); additional textboxes added in the account creation page; and lastly, the log out button was integrated into the navigation bar.
