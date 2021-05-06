@@ -84,7 +84,7 @@ app.get('/create-account-page.html', (req, res) => {
 });
 
 app.get('/add-class.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Student') {
+	if (req.session.loggedin = true) {
 		res.sendFile(__dirname + "/views/html/add-class.html");
 	}
 	else {
@@ -94,7 +94,7 @@ app.get('/add-class.html', (req, res) => {
 });
 
 app.get('/change-password-instructor.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Instructor') {
+	if (req.session.loggedin = true) {
 		res.sendFile(__dirname + "/views/html/change-password-instructor.html");
 	}
 	else {
@@ -104,7 +104,7 @@ app.get('/change-password-instructor.html', (req, res) => {
 });
 
 app.get('/change-password-student.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Student') {
+	if (req.session.loggedin = true) {
     	res.sendFile(__dirname + "/views/html/change-password-student.html");
     }
     else {
@@ -114,7 +114,7 @@ app.get('/change-password-student.html', (req, res) => {
 });
 
 app.get('/class-deadline-instructor.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Instructor') {
+	if (req.session.loggedin = true) {
     	res.sendFile(__dirname + "/views/html/class-deadline-instructor.html");
     }
     else {
@@ -124,7 +124,7 @@ app.get('/class-deadline-instructor.html', (req, res) => {
 });
 
 app.get('/class-deadline-student.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Student') {
+	if (req.session.loggedin = true) {
     	res.sendFile(__dirname + "/views/html/class-deadline-student.html");
     }
     else {
@@ -134,7 +134,7 @@ app.get('/class-deadline-student.html', (req, res) => {
 });
 
 app.get('/create-class.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Instructor') {
+	if (req.session.loggedin = true) {
     	res.sendFile(__dirname + "/views/html/create-class.html");
     }
     else {
@@ -144,7 +144,7 @@ app.get('/create-class.html', (req, res) => {
 });
 
 app.get('/delete-class.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Instructor') {
+	if (req.session.loggedin = true) {
     	res.sendFile(__dirname + "/views/html/delete-class.html");
     }
     else {
@@ -154,7 +154,7 @@ app.get('/delete-class.html', (req, res) => {
 });
 
 app.get('/drop-class.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Student') {
+	if (req.session.loggedin = true) {
     	res.sendFile(__dirname + "/views/html/drop-class.html");
 	}
 	else {
@@ -164,7 +164,7 @@ app.get('/drop-class.html', (req, res) => {
 });
 
 app.get('/instructor-course-dictionary-html.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Instructor') {
+	if (req.session.loggedin = true) {
     	res.sendFile(__dirname + "/views/html/instructor-course-dictionary-html.html");
     }
     else {
@@ -174,7 +174,7 @@ app.get('/instructor-course-dictionary-html.html', (req, res) => {
 });
 
 app.get('/student-course-dictionary-html.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Student') {
+	if (req.session.loggedin = true) {
     	res.sendFile(__dirname + "/views/html/student-course-dictionary-html.html");
     }
     else {
@@ -184,7 +184,7 @@ app.get('/student-course-dictionary-html.html', (req, res) => {
 });
 
 app.get('/instructor-dashboard-html.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Instructor') {
+	if (req.session.loggedin = true) {
     	res.sendFile(__dirname + "/views/html/instructor-dashboard-html.html");
 	}
 	else {
@@ -194,7 +194,7 @@ app.get('/instructor-dashboard-html.html', (req, res) => {
 });
 
 app.get('/student-dashboard-html.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Student') {
+	if (req.session.loggedin = true) {
     	res.sendFile(__dirname + "/views/html/student-dashboard-html.html");
 	}
 	else {
@@ -204,7 +204,7 @@ app.get('/student-dashboard-html.html', (req, res) => {
 });
 
 app.get('/shopping-cart.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Student') {
+	if (req.session.loggedin = true) {
     	res.sendFile(__dirname + "/views/html/shopping-cart.html");
     }
     else {
@@ -214,7 +214,7 @@ app.get('/shopping-cart.html', (req, res) => {
 });
 
 app.get('/create-class.html', (req, res) => {
-	if (req.session.loggedin && req.session.userType === 'Instructor') {
+	if (req.session.loggedin = true) {
     	res.sendFile(__dirname + "/views/html/create-class.html");
     }
     else {
@@ -239,10 +239,6 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
         if (foundUser) {
 
             console.log("user found");
-
-            req.session.loggedin = true;
-			req.session.user = username;
-			req.session.userType = userType;
 
             // comparing passwords
             try {
