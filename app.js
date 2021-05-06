@@ -84,59 +84,143 @@ app.get('/create-account-page.html', (req, res) => {
 });
 
 app.get('/add-class.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/add-class.html");
+	if (req.session.loggedin && req.session.userType === 'Student') {
+		res.sendFile(__dirname + "/views/html/add-class.html");
+	}
+	else {
+	    console.log("Please login into your respective account")
+	    res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/change-password-instructor.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/change-password-instructor.html");
+	if (req.session.loggedin && req.session.userType === 'Instructor') {
+		res.sendFile(__dirname + "/views/html/change-password-instructor.html");
+	}
+	else {
+	    console.log("Please login into your respective account")
+	    res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/change-password-student.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/change-password-student.html");
+	if (req.session.loggedin && req.session.userType === 'Student') {
+    	res.sendFile(__dirname + "/views/html/change-password-student.html");
+    }
+    else {
+	    console.log("Please login into your respective account")
+	    res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/class-deadline-instructor.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/class-deadline-instructor.html");
+	if (req.session.loggedin && req.session.userType === 'Instructor') {
+    	res.sendFile(__dirname + "/views/html/class-deadline-instructor.html");
+    }
+    else {
+	    console.log("Please login into your respective account")
+	    res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/class-deadline-student.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/class-deadline-student.html");
+	if (req.session.loggedin && req.session.userType === 'Student') {
+    	res.sendFile(__dirname + "/views/html/class-deadline-student.html");
+    }
+    else {
+	    console.log("Please login into your respective account")
+	    res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/create-class.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/create-class.html");
+	if (req.session.loggedin && req.session.userType === 'Instructor') {
+    	res.sendFile(__dirname + "/views/html/create-class.html");
+    }
+    else {
+	    console.log("Please login into your respective account")
+	    res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/delete-class.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/delete-class.html");
+	if (req.session.loggedin && req.session.userType === 'Instructor') {
+    	res.sendFile(__dirname + "/views/html/delete-class.html");
+    }
+    else {
+	    console.log("Please login into your respective account")
+	    res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/drop-class.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/drop-class.html");
+	if (req.session.loggedin && req.session.userType === 'Student') {
+    	res.sendFile(__dirname + "/views/html/drop-class.html");
+	}
+	else {
+	    console.log("Please login into your respective account")
+	    res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/instructor-course-dictionary-html.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/instructor-course-dictionary-html.html");
+	if (req.session.loggedin && req.session.userType === 'Instructor') {
+    	res.sendFile(__dirname + "/views/html/instructor-course-dictionary-html.html");
+    }
+    else {
+	    console.log("Please login into your respective account")
+	    res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/student-course-dictionary-html.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/student-course-dictionary-html.html");
+	if (req.session.loggedin && req.session.userType === 'Student') {
+    	res.sendFile(__dirname + "/views/html/student-course-dictionary-html.html");
+    }
+    else {
+	    console.log("Please login into your respective account")
+	    res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/instructor-dashboard-html.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/instructor-dashboard-html.html");
+	if (req.session.loggedin && req.session.userType === 'Instructor') {
+    	res.sendFile(__dirname + "/views/html/instructor-dashboard-html.html");
+	}
+	else {
+	    console.log("Please login into your respective account")
+	    res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/student-dashboard-html.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/student-dashboard-html.html");
+	if (req.session.loggedin && req.session.userType === 'Student') {
+    	res.sendFile(__dirname + "/views/html/student-dashboard-html.html");
+	}
+	else {
+    	console.log("Please login into your respective account")
+    	res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/shopping-cart.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/shopping-cart.html");
+	if (req.session.loggedin && req.session.userType === 'Student') {
+    	res.sendFile(__dirname + "/views/html/shopping-cart.html");
+    }
+    else {
+    	console.log("Please login into your respective account")
+    	res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 app.get('/create-class.html', (req, res) => {
-    res.sendFile(__dirname + "/views/html/create-class.html");
+	if (req.session.loggedin && req.session.userType === 'Instructor') {
+    	res.sendFile(__dirname + "/views/html/create-class.html");
+    }
+    else {
+	    console.log("Please login into your respective account")
+	    res.sendFile(__dirname + "/views/html/login-page-html.html");
+  }
 });
 
 // adapted from [5/4/2021]: https://www.youtube.com/watch?v=Ud5xKCYQTjM&ab_channel=WebDevSimplified
@@ -156,7 +240,9 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
 
             console.log("user found");
 
-            // req.session.username = user.dataUser;
+            req.session.loggedin = true;
+			req.session.user = username;
+			req.session.userType = userType;
 
             // comparing passwords
             try {
