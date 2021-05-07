@@ -237,7 +237,7 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
 
         // if the user is correct then check to see if passwords match
         if (foundUser) {
-          	req.session.user = {
+        	req.session.user = {
             usename: user.email,
           	}
 
@@ -264,8 +264,8 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
                     }
 
                     else if (!req.session.user) {
-        				res.redirect('/login-page-html.html');
-    				} 
+                    	res.redirect('/login-page-html.html');
+                    } 
 
                 } else {
                     // display message "Incorrect username or password"
