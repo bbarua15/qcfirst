@@ -382,14 +382,33 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
 // add class post
 app.post("/add-class.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
 
+    // check to see if a number was entered
+    let regex = /[0-9]/;
+    if (!regex.test(req.body.cournum)){
+        // display error
+        //$(".cournum").after("<p>Please enter a value course number</p>");
+        return
+    }
 
     // store values from form
     let course = req.body.course;
     let courseNum = req.body.cournum;
 
-    console.log(course + courseNum);
+    // search database for these values and then change the
+    // table to contain the rows associated with lectures
+    classCreate.findAll({courseName: course, courseNumber: courseNum}, function(err, array) {
+
+        // if error display error
+        if(err) console.log(err);
+            //$(".cournum").after("<p>Unable to load courses, please try a different value</p>");
+
+        // otherwise display all available courses in table
+        else {
 
 
+
+        }
+    });
 });
 
 app.post("/drop-class.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
@@ -399,6 +418,53 @@ app.post("/drop-class.html", bodyParser.urlencoded({extended: false}), async fun
 
 app.post("/create-class.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
 
+    // checks on data
+    let regex = /(spring|summer|winter|fall) \d\d\d\d/i
+    if (!regex.test(req.body.term)){
+        console.log("Please enter a term in the following format: [Season] [yyyy]");
+        return;
+    }
+
+    regex = /[a-z]/i
+    if(!regex.test(req.body.courname)){
+        console.log("The course name contains non-letter characters");
+        return;
+    }
+
+    regex = /0-9/
+    if(!req.body.cournum){
+        console.log("the course number must only contain numbers");
+        return;
+    }
+
+    if(!req.body.capac){
+        console.log("the capacity should be an integer");
+    }
+
+    // store values:
+    let term = req.body.term;
+    let courseName = req.body.courname;
+    let courseNumber = req.body.cournum;
+    let time = req.body.time;
+    let desc = req.body.desc;
+    let capacity = req.body.capac;
+
+    // store values in database
+    let new_class = new classCreate({
+        term: term,
+        courseName: courseName,
+        courseNumber: courseNumber,
+        classDate: time,
+        classDescription: desc,
+        capacity: capacity
+    });
+
+    console.log(new_class);
+
+    new_class.save((err, data) => {
+        if (err) return console.error(err);
+        console.log("class Created");
+    });
 
 });
 
