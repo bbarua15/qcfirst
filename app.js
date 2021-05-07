@@ -84,143 +84,143 @@ app.get('/create-account-page.html', (req, res) => {
 });
 
 app.get('/add-class.html', (req, res) => {
-	if (req.session.loggedin = true) {
-		res.sendFile(__dirname + "/views/html/add-class.html");
-	}
-	else {
-	    console.log("Please login into your respective account")
-	    res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/add-class.html");
+    }
+    else {
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/change-password-instructor.html', (req, res) => {
-	if (req.session.loggedin = true) {
-		res.sendFile(__dirname + "/views/html/change-password-instructor.html");
-	}
-	else {
-	    console.log("Please login into your respective account")
-	    res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/change-password-instructor.html");
+    }
+    else {
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/change-password-student.html', (req, res) => {
-	if (req.session.loggedin = true) {
-    	res.sendFile(__dirname + "/views/html/change-password-student.html");
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/change-password-student.html");
     }
     else {
-	    console.log("Please login into your respective account")
-	    res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/class-deadline-instructor.html', (req, res) => {
-	if (req.session.loggedin = true) {
-    	res.sendFile(__dirname + "/views/html/class-deadline-instructor.html");
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/class-deadline-instructor.html");
     }
     else {
-	    console.log("Please login into your respective account")
-	    res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/class-deadline-student.html', (req, res) => {
-	if (req.session.loggedin = true) {
-    	res.sendFile(__dirname + "/views/html/class-deadline-student.html");
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/class-deadline-student.html");
     }
     else {
-	    console.log("Please login into your respective account")
-	    res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/create-class.html', (req, res) => {
-	if (req.session.loggedin = true) {
-    	res.sendFile(__dirname + "/views/html/create-class.html");
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/create-class.html");
     }
     else {
-	    console.log("Please login into your respective account")
-	    res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/delete-class.html', (req, res) => {
-	if (req.session.loggedin = true) {
-    	res.sendFile(__dirname + "/views/html/delete-class.html");
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/delete-class.html");
     }
     else {
-	    console.log("Please login into your respective account")
-	    res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/drop-class.html', (req, res) => {
-	if (req.session.loggedin = true) {
-    	res.sendFile(__dirname + "/views/html/drop-class.html");
-	}
-	else {
-	    console.log("Please login into your respective account")
-	    res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/drop-class.html");
+    }
+    else {
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/instructor-course-dictionary-html.html', (req, res) => {
-	if (req.session.loggedin = true) {
-    	res.sendFile(__dirname + "/views/html/instructor-course-dictionary-html.html");
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/instructor-course-dictionary-html.html");
     }
     else {
-	    console.log("Please login into your respective account")
-	    res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/student-course-dictionary-html.html', (req, res) => {
-	if (req.session.loggedin = true) {
-    	res.sendFile(__dirname + "/views/html/student-course-dictionary-html.html");
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/student-course-dictionary-html.html");
     }
     else {
-	    console.log("Please login into your respective account")
-	    res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/instructor-dashboard-html.html', (req, res) => {
-	if (req.session.loggedin = true) {
-    	res.sendFile(__dirname + "/views/html/instructor-dashboard-html.html");
-	}
-	else {
-	    console.log("Please login into your respective account")
-	    res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/instructor-dashboard-html.html");
+    }
+    else {
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/student-dashboard-html.html', (req, res) => {
-	if (req.session.loggedin = true) {
-    	res.sendFile(__dirname + "/views/html/student-dashboard-html.html");
-	}
-	else {
-    	console.log("Please login into your respective account")
-    	res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/student-dashboard-html.html");
+    }
+    else {
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/shopping-cart.html', (req, res) => {
-	if (req.session.loggedin = true) {
-    	res.sendFile(__dirname + "/views/html/shopping-cart.html");
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/shopping-cart.html");
     }
     else {
-    	console.log("Please login into your respective account")
-    	res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 app.get('/create-class.html', (req, res) => {
-	if (req.session.loggedin = true) {
-    	res.sendFile(__dirname + "/views/html/create-class.html");
+    if (req.session.loggedin = true) {
+        res.sendFile(__dirname + "/views/html/create-class.html");
     }
     else {
-	    console.log("Please login into your respective account")
-	    res.sendFile(__dirname + "/views/html/login-page-html.html");
-  }
+        console.log("Please login into your respective account")
+        res.sendFile(__dirname + "/views/html/login-page-html.html");
+    }
 });
 
 // adapted from [5/4/2021]: https://www.youtube.com/watch?v=Ud5xKCYQTjM&ab_channel=WebDevSimplified
@@ -378,3 +378,41 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
 
 });
 // end adaptation
+
+// add class post
+app.post("/add-class.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
+
+
+    // store values from form
+    let course = req.body.course;
+    let courseNum = req.body.cournum;
+
+    console.log(course + courseNum);
+
+
+});
+
+app.post("/drop-class.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
+
+
+});
+
+app.post("/create-class.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
+
+
+});
+
+app.post("/delete-class.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
+
+
+});
+
+app.post("/change-password-student.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
+
+
+});
+
+app.post("/change-password-instructor.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
+
+
+});
