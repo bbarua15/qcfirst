@@ -161,21 +161,19 @@
                         <option value="Instructor">Instructor</option>
                     </select>
                     <button type="submit" id="create" name="create">Register</button>
+                    <div class="error"></div>
                     </div>
             </fieldset>
         </form>
     </div>
 
-    <button type="submit" id="test">test</button>
     <!-- error if user puts in wrong information -->
     <script>
-
         $(document).ready(function() {
-            $("#test").click(function(){
-                $("#test").after("<p>This is a test");
+            $("#submit").click(function(){
+                $(".error").innerHTML("<p>An error has occurred</p>");
             });
         });
-
     </script>
 
     <!--footer-->
