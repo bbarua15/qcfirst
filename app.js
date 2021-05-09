@@ -237,9 +237,9 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
 
         // if the user is correct then check to see if passwords match
         if (foundUser) {
-        	req.session.user = {
-            usename: user.email,
-          	}
+            req.session.user = {
+                usename: user.email,
+            }
 
             console.log("user found");
 
@@ -264,14 +264,12 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
                     }
 
                     else if (!req.session.user) {
-                    	res.redirect('/login-page-html.html');
-                    } 
+                        res.redirect('/login-page-html.html');
+                    }
 
                 } else {
                     // display message "Incorrect username or password"
                     console.log("wrong username of password");
-
-                    res.send("Wrong username or Password")
 
                     $(".password").after("<p>Wrong username or Password</p>");
 
@@ -285,9 +283,7 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
         // if the user is not in the database
         else {
 
-            console.log("This account does not exist, please create an account to log in")
-
-            res.send("This account does not exist, please create an account to log in")
+            console.log("This account does not exist, please create an account to log in");
 
             $(".password").after("<p>This account does not exist, please create an account to log in</p>");
 
@@ -310,8 +306,6 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
 
         console.log("username must end with \"@login.cuny.edu\"");
 
-        res.send("Usernames must end with \"@login.cuny.edu\"")
-
         //display message under to tell user criteria
         $(".password").after("<p>Usernames must end with \"@login.cuny.edu\"</p>");
 
@@ -319,6 +313,11 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
     }
 
     // adapted from: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+
+    if (req.body.password != req.body["confirm-password"]){
+        console.log("passwords must match");
+        return;
+    }
 
     // Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
     regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
@@ -328,8 +327,6 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
     if (regex.test(req.body.password) === false) {
 
         console.log("password must contain a minimum eight characters, at least one uppercase letter, one lowercase letter and one number");
-
-        res.send("Password must contain a minimum eight characters, at least one uppercase letter, one lowercase letter and one number")
 
         //display message under to tell password criteria
         $(".password").after("<p>password must contain a minimum eight characters, at least one uppercase letter, one lowercase letter and one number</p>");
@@ -346,7 +343,6 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
         let lastname = req.body.lastName;
         let username = req.body.username;
         let password_orig = hashedPassword;
-        let confirmPassword = req.body["confirm-password"];
         let userType = req.body["user-type"];
 
         // see if user is already in database, otherwise display error and create a new user
@@ -364,7 +360,6 @@ app.post("/create-account-page.html", bodyParser.urlencoded({extended: false}), 
                     lastName: lastname,
                     userName: username,
                     password: password_orig,
-                    passwordConfirm: confirmPassword,
                     userType: userType
                 });
 
@@ -411,21 +406,18 @@ app.post("/add-class.html", bodyParser.urlencoded({extended: false}), async func
 
         // otherwise display all available courses in table
         else {
-
-
-
+            //TBA
         }
     });
 });
 
 app.post("/drop-class.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
 
-
 });
 
 app.post("/create-class.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
 
-    // checks on data
+    // data valdiation for new class
     let regex = /(spring|summer|winter|fall) \d\d\d\d/i
     if (!regex.test(req.body.term)){
         console.log("Please enter a term in the following format: [Season] [yyyy]");
@@ -439,16 +431,17 @@ app.post("/create-class.html", bodyParser.urlencoded({extended: false}), async f
     }
 
     regex = /0-9/
-    if(!req.body.cournum){
+    if(!regex.test(req.body.cournum)){
         console.log("the course number must only contain numbers");
         return;
     }
 
-    if(!req.body.capac){
+    if(!regex.test(req.body.capac)){
         console.log("the capacity should be an integer");
+        return;
     }
 
-    // store values:
+    // store values for new class:
     let term = req.body.term;
     let courseName = req.body.courname;
     let courseNumber = req.body.cournum;
@@ -482,7 +475,56 @@ app.post("/delete-class.html", bodyParser.urlencoded({extended: false}), async f
 
 app.post("/change-password-student.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
 
+    // get user information from session
+    //TBA
 
+    // validate password information
+    let oldPassword = req.body.old;
+    let newPassword = req.body.new;
+    let confirmPassword = req.body["confirm-password"];
+
+    if (newPassword != confirmPassword){
+        console.log("The passwords you entered do not match, please try again");
+
+        //TBA
+
+        return;
+    }
+
+    // Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
+    regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+    // end adaptation
+
+    // if the regex is not secure enough
+    if (regex.test(newPassword) === false) {
+
+        console.log("password must contain a minimum eight characters, at least one uppercase letter, one lowercase letter and one");_
+
+        //display message under to tell password criteria
+        $(".password").after("<p>password must contain a minimum eight characters, at least one uppercase letter, one lowercase letter and one number</p>");
+
+        return;
+    }
+
+    //if successful validation then replace password in database
+    try {
+
+        // hashing new password
+        const newHashedPassword = await bcrypt.hash(req.body.password, 10);
+
+        // replacing the old password
+
+        // need to get user's logged in id
+
+        // userCreate.findOneAndUpdate({_id: [their id]}, {password: newHashedPassword}, { new: true }, function (err, userToUpdate){
+        // if (err) return console.error(err);
+        // done(null, userToUpdate);
+        // });
+
+        // confirmation message
+        console.log("Password Sucessfully changed");
+
+    } catch(err){console.log(err)};
 });
 
 app.post("/change-password-instructor.html", bodyParser.urlencoded({extended: false}), async function (req, res) {
