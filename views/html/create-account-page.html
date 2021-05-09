@@ -171,7 +171,9 @@
     <script>
 
         $(document).ready(function() {
-            $("#test").after("<p>test</p>");
+            $("#test").click(function(){
+                $("#test").after("<p>This is a test");
+            });
         });
 
     </script>
