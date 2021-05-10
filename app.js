@@ -238,7 +238,7 @@ app.post("/login-page-html.html", bodyParser.urlencoded({extended: false}), asyn
         // if the user is correct then check to see if passwords match
         if (foundUser) {
             req.session.user = {
-                usename: user.email,
+                username: user.email,
             }
 
             console.log("user found");
