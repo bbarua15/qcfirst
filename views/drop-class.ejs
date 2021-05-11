@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+  Name: Badhan Barua
+  Date: 04.20.2021
+  Section: CS 355
+
+  This page has a table of classes that a student selected.
+  The table has information about the classes they picked, such as instructor, credits and time/days.
+  From the table, the student can select the checkbox to specify which class they want to drop.
+-->
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Drop Class</title>
+        <link rel="stylesheet" href="/css/qcfirst-style.css">
+        <link rel="stylesheet" href="/css/style-qc.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src = "/js/jquery-3.6.0.js"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+
+       <body>
+          <!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
+          <header id="header">
+              <%- include ("./partials/header-student"); %>
+          </header>
+          <!-- end adaptation -->
+
+          <div class="flexbox">
+              <h2>Drop Class</h2>
+                <div class="table-responsive">
+                  <!-- Class with details which can be selected to drop -->
+                  <table class="center table-hover">
+                    <tr id="headline">
+                      <th>Select</th>
+                      <th>Class</th>
+                      <th>Instructor</th>
+                      <th>Credits</th>
+                      <th>Room</th>
+                      <th>Time/Days</th>
+                    </tr>
+
+                    <tr>
+                      <td><input type="checkbox" name="name1" />&nbsp;</td>
+                      <td>Example a</td>
+                      <td>Example b</td>
+                      <td>Example c</td>
+                      <td>Example d</td>
+                      <td>Example e</td>
+                    </tr>
+
+                    <tr>
+                      <td><input type="checkbox" name="name2" />&nbsp;</td>
+                      <td>Example a</td>
+                      <td>Example b</td>
+                      <td>Example c</td>
+                      <td>Example d</td>
+                      <td>Example e</td>
+                    </tr>
+
+                    <tr>
+                      <td><input type="checkbox" name="name1" />&nbsp;</td>
+                      <td>Example a</td>
+                      <td>Example b</td>
+                      <td>Example c</td>
+                      <td>Example d</td>
+                      <td>Example e</td>
+                    </tr>
+                  </table>
+                </div>
+
+                <form id="submit" method="POST" action="/drop-class.html">
+                  <input type="submit" id="confirm" name="confirm">
+                </form>
+          </div>
+
+          <!--footer-->
+          <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
+          <footer id="footer">
+               <%- include ("./partials/footer"); %>
+          </footer>
+          <!-- end adaptation -->
+
+      </body>
+</html>

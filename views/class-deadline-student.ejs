@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+  Name: Badhan Barua
+  Date: 04.20.2021
+  Section: CS 355
+
+  The class deadline page will contain a table showing which term and what time/day the student(s) can start enrolling in class.
+  With this, the students can keep track of when they can start enrolling and when is the last day to enroll in a class.
+-->
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Class Deadline</title>
+        <link rel="stylesheet" href="/css/qcfirst-style.css">
+        <link rel="stylesheet" href="/css/style-qc.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src = "/js/jquery-3.6.0.js"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+       <body>
+          <!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
+          <header id="header">
+               <%- include ("./partials/header-student"); %>
+          </header>
+          <!-- end adaptation -->
+
+          <div class="flexbox">
+            <!-- Class deadline details with term and date/time -->
+            <h2>Class Deadline</h2>
+              <div class="table-responsive">
+                <table class="center">
+                  <tr id="headline">
+                    <th>Term</th>
+                    <th>Enrollment Date and Time</th>
+                  </tr>
+
+                  <tr>
+                    <td>Spring 2021</td>
+                    <td>MM/DD/YYYY</td>
+                  </tr>
+
+                  <tr>
+                    <td>Fall 2021</td>
+                    <td>MM/DD/YYYY</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+          <!--footer-->
+          <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
+          <footer id="footer">
+              <!--footer-->
+              <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
+              <div class="footer-container">
+                  <div class="user-info">
+                      <p>Welcome to QC First</p>
+                  </div>
+
+                  <div class="inner-footer">
+
+                      <div class="logo-container">
+                          <img src="/img/logo%20footer.png" alt="logo">
+                      </div>
+
+                      <div class="footer-third">
+                          <h1>Need Help?</h1>
+                          <a href="http://www.cuny.edu/about/university-resources/tech-resources-help-desks/" target="_blank">Visit the Help Desk</a>
+                      </div>
+
+                      <div class="footer-third">
+                          <h1>Follow Us:</h1>
+                          <ol>
+                              <li><a href="https://www.facebook.com/QueensCollege/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                              <li><a href="https://www.instagram.com/queenscollegeofficial/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                              <li><a href="https://twitter.com/QC_News?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank"><i class="fa fa-twitter"></i></a></li>
+
+                          </ol>
+                      </div>
+
+                      <div class="footer-third">
+                          <h1>Information:</h1>
+                          <span>
+                                Address:<br>
+                                65-30 Kissena Blvd,<br>
+                                Flushing, NY 11367<br>
+                                Phone: (718) 997-5000<br>
+                            </span>
+                      </div>
+                  </div>
+              </div>
+              <!-- end adaptation -->
+
+          </footer>
+          <!-- end adaptation -->
+
+      </body>
+</html>
