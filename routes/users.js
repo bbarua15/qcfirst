@@ -118,7 +118,10 @@ router.post("/login", (req, res, next) => {
        //if error
        if (err) { return next(err); }
        // user not found
-       if (!user) { return res.redirect('/users/login'); }
+       if (!user) { 
+         req.flash("error_msg", "Invalid username or password.");
+         return res.redirect('/users/login'); 
+         }
 
       // establish session in application
        req.logIn(user, function(err) {

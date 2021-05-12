@@ -4,11 +4,13 @@
 module.exports = {
 
   ensureAuthenticated: function(req, res, next) {
-    if(req.isAuthenticated()) {
-      return next();
+    if (req.user.userType == "Student") {
+        if(req.isAuthenticated()) {
+        return next();
+      }
     }
-    
     req.flash("error_msg", "Access denied! Please log in to view this page");
     res.redirect("/users/login");
   }
+
 }
