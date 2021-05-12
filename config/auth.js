@@ -9,6 +9,7 @@ function ensureAuthenticatedStudent(req, res, next) {
     }
   }
   req.flash("error_msg", "Access denied! Please log in to view this page");
+  req.logout();
   res.redirect("/users/login");
 }
 
@@ -19,6 +20,7 @@ function ensureAuthenticatedInstructor(req, res, next) {
     }
   }
   req.flash("error_msg", "Access denied! Please log in to view this page");
+  req.logout();
   res.redirect("/users/login");
 }
 
@@ -29,6 +31,7 @@ function ensureAuthenticatedAdmin(req, res, next) {
     }
   }
   req.flash("error_msg", "Access denied! Please log in to view this page");
+  req.logout();
   res.redirect("/users/login");
 }
 
