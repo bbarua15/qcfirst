@@ -8,6 +8,7 @@ const { Schema } = mongoose;
 // schema for new Classes
 const CLASS  = new Schema({
     courseNumber: {type: Number},
+<<<<<<< HEAD
     semester: {type: String,},
     courseName: {type: String},
     department: {type: String},
@@ -17,6 +18,17 @@ const CLASS  = new Schema({
     schedule: {type: String},
     capacity: {type: Number},
     startDate: {type: Date, default: Date.now}
+=======
+    classDate: {type: Date, default: Date.now},
+    classDescription: {type: String},
+    capacity: {type: Number}
+    courseID: {type: Number},
+    semester: {type: String},
+    department: {type: String},
+    instructor: {type: String},
+    schedule: {type: Date},
+    enrollDeadline: {type: Date}
+>>>>>>> ee1dd75ab2eeaddb13d774af67d22544b218cfd1
 });
 
 //create model
