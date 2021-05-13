@@ -8,6 +8,8 @@ const passport = require("passport");
 // user model
 const classCreate = require("../models/classCreate");
 const userCreate =  require("../models/userCreate");
+const classDir =  require("../models/classDir");
+
 
 // login page
 router.get("/login", (req, res) => res.render("login-page-html"));
