@@ -8,10 +8,6 @@ const passport = require("passport");
 // user model
 const classCreate = require("../models/classCreate");
 const userCreate =  require("../models/userCreate");
-<<<<<<< HEAD
-=======
-
->>>>>>> ee1dd75ab2eeaddb13d774af67d22544b218cfd1
 
 // login page
 router.get("/login", (req, res) => res.render("login-page-html"));
