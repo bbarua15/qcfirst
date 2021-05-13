@@ -104,13 +104,13 @@ router.get("/instructor-course-dictionary", ensureAuthenticatedInstructor, (req,
 // create-class handle
 router.post("/create-class", (req, res) => {
 
-    const {courseNumber, semester, courseName, department, instructor,  description, schedule, capacity, startDate} = req.body;
+    const {courseNumber, semester, courseName, department, description, schedule, capacity, startDate} = req.body;
+    const instructor = req.body.firstName + " " + req.body.lastName;
 
     let errors = [];
 
     // check fields
-
-    if(!courseNumber || !semester || !courseName || !department || !instructor
+    if(!courseNumber || !semester || !courseName || !department
         || !description || !schedule || !capacity || !startDate) {
         errors.push({msg: "Please fill in all the fields."});
     }
@@ -157,7 +157,6 @@ router.post("/create-class", (req, res) => {
             semester,
             courseName,
             department,
-            instructor,
             description,
             capacity
         });
@@ -181,7 +180,6 @@ router.post("/create-class", (req, res) => {
                             semester,
                             courseName,
                             department,
-                            instructor,
                             description,
                             capacity
                         });
@@ -199,8 +197,6 @@ router.post("/create-class", (req, res) => {
                             schedule: schedule,
                             capacity: capacity
                         });
-
-                        //console.log(new_user);
 
                         new_class.save((err, data) => {
                             if (err) return console.error(err);
