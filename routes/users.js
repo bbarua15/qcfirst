@@ -6,17 +6,16 @@ const bcrypt = require('bcryptjs');
 const passport = require("passport");
 
 // user model
-const classCreate = require("../models/classCreate");
 const userCreate =  require("../models/userCreate");
 
 // login page
-router.get("/login", (req, res) => res.render("login-page-html"));
+router.get("/login", (req, res) => res.render("login-page"));
 
 // register page
 router.get("/register", (req, res) => res.render("create-account-page"));
 
 // forgot password page
-router.get("/forgot", (req, res) => res.render("forgot-password-html"));
+router.get("/forgot", (req, res) => res.render("forgot-password"));
 
 // register handle
 router.post("/register", async (req, res) => {
@@ -27,7 +26,7 @@ router.post("/register", async (req, res) => {
 
 // check fields
     if (!firstName || !lastName || !username || !password || !confirmPassword) {
-        errors.push({msg: "Please fill in all the fields"});
+        errors.push({msg: "Please fill in all the fields."});
     }
 
     // username check
@@ -37,8 +36,19 @@ router.post("/register", async (req, res) => {
     }
 
     // see if passwords match
-    if (password !== confirmPassword){
-        errors.push({msg: "Passwords do not match"});
+    if (password !== confirmPassword) {
+        errors.push({msg: "Passwords do not match!"});
+    }
+
+    // first name check
+    regex = /[a-zA-z]+/
+    if(regex.test(firstName) === false) {
+        errors.push({msg: "First names must only contain letters!"});
+    }
+
+    // last name check
+    if(regex.test(lastName) === false) {
+        errors.push({msg: "Last names must only contain letters!"});
     }
 
     // password strenth check
@@ -46,9 +56,10 @@ router.post("/register", async (req, res) => {
     regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
     // end adaptation
     if (regex.test(password) === false) {
-        errors.push({msg: "Passwords must contain a minimum of eight characters, at least one uppercase letter, one lowercase letter and one number"});
+        errors.push({msg: "Passwords must contain a minimum of eight characters, at least one uppercase letter, one lowercase letter and one number!"});
     }
 
+    // display errors
     if(errors.length > 0){
         res.render("create-account-page", {
             errors,

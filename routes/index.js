@@ -4,16 +4,20 @@ const express = require("express");
 const router = express.Router();
 const { ensureAuthenticatedStudent, ensureAuthenticatedInstructor, ensureAuthenticatedAdmin } = require("../config/auth");
 
+// user model
+const classCreate = require("../models/classCreate");
+const userCreate =  require("../models/userCreate");
+
 // home page
 router.get("/", (req, res) => res.render("index"));
 
 /*=======================================================*/
 
-// STUDENT PAGES
+// STUDENT PAGES GET
 
 // student dashboard
 router.get("/student-dashboard", ensureAuthenticatedStudent, (req, res, next) => {
-    res.render("student-dashboard-html",{firstName: req.user.firstName, lastName: req.user.lastName});
+    res.render("student-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName});
 });
 
 // change password student
@@ -43,16 +47,16 @@ router.get("/shopping-cart", ensureAuthenticatedStudent, (req, res) =>  {
 
 // student course dictionary
 router.get("/student-course-dictionary", ensureAuthenticatedStudent, (req, res) =>  {
-    res.render("student-course-dictionary-html",{firstName: req.user.firstName, lastName: req.user.lastName})
+    res.render("student-course-dictionary",{firstName: req.user.firstName, lastName: req.user.lastName})
 });
 
 /*=======================================================*/
 
-// INSTRUCTOR PAGES
+// INSTRUCTOR PAGES GET
 
 // instructor dashboard
 router.get("/instructor-dashboard", ensureAuthenticatedInstructor, (req, res) =>  {
-    res.render("instructor-dashboard-html",{firstName: req.user.firstName, lastName: req.user.lastName})
+    res.render("instructor-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName})
 });
 
 // change password instructor
@@ -77,15 +81,139 @@ router.get("/delete-class", ensureAuthenticatedInstructor, (req, res) =>  {
 
 // instructor course dictionary
 router.get("/instructor-course-dictionary", ensureAuthenticatedInstructor, (req, res) =>  {
-    res.render("instructor-course-dictionary-html",{firstName: req.user.firstName, lastName: req.user.lastName})
+    res.render("instructor-course-dictionary",{firstName: req.user.firstName, lastName: req.user.lastName})
 });
 
 /*=======================================================*/
 
-// ADMIN PAGES
+// ADMIN PAGES GET
 
 // admin dashboard
 // TBA
+
+/*=======================================================*/
+
+// STUDENT PAGES POST
+
+
+
+/*=======================================================*/
+
+// INSTRUCTOR PAGES POST
+
+// create-class handle
+router.post("/create-class", (req, res) => {
+
+    const {courseNumber, semester, courseName, department, instructor,  description, schedule, capacity, startDate} = req.body;
+
+    let errors = [];
+
+    // check fields
+
+    if(!courseNumber || !semester || !courseName || !department || !instructor
+        || !description || !schedule || !capacity || !startDate) {
+        errors.push({msg: "Please fill in all the fields."});
+    }
+
+    // courseNumber check
+    let regex = /[0-9]+/
+    if (regex.test(courseNumber) === false){
+        errors.push({msg: "Course Number must only contain digits!"});
+    }
+
+    // semester check
+    regex = /(SPRING|SUMMER|WINTER|FALL) \d\d\d\d/
+    if (regex.test(semester) === false) {
+        errors.push({msg: "Please enter a term in the following format: [SEASON] [yyyy]"});
+    }
+
+    // course name check
+    regex = /[a-zA-z]+/
+    if(regex.test(courseName) === false) {
+        errors.push({msg: "Courses must only contain letters!"});
+    }
+
+    // department check
+    if(regex.test(department) === false) {
+        errors.push({msg: "Departments must only contain letters!"});
+    }
+
+    // instructor name check
+    if(regex.test(instructor) === false) {
+        errors.push({msg: "Instructor names must only contain letters!"});
+    }
+
+    // capacity check
+    regex = /[0-9]+/
+    if (regex.test(capacity) === false){
+        errors.push({msg: "Class capacity must only contain digits!"});
+    }
+
+    // display errors
+    if(errors.length > 0) {
+        res.render("create-account-page", {
+            errors,
+            courseNumber,
+            semester,
+            courseName,
+            department,
+            instructor,
+            description,
+            capacity
+        });
+
+      // validation passes
+    } else {
+
+        try {
+
+            classCreate.findOne({courseNumber: courseNumber})
+                .then(foundClass => {
+
+                    // if class is found add another error
+                    if (foundClass) {
+
+                        errors.push({msg: "Class is already registered"});
+
+                        res.render("create-account-page", {
+                            errors,
+                            courseNumber,
+                            semester,
+                            courseName,
+                            department,
+                            instructor,
+                            description,
+                            capacity
+                        });
+                    } // end if class found
+
+                    else {
+                        //otherwise create new class
+                        let new_class = new classCreate({
+                            courseNumber: courseNumber,
+                            semester: semester,
+                            courseName: courseName,
+                            department: department,
+                            instructor: instructor,
+                            description: description,
+                            schedule: schedule,
+                            capacity: capacity
+                        });
+
+                        //console.log(new_user);
+
+                        new_class.save((err, data) => {
+                            if (err) return console.error(err);
+                            console.log("class saved");
+                            req.flash("success_msg", "Your class has been registered successfully!");
+                            res.redirect("/create-class");
+                        });
+                    }
+                });
+
+        } catch (err) {console.log(err);}
+    }
+});
 
 /*=======================================================*/
 

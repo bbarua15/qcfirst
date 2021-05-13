@@ -37,12 +37,14 @@
 
           <div class="flexbox">
             <h2>Create Class</h2>
-            <form id="input-background" method="POST" action="/create-class.html">
+            <form id="input-background" method="POST" action="/create-class">
             <fieldset>
               <legend>
                 <span class="info">1</span>Class Information
               </legend>
 
+              <!-- display error messages -->
+              <%- include ("./partials/messages"); %>
               <!-- Input details to create class -->
               <div class="vertical-container">
                 <label for="term">Term</label>
