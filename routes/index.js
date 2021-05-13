@@ -124,7 +124,7 @@ router.post("/create-class", (req, res) => {
     // semester check
     regex = /(SPRING|SUMMER|WINTER|FALL) \d\d\d\d/
     if (regex.test(semester) === false) {
-        errors.push({msg: "Please enter a term in the following format: [SEASON] [yyyy]"});
+        errors.push({msg: "Please enter a term in the following format: FALL/SPRING/WINTER/SUMMER [yyyy]"});
     }
 
     // course name check

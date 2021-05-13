@@ -10,74 +10,102 @@
 -->
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Create Class</title>
-        <link rel="stylesheet" href="/css/qcfirst-style.css">
-        <link rel="stylesheet" href="/css/style-qc.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Class</title>
+    <link rel="stylesheet" href="/css/qcfirst-style.css">
+    <link rel="stylesheet" href="/css/style-qc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script src = "/js/jquery-3.6.0.js"></script>
+    <script src = "/js/jquery-3.6.0.js"></script>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    </head>
-       <body>
-          <!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
-          <header id="header">
-                <%- include ("./partials/header-instructor"); %>
-          </header>
-          <!-- end adaptation -->
+</head>
+<body>
+<!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
+<header id="header">
+    <%- include ("./partials/header-instructor"); %>
+</header>
+<!-- end adaptation -->
 
-          <div class="flexbox">
-            <h2>Create Class</h2>
-            <form id="input-background" method="POST" action="/create-class">
-            <fieldset>
-              <legend>
+<div class="flexbox">
+    <h2>Create Class</h2>
+
+    <!-- display error messages -->
+    <%- include ("./partials/messages"); %>
+
+    <form id="input-background" method="POST" action="/create-class">
+        <fieldset>
+            <legend>
                 <span class="info">1</span>Class Information
-              </legend>
+            </legend>
+            <!-- Input details to create class -->
+            <div class="vertical-container">
 
-              <!-- display error messages -->
-              <%- include ("./partials/messages"); %>
-              <!-- Input details to create class -->
-              <div class="vertical-container">
-                <label for="term">Term</label>
-                <input type="text" id="term" name="term" placeholder="">
-                <label for="courname">Course Name</label>
-                <input type="text" id="courname" name="courname" placeholder="">
-                <label for="cournum">Course Number</label>
-                <input type="text" id="cournum" name="cournum" placeholder="">
-                <label for="time">Time and Days</label>
-                <input type="datetime-local" id="time" name="time">
-              </div>
-            </fieldset>
+                <label for="courseNumber">Course Number</label>
+                <input type="number" id="courseNumber" name="courseNumber" placeholder="Course Number">
 
-            <fieldset>
-              <legend>
+                <label for="semester">Semester</label>
+                <input type="text" id="semester" name="semester" placeholder="FALL/WINTER/SPRING/SUMMER [YYYY]">
+
+                <label for="courseName">Course Name</label>
+                <input type="text" id="courseName" name="courseName" placeholder="Course Name">
+
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department" placeholder="Department">
+
+                <label for="instructor">Instructor</label>
+                <input type="text" id="instructor" name="instructor" placeholder="Instructor">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>
                 <span class="info">2</span>Additional Class Information</legend>
-                  <div class="vertical-container">
-                    <label for="desc">Description of Course</label>
-                    <textarea id="desc" name="desc"></textarea><br>
-                    <label for="capac">Capacity</label>
-                    <input type="text" id="capac" name="capac" placeholder="">
-                    <input type="submit" id="confirm" name="confirm">
-                  </div>
-            </fieldset>
-          </form>
-        </div>
+            <div class="vertical-container">
 
-        <!--footer-->
-        <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
-        <footer id="footer">
-            <%- include ("./partials/footerUser"); %>
-        </footer>
-        <!-- end adaptation -->
+                <label for="description">Description of Course</label>
+                <textarea id="description" name="description" placeholder="Please enter a description..."></textarea><br>
 
-      </body>
+                <label for="schedule">Schedule</label>
+                <select name="schedule" id="schedule">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday & Wednesday">Monday & Wednesday</option>
+                    <option value="Tuesday & Thursday">Tuesday & Thursday</option>
+                </select>
+
+                <label for="capacity">Capacity</label>
+                <input type="number" id="capacity" name="capacity" placeholder="Enter capacity">
+
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" name="startDate">
+
+                <button type="submit" id="create" name="create">Create</button>
+
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<!--footer-->
+<!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
+<footer id="footer">
+    <%- include ("./partials/footerUser"); %>
+</footer>
+<!-- end adaptation -->
+
+</body>
 </html>

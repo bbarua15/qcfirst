@@ -95,7 +95,8 @@ label {
   border-radius: 100%;
 }
 
-#input-background input[type="text"], #input-background input[type="email"], #input-background input[type="password"], #input-background input[type="datetime-local"], textarea, select {
+#input-background input[type="text"], #input-background input[type="email"], #input-background input[type="password"],
+#input-background input[type="datetime-local"], textarea, select, #input-background input[type="date"], #input-background input[type="number"] {
   border: none;
   font-size: 16px;
   height: auto;
@@ -108,7 +109,8 @@ label {
   margin: 0 0 30px;
 }
 
-#input-background [type=text]:focus, #input-background [type=email]:focus, #input-background [type=password]:focus, [type="datetime-local"]:focus {
+#input-background [type=text]:focus, #input-background [type=email]:focus, #input-background [type=password]:focus, #input-background [type="datetime-local"]:focus,
+#input-background [type="number"]:focus, #input-background [type="date"]:focus, textarea:focus {
 	background-color: #fccece;
 	border: 2px solid #d9162e;
 }
