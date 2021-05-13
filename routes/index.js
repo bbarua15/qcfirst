@@ -107,6 +107,8 @@ router.post("/create-class", (req, res) => {
     const {courseNumber, semester, courseName, department, description, schedule, capacity, startDate} = req.body;
     const instructor = req.user.firstName + " " + req.user.lastName;
 
+    console.log(req.user);
+
     let errors = [];
 
     // check fields
@@ -161,7 +163,7 @@ router.post("/create-class", (req, res) => {
             capacity
         });
 
-      // validation passes
+        // validation passes
     } else {
 
         try {
@@ -186,7 +188,7 @@ router.post("/create-class", (req, res) => {
                     } // end if class found
 
                     else {
-                        //otherwise create new class
+                        //otherwise create new class and add to instructor's class list
                         let new_class = new classCreate({
                             courseNumber: courseNumber,
                             semester: semester,
@@ -198,12 +200,28 @@ router.post("/create-class", (req, res) => {
                             capacity: capacity
                         });
 
+                        // save class
                         new_class.save((err, data) => {
                             if (err) return console.error(err);
                             console.log("class saved");
                             req.flash("success_msg", "Your class has been registered successfully!");
                             res.redirect("/create-class");
                         });
+
+                        // push class onto instructor's class list
+                        // adapted from: [5/13/2021]: https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-perform-classic-updates-by-running-find-edit-then-save/301541
+                        userCreate.findById(req.user._id, (err, instructorID) => {
+                            if (err) return console.error(err);
+
+                            // add created class to the instructor's class array
+                            instructorID.classes.push(new_class);
+
+                            // save the updated instructor
+                            instructorID.save((err, updated) => {
+                                if (err) return console.error(err);
+                            });
+                        });
+                        // end adaptation
                     }
                 });
 

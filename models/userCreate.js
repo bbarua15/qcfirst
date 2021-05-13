@@ -7,12 +7,16 @@ const { Schema } = mongoose;
 
 // schema for new Classes
 const CLASS  = new Schema({
-    term: {type: String,},
-    courseName: {type: String},
     courseNumber: {type: Number},
-    classDate: {type: Date, default: Date.now},
-    classDescription: {type: String},
-    capacity: {type: Number}
+    semester: {type: String,},
+    courseName: {type: String},
+    department: {type: String},
+    instructor: {type: String},
+    rosterStudent: {type: [String]},
+    description: {type: String},
+    schedule: {type: String},
+    capacity: {type: Number},
+    startDate: {type: Date, default: Date.now}
 });
 
 // schema for new Users
