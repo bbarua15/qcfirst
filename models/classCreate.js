@@ -13,6 +13,12 @@ const CLASS  = new Schema({
     classDate: {type: Date, default: Date.now},
     classDescription: {type: String},
     capacity: {type: Number}
+    courseID: {type: Number},
+    semester: {type: String},
+    department: {type: String},
+    instructor: {type: String},
+    schedule: {type: Date},
+    enrollDeadline: {type: Date}
 });
 
 //create model
