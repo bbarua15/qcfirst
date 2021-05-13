@@ -105,7 +105,7 @@ router.get("/instructor-course-dictionary", ensureAuthenticatedInstructor, (req,
 router.post("/create-class", (req, res) => {
 
     const {courseNumber, semester, courseName, department, description, schedule, capacity, startDate} = req.body;
-    const instructor = req.body.firstName + " " + req.body.lastName;
+    const instructor = req.user.firstName + " " + req.user.lastName;
 
     let errors = [];
 
