@@ -47,7 +47,11 @@ router.get("/shopping-cart", ensureAuthenticatedStudent, (req, res) =>  {
 
 // student course dictionary
 router.get("/student-course-dictionary", ensureAuthenticatedStudent, (req, res) =>  {
-    res.render("student-course-dictionary",{firstName: req.user.firstName, lastName: req.user.lastName})
+    classCreate.find({}, function(err, classes) {
+      res.render("instructor-course-dictionary", {
+        firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
+    }) 
+  })
 });
 
 /*=======================================================*/
@@ -82,9 +86,9 @@ router.get("/delete-class", ensureAuthenticatedInstructor, (req, res) =>  {
 // instructor course dictionary
 router.get("/instructor-course-dictionary", ensureAuthenticatedInstructor, (req, res) =>  {
   classCreate.find({}, function(err, classes) {
-    res.render("instructor-course-dictionary", {firstName: req.user.firstName, lastName: req.user.lastName,
-       classList: classes
-      }) 
+    res.render("instructor-course-dictionary", {
+      firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
+    }) 
   })
 });
 

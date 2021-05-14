@@ -60,48 +60,29 @@
                     <h1 class="header">Course Dictionary</h1>
                 </div>
 
-                <!-- Adapted from [4/16/2021]:https://getbootstrap.com/docs/4.0/content/tables/, https://medium.com/appnroll-publication/5-practical-solutions-to-make-responsive-data-tables-ff031c48b122 -->
+                <!-- Adapted from [4/16/2021]:https://getbootstrap.com/docs/4.0/content/tables/, https://medium.com/appnroll-publication/5-practical-solutions-to-make-responsive-data-tables-ff031c48b122, https://stackoverflow.com/questions/56215465/how-to-fetch-data-from-mongodb-and-display-it-in-a-table-using-node-js -->
                 <table class="table-dark table-bordered table-sm center">
                     <tr>
-                        <th>Course Id</th>
+                        <th>Course Number</th>
                         <th>Semester</th>
                         <th>Course Name</th>
                         <th>Department</th>
                         <th>Instructor</th>
                         <th>Description</th>
                         <th>Schedule</th>
-                        <th>Enrollment Deadline</th>
                     </tr>
+
+                    <% classList.forEach(function(item){ %>
                     <tr>
-                        <td>Test a</td>
-                        <td>Test b</td>
-                        <td>Test c</td>
-                        <td>Test d</td>
-                        <td>Test e</td>
-                        <td>Test f</td>
-                        <td>Test g</td>
-                        <td>Test h</td>
-                    </tr>
-                    <tr>
-                        <td>Test a</td>
-                        <td>Test b</td>
-                        <td>Test c</td>
-                        <td>Test d</td>
-                        <td>Test e</td>
-                        <td>Test f</td>
-                        <td>Test g</td>
-                        <td>Test h</td>
-                    </tr>
-                    <tr>
-                        <td>Test a</td>
-                        <td>Test b</td>
-                        <td>Test c</td>
-                        <td>Test d</td>
-                        <td>Test e</td>
-                        <td>Test f</td>
-                        <td>Test g</td>
-                        <td>Test h</td>
-                    </tr>
+                      <td><%= item.courseNumber %></td>
+                      <td><%= item.semester %></td>
+                      <td><%= item.courseName %></td>
+                      <td><%= item.department %></td>
+                      <td><%= item.instructor %></td>
+                      <td><%= item.description %></td>
+                      <td><%= item.schedule %></td>
+                  </tr>
+                  <% }) %>
                 </table>
                 <!-- end adaptation -->
             </section>
