@@ -81,7 +81,11 @@ router.get("/delete-class", ensureAuthenticatedInstructor, (req, res) =>  {
 
 // instructor course dictionary
 router.get("/instructor-course-dictionary", ensureAuthenticatedInstructor, (req, res) =>  {
-    res.render("instructor-course-dictionary",{firstName: req.user.firstName, lastName: req.user.lastName})
+  classCreate.find({}, function(err, classes) {
+    res.render("instructor-course-dictionary", {firstName: req.user.firstName, lastName: req.user.lastName,
+       classList: classes
+      }) 
+  })
 });
 
 /*=======================================================*/
