@@ -2,6 +2,8 @@
 
 const express = require("express");
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
 const { ensureAuthenticatedStudent, ensureAuthenticatedInstructor, ensureAuthenticatedAdmin } = require("../config/auth");
 
 // user model
@@ -48,10 +50,10 @@ router.get("/shopping-cart", ensureAuthenticatedStudent, (req, res) =>  {
 // student course dictionary
 router.get("/student-course-dictionary", ensureAuthenticatedStudent, (req, res) =>  {
     classCreate.find({}, function(err, classes) {
-      res.render("instructor-course-dictionary", {
-        firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
-    }) 
-  })
+        res.render("instructor-course-dictionary", {
+            firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
+        })
+    })
 });
 
 /*=======================================================*/
@@ -85,11 +87,11 @@ router.get("/delete-class", ensureAuthenticatedInstructor, (req, res) =>  {
 
 // instructor course dictionary
 router.get("/instructor-course-dictionary", ensureAuthenticatedInstructor, (req, res) =>  {
-  classCreate.find({}, function(err, classes) {
-    res.render("instructor-course-dictionary", {
-      firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
-    }) 
-  })
+    classCreate.find({}, function(err, classes) {
+        res.render("instructor-course-dictionary", {
+            firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
+        })
+    })
 });
 
 /*=======================================================*/
@@ -114,15 +116,15 @@ router.post("/create-class", (req, res) => {
 
     const {courseNumber, semester, courseName, department, description, schedule, capacity, startDate} = req.body;
     const instructor = req.user.firstName + " " + req.user.lastName;
-
-    console.log(req.user);
+    const firstName = req.user.firstName;
+    const lastName = req.user.lastName;
 
     let errors = [];
 
     // check fields
     if(!courseNumber || !semester || !courseName || !department
         || !description || !schedule || !capacity || !startDate) {
-        errors.push({msg: "Please fill in all the fields."});
+        errors.push({msg: "Please fill in all the fields!"});
     }
 
     // courseNumber check
@@ -161,8 +163,10 @@ router.post("/create-class", (req, res) => {
 
     // display errors
     if(errors.length > 0) {
-        res.render("create-account-page", {
+        res.render("create-class", {
             errors,
+            firstName,
+            lastName,
             courseNumber,
             semester,
             courseName,
@@ -184,8 +188,10 @@ router.post("/create-class", (req, res) => {
 
                         errors.push({msg: "Class is already registered"});
 
-                        res.render("create-account-page", {
+                        res.render("create-class", {
                             errors,
+                            firstName,
+                            lastName,
                             courseNumber,
                             semester,
                             courseName,
@@ -232,6 +238,79 @@ router.post("/create-class", (req, res) => {
                         // end adaptation
                     }
                 });
+
+        } catch (err) {console.log(err);}
+    }
+});
+
+// change password instructor handle
+router.post("/change-password-instructor", async (req, res) => {
+
+    const oldPassword = req.body.old;
+    const newPassword = req.body.new;
+    const newConfirmPassword = req.body.confirmPassword;
+    const currentPassword = req.user.password;
+    const firstName = req.user.firstName;
+    const lastName = req.user.lastName;
+
+    var errors = [];
+
+    // check fields
+    if(!oldPassword || !newPassword || !newConfirmPassword) {
+        errors.push({msg: "Please fill in all the fields!"});
+    }
+
+    // see if passwords match
+    if (newPassword !== newConfirmPassword) {
+        errors.push({msg: "The confirm password field does not match!"});
+    }
+
+    // password strenth check
+    // adapted from: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+    regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+    // end adaptation
+    if (regex.test(newPassword) === false) {
+        errors.push({msg: "Passwords must contain a minimum of eight characters, at least one uppercase letter, one lowercase letter and one number!"});
+    }
+
+    // check if the old password exists in the database
+    await bcrypt.compare(oldPassword, currentPassword).then((err, result) => {
+        if(err) return console.log(err);
+        if(!result) {
+            errors.push({msg: "The password you entered does not match the one saved in our records."});
+        }
+    });
+
+    // display errors
+    if(errors.length > 0) {
+        res.render("change-password-instructor", {
+            errors,
+            firstName,
+            lastName,
+            oldPassword,
+            newPassword,
+            newConfirmPassword
+        });
+
+        // validation passes
+    } else {
+
+        try {
+
+            // hashing password
+            const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+            // stop warning
+            mongoose.set('useFindAndModify', false);
+
+            // find and update user
+            await userCreate.findOneAndUpdate({_id: req.user._id}, {password: hashedPassword}, {
+                new: true
+            });
+
+            console.log("Password Updated for Instructor");
+            req.flash("success_msg", "Password successfully updated!");
+            res.redirect("/change-password-instructor");
 
         } catch (err) {console.log(err);}
     }
