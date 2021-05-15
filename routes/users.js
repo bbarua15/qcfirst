@@ -4,6 +4,8 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require("passport");
+const nodemailer = require('nodemailer');
+const mongoose = require('mongoose');
 
 // user model
 const userCreate =  require("../models/userCreate");
@@ -78,6 +80,9 @@ router.post("/register", async (req, res) => {
             // hashing password
             const hashedPassword = await bcrypt.hash(password, 10);
 
+            // stop warning
+            mongoose.set('useFindAndModify', false);
+
             // see if user is already in database, otherwise display error and create a new user
             userCreate.findOne({userName: username})
                 .then(foundUser => {
@@ -119,6 +124,76 @@ router.post("/register", async (req, res) => {
                 });
         } catch (err) {console.log(err);}
     }
+});
+
+// forgot password handle
+// register handle
+router.post("/forgot", async (req, res) => {
+
+    // store entered email
+    let email = req.body.register;
+
+    let errors = [];
+
+    // adapted from: https://stackoverflow.com/questions/2175512/javascript-expression-to-generate-a-5-digit-number-in-every-case
+    let tempPass = Math.floor(Math.random()*90000) + 10000;
+    tempPass = tempPass.toString();
+    // end adaptation
+
+    try {
+
+        // temp password to be stored in database
+        const hashedPassword = await bcrypt.hash(tempPass, 10);
+
+        // stop warning
+        mongoose.set('useFindAndModify', false);
+
+        // change password of user to temp one
+        await userCreate.findOneAndUpdate({userName: email}, {password: hashedPassword}, { new: true }, (err, updated) => {
+
+            // error
+            if (err) return console.error(err);
+
+            // user not found
+            if (!updated) {
+                errors.push({msg: "Email address could not be found in the system."});
+                res.render("forgot-password", { errors, email });
+            }
+
+            // user found
+            if (updated) {
+                // send email
+                // adapted fromc[5/14/2021]: https://www.w3schools.com/nodejs/nodejs_email.asp
+                var transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'MarinosCS355@gmail.com',
+                        pass: 'Email12345'
+                    }
+                });
+
+                var mailOptions = {
+                    from: 'MarinosCS355@gmail.com',
+                    to: email,
+                    subject: 'Temporary Password Notice',
+                    text: 'Your temporary password is: ' + "\"" + tempPass + "\"." + " Please log in into your account to change it to a more secure one!"
+                };
+
+                transporter.sendMail(mailOptions, (err, info) => {
+                    if (err) {console.log(err);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                        req.flash("success_msg", "A temporary password has been sent to your email.");
+                        res.redirect("/users/forgot");
+                    }
+                });
+                // end adaptation
+            }
+
+        });
+
+    } catch (err) {return console.log(err)};
+
 });
 
 // login handle
