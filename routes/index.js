@@ -105,7 +105,78 @@ router.get("/instructor-course-dictionary", ensureAuthenticatedInstructor, (req,
 
 // STUDENT PAGES POST
 
+// change password student handle
+router.post("/change-password-student", async (req, res) => {
 
+    const oldPassword = req.body.old;
+    const newPassword = req.body.new;
+    const newConfirmPassword = req.body.confirmPassword;
+    const currentPassword = req.user.password;
+    const firstName = req.user.firstName;
+    const lastName = req.user.lastName;
+
+    var errors = [];
+
+    // check fields
+    if(!oldPassword || !newPassword || !newConfirmPassword) {
+        errors.push({msg: "Please fill in all the fields!"});
+    }
+
+    // see if passwords match
+    if (newPassword !== newConfirmPassword) {
+        errors.push({msg: "The confirm password field does not match!"});
+    }
+
+    // password strenth check
+    // adapted from: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+    regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+    // end adaptation
+    if (regex.test(newPassword) === false) {
+        errors.push({msg: "Passwords must contain a minimum of eight characters, at least one uppercase letter, one lowercase letter and one number!"});
+    }
+
+    // check if the old password exists in the database
+    await bcrypt.compare(oldPassword, currentPassword).then((err, result) => {
+        if(err) return console.log(err);
+        if(!result) {
+            errors.push({msg: "The password you entered does not match the one saved in our records."});
+        }
+    });
+
+    // display errors
+    if(errors.length > 0) {
+        res.render("change-password-student", {
+            errors,
+            firstName,
+            lastName,
+            oldPassword,
+            newPassword,
+            newConfirmPassword
+        });
+
+        // validation passes
+    } else {
+
+        try {
+
+            // hashing password
+            const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+            // stop warning
+            mongoose.set('useFindAndModify', false);
+
+            // find and update user
+            await userCreate.findOneAndUpdate({_id: req.user._id}, {password: hashedPassword}, {
+                new: true
+            });
+
+            console.log("Password Updated for Student");
+            req.flash("success_msg", "Password successfully updated!");
+            res.redirect("/change-password-student");
+
+        } catch (err) {console.log(err);}
+    }
+});
 
 /*=======================================================*/
 
