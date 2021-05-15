@@ -53,7 +53,7 @@ router.get("/student-course-dictionary", ensureAuthenticatedStudent, (req, res) 
         res.render("student-course-dictionary", {
             firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
         })
-    })
+    }).sort({"semester": 1})
 });
 
 /*=======================================================*/
