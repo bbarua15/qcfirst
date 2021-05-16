@@ -186,6 +186,35 @@ router.post("/change-password-student", async (req, res) => {
     }
 });
 
+// student course dictionary handle
+// adapted from [5/15/2021]: https://docs.mongodb.com/manual/reference/operator/query/regex/, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions, https://www.semicolonworld.com/question/47801/node-js-and-mongoose-regex-query-on-multiple-fields
+router.post("/student-course-dictionary", async (req, res) => {
+
+    let firstName = req.user.firstName;
+    let lastName = req.user.lastName;
+
+// store search result
+    let searchResult = req.body.search;
+    let regex = new RegExp(searchResult, "i");
+
+    await classCreate.find().or([
+        {semester: {$regex: regex}},
+        {courseName: {$regex: regex}},
+        {department: {$regex: regex}},
+        {instructor: {$regex: regex}},
+        {description: {$regex: regex}},
+        {schedule: {$regex: regex}}]).exec((err, classList) => {
+        if(err) return console.log(err);
+
+        res.render("student-course-dictionary", {
+            classList,
+            firstName,
+            lastName
+        });
+    });
+});
+// end adaptation
+
 /*=======================================================*/
 
 // INSTRUCTOR PAGES POST

@@ -10,92 +10,94 @@
 -->
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Course Dictionary Student</title>
-        <link rel="stylesheet" href="/css/qcfirst-style.css">
-        <link rel="stylesheet" href="/css/style-qc.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Dictionary Student</title>
+    <link rel="stylesheet" href="/css/qcfirst-style.css">
+    <link rel="stylesheet" href="/css/style-qc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script src = "/js/jquery-3.6.0.js"></script>
+    <script src = "/js/jquery-3.6.0.js"></script>
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-        <!-- Bootstrap JavaScript -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-        <!-- font-awesome -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-    <!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
-    <header id="header">
-        <%- include ("./partials/header-student"); %>
-    </header>
-    <!-- end adaptation -->
+<!-- adapted from [3/30/2021] https://www.youtube.com/watch?v=IvQAfNWnSYc&ab_channel=OnlineTutorials -->
+<header id="header">
+    <%- include ("./partials/header-student"); %>
+</header>
+<!-- end adaptation -->
 
-    <div class="flexbox library">
+<div class="flexbox library">
 
-        <!-- search bar -->
-        <!-- Adapted from [4/1/2021]: https://mdbootstrap.com/docs/standard/forms/search/-->
+    <!-- search bar -->
+    <form id="dict" method="POST" action="student-course-dictionary">
         <div class="form-outline">
-            <input type="search" id="form1" class="form-control" placeholder="Type query"
-                   aria-label="Search"/>
+            <!-- taken from: https://www.w3schools.com/howto/howto_css_search_button.asp -->
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
         </div>
+    </form>
 
-        <!-- end adaptation -->
-
-        <div class="table-responsive">
-        <!-- display courses -->
-            <section id="input">
-        
-                <div class="container">
-                    <!-- additional heading -->
-                    <h1 class="header">Course Dictionary</h1>
-                </div>
-
-                <!-- Adapted from [4/16/2021]:https://getbootstrap.com/docs/4.0/content/tables/, https://medium.com/appnroll-publication/5-practical-solutions-to-make-responsive-data-tables-ff031c48b122, https://stackoverflow.com/questions/56215465/how-to-fetch-data-from-mongodb-and-display-it-in-a-table-using-node-js -->
-                <table class="table-dark table-bordered table-sm center">
-                    <tr>
-                        <th>Course Number</th>
-                        <th>Semester</th>
-                        <th>Course Name</th>
-                        <th>Department</th>
-                        <th>Instructor</th>
-                        <th>Description</th>
-                        <th>Schedule</th>
-                    </tr>
-
-                    <% classList.forEach(function(item){ %>
-                    <tr>
-                      <td><%= item.courseNumber %></td>
-                      <td><%= item.semester %></td>
-                      <td><%= item.courseName %></td>
-                      <td><%= item.department %></td>
-                      <td><%= item.instructor %></td>
-                      <td><%= item.description %></td>
-                      <td><%= item.schedule %></td>
-                  </tr>
-                  <% }) %>
-                </table>
-                <!-- end adaptation -->
-            </section>
-        </div>
-	</div>
-
-    <!--footer-->
-    <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
-    <footer id="footer">
-        <%- include ("./partials/footerUser"); %>
-    </footer>
     <!-- end adaptation -->
 
-    </body>
+    <div class="table-responsive">
+        <!-- display courses -->
+        <section id="input">
+
+            <div class="container">
+                <!-- additional heading -->
+                <h1 class="header">Course Dictionary</h1>
+            </div>
+
+            <!-- Adapted from [4/16/2021]:https://getbootstrap.com/docs/4.0/content/tables/, https://medium.com/appnroll-publication/5-practical-solutions-to-make-responsive-data-tables-ff031c48b122, https://stackoverflow.com/questions/56215465/how-to-fetch-data-from-mongodb-and-display-it-in-a-table-using-node-js -->
+            <table class="table-dark table-bordered table-sm center">
+                <tr>
+                    <th>Course Number</th>
+                    <th>Semester</th>
+                    <th>Course Name</th>
+                    <th>Department</th>
+                    <th>Instructor</th>
+                    <th>Description</th>
+                    <th>Schedule</th>
+                </tr>
+
+                <% classList.forEach(function(item){ %>
+                    <tr>
+                        <td><%= item.courseNumber %></td>
+                        <td><%= item.semester %></td>
+                        <td><%= item.courseName %></td>
+                        <td><%= item.department %></td>
+                        <td><%= item.instructor %></td>
+                        <td><%= item.description %></td>
+                        <td><%= item.schedule %></td>
+                    </tr>
+                <% }) %>
+            </table>
+            <!-- end adaptation -->
+        </section>
+    </div>
+</div>
+
+<!--footer-->
+<!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
+<footer id="footer">
+    <%- include ("./partials/footerUser"); %>
+</footer>
+<!-- end adaptation -->
+
+</body>
 
 </html>
