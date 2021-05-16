@@ -42,11 +42,13 @@
     <div class="flexbox library">
 
         <!-- search bar -->
-        <!-- Adapted from [4/1/2021]: https://mdbootstrap.com/docs/standard/forms/search/-->
-        <div class="form-outline">
-            <input type="search" id="form1" class="form-control" placeholder="Type query"
-                       aria-label="Search"/>
-        </div>
+        <form id="dict" method="POST" action="instructor-course-dictionary">
+            <div class="form-outline">
+                <!-- taken from: https://www.w3schools.com/howto/howto_css_search_button.asp -->
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
         <!-- end adaptation -->
 
         <div class="table-responsive">
