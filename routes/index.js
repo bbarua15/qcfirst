@@ -29,11 +29,11 @@ router.get("/change-password-student", ensureAuthenticatedStudent, (req, res) =>
 
 // class deadline student
 router.get("/class-deadline-student", ensureAuthenticatedStudent, (req, res) => {
-	classCreate.find({}, function(err, classes) {
-		res.render("class-deadline-student", {
-			firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
-    	})
-  	})
+  classCreate.find({}, function(err, classes) {
+    res.render("class-deadline-student", {
+      firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
+    })
+  })
 });
 
 // add class
@@ -76,11 +76,11 @@ router.get("/change-password-instructor", ensureAuthenticatedInstructor, (req, r
 
 // class deadline instructor
 router.get("/class-deadline-instructor", ensureAuthenticatedInstructor, (req, res) => {
-	classCreate.find({}, function(err, classes) {
-		res.render("class-deadline-instructor", {
-			firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
-    	})
-  	})
+  classCreate.find({}, function(err, classes) {
+    res.render("class-deadline-instructor", {
+      firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
+    })
+  })
 });
 
 // create class
@@ -95,7 +95,7 @@ router.get("/delete-class", ensureAuthenticatedInstructor, (req, res) =>  {
 
 // instructor course dictionary
 router.get("/instructor-course-dictionary", ensureAuthenticatedInstructor, (req, res) =>  {
-    classCreate.find({}, function(err, classes) {
+	classCreate.find({}, function(err, classes) {
         res.render("instructor-course-dictionary", {
             firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
         })
