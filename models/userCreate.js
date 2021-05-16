@@ -7,7 +7,7 @@ const { Schema } = mongoose;
 
 // schema for new Classes
 const CLASS  = new Schema({
-    courseNumber: {type: Number},
+    courseNumber: {type: String},
     semester: {type: String,},
     courseName: {type: String},
     department: {type: String},

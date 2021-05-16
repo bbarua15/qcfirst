@@ -198,6 +198,7 @@ router.post("/student-course-dictionary", async (req, res) => {
     let regex = new RegExp(searchResult, "i");
 
     await classCreate.find().or([
+        {courseNumber: {$regex: regex}},
         {semester: {$regex: regex}},
         {courseName: {$regex: regex}},
         {department: {$regex: regex}},
