@@ -34,7 +34,7 @@ router.post("/register", async (req, res) => {
     // username check
     regex = /^.*@qmail.cuny.edu$/
     if (regex.test(username) === false) {
-        errors.push({msg: "Usernames must end with \"@login.cuny.edu\""});
+        errors.push({msg: "Usernames must end with \"@qmail.cuny.edu\""});
     }
 
     // see if passwords match
