@@ -270,6 +270,71 @@ router.post("/add-class", async (req, res) => {
 
 });
 
+//drop class handle
+router.post("/drop-class", async (req, res) => {
+
+    let firstName = req.user.firstName;
+    let lastName = req.user.lastName;
+    let classList = req.user.classes;
+    let errors = [];
+
+    // store course value
+    let courseToDrop = req.body.dropField;
+
+    // see if class exists
+    await userCreate.findOne({_id: req.user.id, "classes.courseNumber": courseToDrop}, {"classes.$": 1}, (err, found) => {
+
+        // if error
+        if(err) return console.log(err);
+
+        // if result is not in instructor's class list
+        if(!found) {
+            errors.push({msg: "The course number you entered does not match the one saved in our records."});
+        }
+    });
+
+    // display errors
+    if(errors.length > 0) {
+        res.render("drop-class", {
+            errors,
+            firstName,
+            lastName,
+            classList
+        });
+        return;
+    }
+
+    // dop class from user
+    userCreate.updateOne({ _id: req.user.id }, { "$pull": { "classes": { "courseNumber": courseToDrop } }}, { safe: true, multi:true }, (err, obj) => {
+
+        // if error
+        if (err) return console.log(err);
+
+        // if result is not in student's class list
+        if (!obj) {
+            errors.push({msg: "The course number you entered does not match the one saved in our records."});
+
+            res.render("drop-class", {
+                errors,
+                classList,
+                firstName,
+                lastName
+            });
+        }
+
+        if (obj) {
+
+            // drop from class list
+            classCreate.deleteOne({courseNumber: courseToDrop}, (err, found) => {
+                if(err) return console.log(err);
+                console.log("Class dropped");
+                req.flash("success_msg", "Class dropped successfully!");
+                res.redirect("/drop-class");
+            });
+
+        }
+    });
+});
 
 
 
