@@ -66,7 +66,7 @@ router.get("/add-class", ensureAuthenticatedStudent, async (req, res) => {
 
 // drop class
 router.get("/drop-class", ensureAuthenticatedStudent, (req, res) => {
-    res.render("drop-class",{firstName: req.user.firstName, lastName: req.user.lastName})
+    res.render("drop-class",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes})
 });
 
 // shopping cart
@@ -269,6 +269,8 @@ router.post("/add-class", async (req, res) => {
     });
 
 });
+
+
 
 
 /*=======================================================*/
