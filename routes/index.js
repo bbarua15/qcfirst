@@ -29,11 +29,11 @@ router.get("/change-password-student", ensureAuthenticatedStudent, (req, res) =>
 
 // class deadline student
 router.get("/class-deadline-student", ensureAuthenticatedStudent, (req, res) => {
-  classCreate.find({}, function(err, classes) {
-    res.render("class-deadline-student", {
-      firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
+    classCreate.find({}, function(err, classes) {
+        res.render("class-deadline-student", {
+            firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
+        })
     })
-  })
 });
 
 // add class
@@ -76,11 +76,11 @@ router.get("/change-password-instructor", ensureAuthenticatedInstructor, (req, r
 
 // class deadline instructor
 router.get("/class-deadline-instructor", ensureAuthenticatedInstructor, (req, res) => {
-  classCreate.find({}, function(err, classes) {
-    res.render("class-deadline-instructor", {
-      firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
+    classCreate.find({}, function(err, classes) {
+        res.render("class-deadline-instructor", {
+            firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
+        })
     })
-  })
 });
 
 // create class
@@ -90,12 +90,12 @@ router.get("/create-class", ensureAuthenticatedInstructor, (req, res) =>  {
 
 // delete class
 router.get("/delete-class", ensureAuthenticatedInstructor, (req, res) =>  {
-    res.render("delete-class",{firstName: req.user.firstName, lastName: req.user.lastName})
+    res.render("delete-class",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes})
 });
 
 // instructor course dictionary
 router.get("/instructor-course-dictionary", ensureAuthenticatedInstructor, (req, res) =>  {
-	classCreate.find({}, function(err, classes) {
+    classCreate.find({}, function(err, classes) {
         res.render("instructor-course-dictionary", {
             firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
         })
@@ -423,6 +423,82 @@ router.post("/change-password-instructor", async (req, res) => {
 
         } catch (err) {console.log(err);}
     }
+});
+
+// instructor course dictionary handle
+// adapted from [5/15/2021]: https://docs.mongodb.com/manual/reference/operator/query/regex/, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions, https://www.semicolonworld.com/question/47801/node-js-and-mongoose-regex-query-on-multiple-fields
+router.post("/instructor-course-dictionary", async (req, res) => {
+
+    let firstName = req.user.firstName;
+    let lastName = req.user.lastName;
+
+// store search result
+    let searchResult = req.body.search;
+    let regex = new RegExp(searchResult, "i");
+
+    await classCreate.find().or([
+        {courseNumber: {$regex: regex}},
+        {semester: {$regex: regex}},
+        {courseName: {$regex: regex}},
+        {department: {$regex: regex}},
+        {instructor: {$regex: regex}},
+        {description: {$regex: regex}},
+        {schedule: {$regex: regex}}]).exec((err, classList) => {
+        if(err) return console.log(err);
+
+        res.render("instructor-course-dictionary", {
+            classList,
+            firstName,
+            lastName
+        });
+    });
+});
+// end adaptation
+
+// delete class handle
+// adapted from: [5/16/2021]: https://stackoverflow.com/questions/40588709/how-to-remove-object-from-array-using-mongoose
+router.post("/delete-class", async (req, res) => {
+
+    let firstName = req.user.firstName;
+    let lastName = req.user.lastName;
+
+    let errors = [];
+
+    // store course value
+    let courseToDelete = req.body.deleteField;
+
+    let classList = req.user.classes;
+
+    // delete from user
+    userCreate.updateOne({ _id: req.user.id }, { "$pull": { "classes": { "courseNumber": courseToDelete } }}, { safe: true, multi:true }, (err, obj) => {
+
+        // if error
+        if (err) return console.log(err);
+
+        // if result is not in instructor's class list
+        if (!obj) {
+            errors.push({msg: "The course number you entered does not match the one saved in our records."});
+
+            res.render("delete-class", {
+                errors,
+                classList,
+                firstName,
+                lastName
+            });
+        }
+
+        if (obj) {
+
+            // delete from class list
+            classCreate.deleteOne({courseNumber: courseToDelete}, (err, found) => {
+                if(err) return console.log(err);
+                console.log("Class deleted");
+                req.flash("success_msg", "Class deleted successfully!");
+                res.redirect("/delete-class");
+            });
+
+        }
+    });
 });
 
 /*=======================================================*/

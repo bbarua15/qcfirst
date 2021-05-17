@@ -54,19 +54,24 @@
                 <!-- Adapted from [4/16/2021]:https://getbootstrap.com/docs/4.0/content/tables/, https://medium.com/appnroll-publication/5-practical-solutions-to-make-responsive-data-tables-ff031c48b122 -->
                 <table class="table-striped table-bordered table-sm center">
                             <tr>
+                                <th>Course Number</th>
+                                <th>Semester</th>
                                 <th>Course Name</th>
-                                <th>Course Id</th>
                                 <th>Instructor</th>
                                 <th>Schedule</th>
                                 <th>Enrollment Deadline</th>
                             </tr>
-                            <tr>
-                                <td>Test a</td>
-                                <td>Test b</td>
-                                <td>Test c</td>
-                                <td>Test d</td>
-                                <td>Test e</td>
-                            </tr>
+
+                            <% classList.forEach(function(item){ %>
+                                <tr>
+                                    <td><%= item.courseNumber %></td>
+                                    <td><%= item.semester %></td>
+                                    <td><%= item.courseName %></td>
+                                    <td><%= item.instructor %></td>
+                                    <td><%= item.schedule %></td>
+                                    <td><%= item.startDate %></td>
+                                </tr>
+                            <% }) %>
                     </table>
                     <!-- end adaptation -->
             </section>
