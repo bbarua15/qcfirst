@@ -19,7 +19,7 @@ router.get("/", (req, res) => res.render("index"));
 
 // student dashboard
 router.get("/student-dashboard", ensureAuthenticatedStudent, (req, res, next) => {
-    res.render("student-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: classes});
+    res.render("student-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes});
 });
 
 // change password student
@@ -32,7 +32,7 @@ router.get("/class-deadline-student", ensureAuthenticatedStudent, (req, res) => 
     classCreate.find({}, function(err, classes) {
         res.render("class-deadline-student", {
             firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
-        })
+        });
     })
 });
 
@@ -66,7 +66,7 @@ router.get("/student-course-dictionary", ensureAuthenticatedStudent, (req, res) 
 
 // instructor dashboard
 router.get("/instructor-dashboard", ensureAuthenticatedInstructor, (req, res) =>  {
-    res.render("instructor-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: classes})
+    res.render("instructor-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes})
 });
 
 // change password instructor
