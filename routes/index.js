@@ -263,8 +263,7 @@ router.post("/add-class", async (req, res) => {
             // store values of class
             let startDate = found.startDate;
             let rosterLimit = (found.rosterStudent).length;
-
-
+            
         }
 
     });
