@@ -37,8 +37,31 @@ router.get("/class-deadline-student", ensureAuthenticatedStudent, (req, res) => 
 });
 
 // add class
-router.get("/add-class", ensureAuthenticatedStudent, (req, res) => {
-    res.render("add-class",{firstName: req.user.firstName, lastName: req.user.lastName})
+// adapted from [5/17/2021]: https://docs.mongodb.com/manual/reference/method/db.collection.distinct/
+router.get("/add-class", ensureAuthenticatedStudent, async (req, res) => {
+
+    var departmentList = {};
+    var classList = {};
+
+    // find department list
+    await classCreate.distinct("department", (err, departmentResults) => {
+        if (err) console.log(err);
+        if (departmentList) {
+            departmentList = departmentResults;
+        }
+    });
+// end adaptation
+
+    // find class List
+    await classCreate.find({}, async function(err, classes) {
+        if (err) console.log(err);
+        classList = classes;
+
+    });
+
+    res.render("add-class", {
+        firstName: req.user.firstName, lastName: req.user.lastName, classList, departmentList});
+
 });
 
 // drop class
@@ -215,6 +238,19 @@ router.post("/student-course-dictionary", async (req, res) => {
     });
 });
 // end adaptation
+
+// add-class handle
+router.post("/add-class", async (req, res) => {
+
+    console.log(req.body);
+    let department = req.body.department;
+    let courseNumber = req.body.courseNumber;
+
+    console.log(department);
+    console.log(courseNumber);
+
+});
+
 
 /*=======================================================*/
 
