@@ -59,7 +59,7 @@ router.get("/add-class", ensureAuthenticatedStudent, async (req, res) => {
 
     });
 
-    res.render("add-class", {
+    await res.render("add-class", {
         firstName: req.user.firstName, lastName: req.user.lastName, classList, departmentList});
 
 });
@@ -242,12 +242,32 @@ router.post("/student-course-dictionary", async (req, res) => {
 // add-class handle
 router.post("/add-class", async (req, res) => {
 
-    console.log(req.body);
     let department = req.body.department;
     let courseNumber = req.body.courseNumber;
 
-    console.log(department);
-    console.log(courseNumber);
+    // find the class
+    classCreate.findOne({courseNumber: courseNumber}, (err, found) => {
+        // if error
+        if (err) return console.log(err);
+
+        // if class not found display message
+        if (!found) {
+            req.flash("error_msg", "Class not Registered!");
+            res.redirect("/add-class");
+        }
+
+        // if found then add that class to student's class array
+        // also add that student to the student roster of the class
+        if (found) {
+
+            // store values of class
+            let startDate = found.startDate;
+            let rosterLimit = (found.rosterStudent).length;
+
+
+        }
+
+    });
 
 });
 
