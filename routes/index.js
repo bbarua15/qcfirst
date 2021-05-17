@@ -456,18 +456,39 @@ router.post("/instructor-course-dictionary", async (req, res) => {
 // end adaptation
 
 // delete class handle
-// adapted from: [5/16/2021]: https://stackoverflow.com/questions/40588709/how-to-remove-object-from-array-using-mongoose
+// adapted from: [5/16/2021]: https://stackoverflow.com/questions/40588709/how-to-remove-object-from-array-using-mongoose,https://stackoverflow.com/questions/50822205/accessing-object-inside-array, https://stackoverflow.com/questions/42964094/mongoose-query-array-of-objects-by-id
 router.post("/delete-class", async (req, res) => {
 
     let firstName = req.user.firstName;
     let lastName = req.user.lastName;
-
+    let classList = req.user.classes;
     let errors = [];
 
     // store course value
     let courseToDelete = req.body.deleteField;
 
-    let classList = req.user.classes;
+    // see if class exists
+    await userCreate.findOne({_id: req.user.id, "classes.courseNumber": courseToDelete}, {"classes.$": 1}, (err, found) => {
+
+        // if error
+        if(err) return console.log(err);
+
+        // if result is not in instructor's class list
+        if(!found) {
+            errors.push({msg: "The course number you entered does not match the one saved in our records."});
+        }
+    });
+
+    // display errors
+    if(errors.length > 0) {
+        res.render("delete-class", {
+            errors,
+            firstName,
+            lastName,
+            classList
+        });
+        return;
+    }
 
     // delete from user
     userCreate.updateOne({ _id: req.user.id }, { "$pull": { "classes": { "courseNumber": courseToDelete } }}, { safe: true, multi:true }, (err, obj) => {
@@ -499,6 +520,9 @@ router.post("/delete-class", async (req, res) => {
 
         }
     });
+
+// end adaptation
+
 });
 
 /*=======================================================*/
