@@ -37,57 +37,50 @@
           <!-- end adaptation -->
 
           <div class="flexbox">
-              <h2>Drop Class</h2>
-                <div class="table-responsive">
-                  <!-- Class with details which can be selected to drop -->
-                  <table class="center table-hover">
-                    <tr id="headline">
-                      <th>Select</th>
-                      <th>Class</th>
-                      <th>Instructor</th>
-                      <th>Credits</th>
-                      <th>Room</th>
-                      <th>Time/Days</th>
-                    </tr>
+            <h2>Drop Class</h2>
 
-                    <tr>
-                      <td><input type="checkbox" name="name1" />&nbsp;</td>
-                      <td>Example a</td>
-                      <td>Example b</td>
-                      <td>Example c</td>
-                      <td>Example d</td>
-                      <td>Example e</td>
-                    </tr>
+              <!-- display error messages -->
+              <%- include ("./partials/messages"); %>
 
-                    <tr>
-                      <td><input type="checkbox" name="name2" />&nbsp;</td>
-                      <td>Example a</td>
-                      <td>Example b</td>
-                      <td>Example c</td>
-                      <td>Example d</td>
-                      <td>Example e</td>
-                    </tr>
+              <!-- Class with details which can be selected to drop -->
+              <div class="table-responsive">
+                <table class="center table-hover">
+                  <tr id="headline">
+                    <th>Course Number</th>
+                    <th>Semester</th>
+                    <th>Course Name</th>
+                    <th>Department</th>
+                    <th>Description</th>
+                    <th>Schedule</th>
+                  </tr>
 
-                    <tr>
-                      <td><input type="checkbox" name="name1" />&nbsp;</td>
-                      <td>Example a</td>
-                      <td>Example b</td>
-                      <td>Example c</td>
-                      <td>Example d</td>
-                      <td>Example e</td>
-                    </tr>
-                  </table>
-                </div>
+                    <% classList.forEach(function(item){ %>
+                        <tr>
+                            <td><%= item.courseNumber %></td>
+                            <td><%= item.semester %></td>
+                            <td><%= item.courseName %></td>
+                            <td><%= item.department %></td>
+                            <td><%= item.description %></td>
+                            <td><%= item.schedule %></td>
+                        </tr>
+                    <% }) %>
+                </table>
+              </div>
 
-                <form id="submit" method="POST" action="/drop-class">
-                  <input type="submit" id="confirm" name="confirm">
-                </form>
+
+              <form id="submit" method="POST" action="/drop-class">
+                  <div class="vertical-container">
+                    <input type="text" id="dropField" name="dropField" placeholder="Enter course number">
+                    <button type="submit" id="drop" name="drop">Drop</button>
+                  </div>
+              </form>
+
           </div>
 
           <!--footer-->
           <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
           <footer id="footer">
-              <%- include ("./partials/footerUser"); %>
+               <%- include ("./partials/footerUser"); %>
           </footer>
           <!-- end adaptation -->
 
