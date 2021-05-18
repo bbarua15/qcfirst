@@ -305,7 +305,7 @@ router.post("/drop-class", async (req, res) => {
         return;
     }
 
-    // dop class from user
+    // drop class from user
     userCreate.updateOne({ _id: req.user.id }, { "$pull": { "classes": { "courseNumber": courseToDrop } }}, { safe: true, multi:true }, (err, obj) => {
 
         // if error
@@ -323,17 +323,6 @@ router.post("/drop-class", async (req, res) => {
             });
         }
 
-        if (obj) {
-
-            // drop from class list
-            classCreate.deleteOne({courseNumber: courseToDrop}, (err, found) => {
-                if(err) return console.log(err);
-                console.log("Class dropped");
-                req.flash("success_msg", "Class dropped successfully!");
-                res.redirect("/drop-class");
-            });
-
-        }
     });
 
     // end adaptation
