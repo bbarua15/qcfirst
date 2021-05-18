@@ -132,6 +132,17 @@ router.get("/instructor-course-dictionary", ensureAuthenticatedInstructor, (req,
 // admin dashboard
 // TBA
 
+// user search
+router.get("/user-search", ensureAuthenticatedAdmin, (req, res) =>  {
+    res.render("user-search",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes})
+});
+
+
+// change password admin
+router.get("/change-password-admin", ensureAuthenticatedAdmin, (req, res) => {
+    res.render("change-password-admin",{firstName: req.user.firstName, lastName: req.user.lastName})
+});
+
 /*=======================================================*/
 
 // STUDENT PAGES POST
