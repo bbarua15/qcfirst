@@ -326,7 +326,7 @@ router.post("/drop-class", async (req, res) => {
 // end adaptation
 
 // add-class handle [5/18/2021]
-// adapted from: https://stackoverflow.com/questions/42964094/mongoose-query-array-of-objects-by-id, https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-perform-classic-updates-by-running-find-edit-then-save/301541
+// adapted from: https://stackoverflow.com/questions/42964094/mongoose-query-array-of-objects-by-id, https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-perform-classic-updates-by-running-find-edit-then-save/301541, https://stackoverflow.com/questions/33049707/push-items-into-mongo-array-via-mongoose
 router.post("/add-class", async (req, res) => {
 
     let department = req.body.department;
