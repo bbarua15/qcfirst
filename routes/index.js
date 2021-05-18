@@ -131,12 +131,21 @@ router.get("/instructor-course-dictionary", ensureAuthenticatedInstructor, (req,
 
 // admin dashboard
 router.get("/admin-dashboard", ensureAuthenticatedAdmin, (req, res) =>  {
-    res.render("user-search",{firstName: req.user.firstName, lastName: req.user.lastName})
+    res.render("admin-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName})
 });
 
 // user search
 router.get("/user-search", ensureAuthenticatedAdmin, (req, res) =>  {
     res.render("user-search",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes})
+});
+
+// available courses 
+router.get("/available-courses", ensureAuthenticatedAdmin, (req, res) =>  {
+    classCreate.find({}, function(err, classes) {
+        res.render("available-courses", {
+            firstName: req.user.firstName, lastName: req.user.lastName, classList: classes
+        })
+    }).sort({"semester": 1})
 });
 
 // change password admin
