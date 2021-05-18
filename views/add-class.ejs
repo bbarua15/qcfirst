@@ -80,16 +80,19 @@
                 <th>Enrollment Deadline</th>
             </tr>
 
-            <% classList.forEach(function(item){ %>
-                <tr>
-                    <td><%= item.courseNumber %></td>
-                    <td><%= item.semester %></td>
-                    <td><%= item.courseName %></td>
-                    <td><%= item.instructor %></td>
-                    <td><%= item.schedule %></td>
-                    <td><%= item.startDate %></td>
-                </tr>
-            <% }) %>
+            <% if (classList.length > 0) {  %>
+                <% classList.forEach(function(item){ %>
+                    <tr>
+                        <td><%= item.courseNumber %></td>
+                        <td><%= item.semester %></td>
+                        <td><%= item.courseName %></td>
+                        <td><%= item.instructor %></td>
+                        <td><%= item.schedule %></td>
+                        <td><%= item.startDate %></td>
+                    </tr>
+                <% }) %>
+            <% } %>
+
         </table>
     </div>
 </div>

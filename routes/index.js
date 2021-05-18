@@ -44,19 +44,18 @@ router.get("/add-class", ensureAuthenticatedStudent, async (req, res) => {
     var classList = {};
 
     // find department list
-    await classCreate.distinct("department", (err, departmentResults) => {
+    await classCreate.distinct("department", async (err, departmentResults) => {
         if (err) console.log(err);
         if (departmentList) {
-            departmentList = departmentResults;
+            departmentList = await departmentResults;
         }
     });
 // end adaptation
 
     // find class List
-    await classCreate.find({}, async function(err, classes) {
+    await classCreate.find({}, async (err, classes) => {
         if (err) console.log(err);
-        classList = classes;
-
+        classList = await classes;
     });
 
     await res.render("add-class", {
@@ -827,7 +826,5 @@ router.post("/available-courses", async (req, res) => {
 
 /*=======================================================*/
 
-
 module.exports = router;
 // end adaptation
-
