@@ -316,11 +316,13 @@ router.post("/drop-class", async (req, res) => {
 });
 // end adaptation
 
-// add-class handle
+// add-class handle [5/18/2021]
+// adapted from: https://stackoverflow.com/questions/42964094/mongoose-query-array-of-objects-by-id, https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-perform-classic-updates-by-running-find-edit-then-save/301541
 router.post("/add-class", async (req, res) => {
 
     let department = req.body.department;
     let courseNumber = req.body.courseNumber;
+    let authenticatedFlag = true;
 
     // find the class
     classCreate.findOne({courseNumber: courseNumber}, async (err, found) => {
@@ -330,12 +332,11 @@ router.post("/add-class", async (req, res) => {
 
         // if class not found display message
         if (!found) {
-            req.flash("error_msg", "Class not Registered!");
+            req.flash("error_msg", "Class does not exist!");
             res.redirect("/add-class");
         }
 
-        // if found then add that class to student's class array
-        // also add that student to the student roster of the class
+        // if the class was found
         if (found) {
 
             // store values to check flags
@@ -345,6 +346,7 @@ router.post("/add-class", async (req, res) => {
 
             //if the class deadline date is greater than the current date
             if (deadlineDate < todayDate) {
+                authenticatedFlag = false;
                 req.flash("error_msg", "The enrollment date deadline has already passed!");
                 res.redirect("/add-class");
                 return;
@@ -352,6 +354,7 @@ router.post("/add-class", async (req, res) => {
 
             // if will be greater than
             if (currentEnrolled >= found.capacity) {
+                authenticatedFlag = false;
                 req.flash("error_msg", "Course full!");
                 res.redirect("/add-class");
                 return;
@@ -359,39 +362,45 @@ router.post("/add-class", async (req, res) => {
 
             // see if student is already enrolled in that class
             await userCreate.findOne({_id: req.user.id, "classes.courseName": found.courseName}, {"classes.$": 1}, (err, found) => {
+
                 if (err) return console.log(err);
 
                 if (found) {
-                    console.log("I am here now")
+                    authenticatedFlag = false;
                     req.flash("error_msg", "You already have this course in your class schedule!");
                     res.redirect("/add-class");
                     return;
                 }
             });
 
-            console.log("yep still running")
+            // if all vaidations pass:
+            if (authenticatedFlag) {
 
-            if (!found) {
-                // adding class to user's classes array
-                userCreate.findById(req.user._id, async (err, studentID) => {
-                    if (err) return console.error(err);
+                // stop warning
+                mongoose.set('useFindAndModify', false);
 
-                    // add created class to the instructor's class array
-                    studentID.classes.push(found);
+                // add student to class student roster
+                const studentName = req.user.firstName + " " + req.user.lastName;
+                classCreate.findOneAndUpdate({courseNumber: courseNumber}, {$push: {rosterStudent: studentName}}, {new: true}, (err, updated) => {
+                    if (err) return console.log(err);
+                });
 
-                    // save the updated instructor
-                    studentID.save((err, updated) => {
-                        if (err) return console.error(err);
+                // add class to student classes array
+                userCreate.findOneAndUpdate({_id: req.user._id}, {$push: {classes: found}}, {new: true}, (err, updated) => {
+                    if (err) return console.log(err);
+
+                    if (updated) {
                         console.log("class added");
                         req.flash("success_msg", "Class successfully added!");
                         res.redirect("/add-class");
                         return;
-                    });
+                    }
                 });
             }
-        }
+        } // end found
     });
 });
+// end adaptation
 
 /*=======================================================*/
 
