@@ -715,7 +715,7 @@ router.post("/delete-class", async (req, res) => {
 
 // ADMIN POSTS
 
-// change password instructor handle
+// change password admin handle
 router.post("/change-password-admin", async (req, res) => {
 
     const oldPassword = req.body.old;
@@ -786,6 +786,34 @@ router.post("/change-password-admin", async (req, res) => {
 
         } catch (err) {console.log(err);}
     }
+});
+
+// available courses search handle
+router.post("/available-courses", async (req, res) => {
+
+    let firstName = req.user.firstName;
+    let lastName = req.user.lastName;
+
+// store search result
+    let searchResult = req.body.search;
+    let regex = new RegExp(searchResult, "i");
+
+    await classCreate.find().or([
+        {courseNumber: {$regex: regex}},
+        {semester: {$regex: regex}},
+        {courseName: {$regex: regex}},
+        {department: {$regex: regex}},
+        {instructor: {$regex: regex}},
+        {description: {$regex: regex}},
+        {schedule: {$regex: regex}}]).exec((err, classList) => {
+        if(err) return console.log(err);
+
+        res.render("available-courses", {
+            classList,
+            firstName,
+            lastName
+        });
+    });
 });
 
 /*=======================================================*/
