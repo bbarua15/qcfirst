@@ -239,37 +239,6 @@ router.post("/student-course-dictionary", async (req, res) => {
 });
 // end adaptation
 
-// add-class handle
-router.post("/add-class", async (req, res) => {
-
-    let department = req.body.department;
-    let courseNumber = req.body.courseNumber;
-
-    // find the class
-    classCreate.findOne({courseNumber: courseNumber}, (err, found) => {
-        // if error
-        if (err) return console.log(err);
-
-        // if class not found display message
-        if (!found) {
-            req.flash("error_msg", "Class not Registered!");
-            res.redirect("/add-class");
-        }
-
-        // if found then add that class to student's class array
-        // also add that student to the student roster of the class
-        if (found) {
-
-            // store values of class
-            let startDate = found.startDate;
-            let rosterLimit = (found.rosterStudent).length;
-            
-        }
-
-    });
-
-});
-
 // drop class handle
 // adapted from: [5/17/2021]: https://stackoverflow.com/questions/40588709/how-to-remove-object-from-array-using-mongoose,https://stackoverflow.com/questions/50822205/accessing-object-inside-array, https://stackoverflow.com/questions/42964094/mongoose-query-array-of-objects-by-id
 router.post("/drop-class", async (req, res) => {
@@ -288,7 +257,7 @@ router.post("/drop-class", async (req, res) => {
         // if error
         if(err) return console.log(err);
 
-        // if result is not in instructor's class list
+        // if result is not in student's class list
         if(!found) {
             errors.push({msg: "The course number you entered does not match the one saved in our records."});
         }
@@ -323,11 +292,16 @@ router.post("/drop-class", async (req, res) => {
             });
         }
 
+        // if dropped
+        if (obj) {
+            req.flash("success_msg", "Class dropped successfully!");
+            res.redirect("/drop-class");
+        }
+
     });
-
-    // end adaptation
-
 });
+// end adaptation
+
 
 // add-class handle
 router.post("/add-class", async (req, res) => {
@@ -336,7 +310,7 @@ router.post("/add-class", async (req, res) => {
     let courseNumber = req.body.courseNumber;
 
     // find the class
-    classCreate.findOne({courseNumber: courseNumber}, async (err, found) => {
+    await classCreate.findOne({courseNumber: courseNumber}, async (err, found) => {
         // if error
         if (err) return console.log(err);
 
@@ -356,7 +330,7 @@ router.post("/add-class", async (req, res) => {
             let currentEnrolled = parseInt((found.rosterStudent).length);
 
             //if the class deadline date is greater than the current date
-            if(deadlineDate > todayDate) {
+            if (deadlineDate > todayDate) {
                 req.flash("error_msg", "The enrollment date deadline has already passed!");
                 res.redirect("/add-class");
             }
@@ -368,11 +342,12 @@ router.post("/add-class", async (req, res) => {
             }
 
             // see if student is already enrolled in that class
-            await userCreate.findOne({_id: req.user.id, "classes.courseName": found.courseName}, {"classes.$": 1}, (err, found) => {
+            userCreate.findOne({_id: req.user.id, "classes.courseName": found.courseName}, {"classes.$": 1}, (err, found) => {
                 if (err) return console.log(err);
                 if (found) {
                     req.flash("error_msg", "You already have this course in your class schedule!");
                     res.redirect("/add-class");
+                    console.log("1");
                 }
             });
 
@@ -386,6 +361,7 @@ router.post("/add-class", async (req, res) => {
                 // save the updated instructor
                 studentID.save((err, updated) => {
                     if (err) return console.error(err);
+                    console.log("2");
                     req.flash("success_msg", "Class successfully added!");
                     res.redirect("/add-class");
                 });
