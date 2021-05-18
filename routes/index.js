@@ -329,7 +329,70 @@ router.post("/drop-class", async (req, res) => {
 
 });
 
+// add-class handle
+router.post("/add-class", async (req, res) => {
 
+    let department = req.body.department;
+    let courseNumber = req.body.courseNumber;
+
+    // find the class
+    classCreate.findOne({courseNumber: courseNumber}, async (err, found) => {
+        // if error
+        if (err) return console.log(err);
+
+        // if class not found display message
+        if (!found) {
+            req.flash("error_msg", "Class not Registered!");
+            res.redirect("/add-class");
+        }
+
+        // if found then add that class to student's class array
+        // also add that student to the student roster of the class
+        if (found) {
+
+            // store values to check flags
+            let todayDate = new Date().toString().substring(0, 15);
+            let deadlineDate = new Date(found.startDate).toString().substring(0, 15);
+            let currentEnrolled = parseInt((found.rosterStudent).length);
+
+            //if the class deadline date is greater than the current date
+            if(deadlineDate > todayDate) {
+                req.flash("error_msg", "The enrollment date deadline has already passed!");
+                res.redirect("/add-class");
+            }
+
+            // if will be greater than
+            if (currentEnrolled >= found.capacity) {
+                req.flash("error_msg", "Course full!");
+                res.redirect("/add-class");
+            }
+
+            // see if student is already enrolled in that class
+            await userCreate.findOne({_id: req.user.id, "classes.courseName": found.courseName}, {"classes.$": 1}, (err, found) => {
+                if (err) return console.log(err);
+                if (found) {
+                    req.flash("error_msg", "You already have this course in your class schedule!");
+                    res.redirect("/add-class");
+                }
+            });
+
+            // adding class to user's classes array
+            await userCreate.findById(req.user._id, (err, studentID) => {
+                if (err) return console.error(err);
+
+                // add created class to the instructor's class array
+                studentID.classes.push(found);
+
+                // save the updated instructor
+                studentID.save((err, updated) => {
+                    if (err) return console.error(err);
+                    req.flash("success_msg", "Class successfully added!");
+                    res.redirect("/add-class");
+                });
+            });
+        }
+    });
+});
 
 /*=======================================================*/
 
