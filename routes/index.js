@@ -130,18 +130,21 @@ router.get("/instructor-course-dictionary", ensureAuthenticatedInstructor, (req,
 // ADMIN PAGES GET
 
 // admin dashboard
-// TBA
+router.get("/admin-dashboard", ensureAuthenticatedAdmin, (req, res) =>  {
+    res.render("user-search",{firstName: req.user.firstName, lastName: req.user.lastName})
+});
 
 // user search
 router.get("/user-search", ensureAuthenticatedAdmin, (req, res) =>  {
     res.render("user-search",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes})
 });
 
-
 // change password admin
 router.get("/change-password-admin", ensureAuthenticatedAdmin, (req, res) => {
     res.render("change-password-admin",{firstName: req.user.firstName, lastName: req.user.lastName})
 });
+
+
 
 /*=======================================================*/
 
@@ -313,7 +316,6 @@ router.post("/drop-class", async (req, res) => {
 });
 // end adaptation
 
-
 // add-class handle
 router.post("/add-class", async (req, res) => {
 
@@ -321,7 +323,8 @@ router.post("/add-class", async (req, res) => {
     let courseNumber = req.body.courseNumber;
 
     // find the class
-    await classCreate.findOne({courseNumber: courseNumber}, async (err, found) => {
+    classCreate.findOne({courseNumber: courseNumber}, async (err, found) => {
+
         // if error
         if (err) return console.log(err);
 
@@ -341,42 +344,51 @@ router.post("/add-class", async (req, res) => {
             let currentEnrolled = parseInt((found.rosterStudent).length);
 
             //if the class deadline date is greater than the current date
-            if (deadlineDate > todayDate) {
+            if (deadlineDate < todayDate) {
                 req.flash("error_msg", "The enrollment date deadline has already passed!");
                 res.redirect("/add-class");
+                return;
             }
 
             // if will be greater than
             if (currentEnrolled >= found.capacity) {
                 req.flash("error_msg", "Course full!");
                 res.redirect("/add-class");
+                return;
             }
 
             // see if student is already enrolled in that class
-            userCreate.findOne({_id: req.user.id, "classes.courseName": found.courseName}, {"classes.$": 1}, (err, found) => {
+            await userCreate.findOne({_id: req.user.id, "classes.courseName": found.courseName}, {"classes.$": 1}, (err, found) => {
                 if (err) return console.log(err);
+
                 if (found) {
+                    console.log("I am here now")
                     req.flash("error_msg", "You already have this course in your class schedule!");
                     res.redirect("/add-class");
-                    console.log("1");
+                    return;
                 }
             });
 
-            // adding class to user's classes array
-            await userCreate.findById(req.user._id, (err, studentID) => {
-                if (err) return console.error(err);
+            console.log("yep still running")
 
-                // add created class to the instructor's class array
-                studentID.classes.push(found);
-
-                // save the updated instructor
-                studentID.save((err, updated) => {
+            if (!found) {
+                // adding class to user's classes array
+                userCreate.findById(req.user._id, async (err, studentID) => {
                     if (err) return console.error(err);
-                    console.log("2");
-                    req.flash("success_msg", "Class successfully added!");
-                    res.redirect("/add-class");
+
+                    // add created class to the instructor's class array
+                    studentID.classes.push(found);
+
+                    // save the updated instructor
+                    studentID.save((err, updated) => {
+                        if (err) return console.error(err);
+                        console.log("class added");
+                        req.flash("success_msg", "Class successfully added!");
+                        res.redirect("/add-class");
+                        return;
+                    });
                 });
-            });
+            }
         }
     });
 });
@@ -691,6 +703,84 @@ router.post("/delete-class", async (req, res) => {
 });
 
 /*=======================================================*/
+
+// ADMIN POSTS
+
+// change password instructor handle
+router.post("/change-password-admin", async (req, res) => {
+
+    const oldPassword = req.body.old;
+    const newPassword = req.body.new;
+    const newConfirmPassword = req.body.confirmPassword;
+    const currentPassword = req.user.password;
+    const firstName = req.user.firstName;
+    const lastName = req.user.lastName;
+
+    var errors = [];
+
+    // check fields
+    if(!oldPassword || !newPassword || !newConfirmPassword) {
+        errors.push({msg: "Please fill in all the fields!"});
+    }
+
+    // see if passwords match
+    if (newPassword !== newConfirmPassword) {
+        errors.push({msg: "The confirm password field does not match!"});
+    }
+
+    // password strenth check
+    // adapted from: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+    regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+    // end adaptation
+    if (regex.test(newPassword) === false) {
+        errors.push({msg: "Passwords must contain a minimum of eight characters, at least one uppercase letter, one lowercase letter and one number!"});
+    }
+
+    // check if the old password exists in the database
+    await bcrypt.compare(oldPassword, currentPassword).then((err, result) => {
+        if(err) return console.log(err);
+        if(!result) {
+            errors.push({msg: "The password you entered does not match the one saved in our records."});
+        }
+    });
+
+    // display errors
+    if(errors.length > 0) {
+        res.render("change-password-admin", {
+            errors,
+            firstName,
+            lastName,
+            oldPassword,
+            newPassword,
+            newConfirmPassword
+        });
+
+        // validation passes
+    } else {
+
+        try {
+
+            // hashing password
+            const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+            // stop warning
+            mongoose.set('useFindAndModify', false);
+
+            // find and update user
+            await userCreate.findOneAndUpdate({_id: req.user._id}, {password: hashedPassword}, {
+                new: true
+            });
+
+            console.log("Password Updated for Admin");
+            req.flash("success_msg", "Password successfully updated!");
+            res.redirect("/change-password-admin");
+
+        } catch (err) {console.log(err);}
+    }
+});
+
+/*=======================================================*/
+
 
 module.exports = router;
 // end adaptation
