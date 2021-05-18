@@ -270,7 +270,8 @@ router.post("/add-class", async (req, res) => {
 
 });
 
-//drop class handle
+// drop class handle
+// adapted from: [5/17/2021]: https://stackoverflow.com/questions/40588709/how-to-remove-object-from-array-using-mongoose,https://stackoverflow.com/questions/50822205/accessing-object-inside-array, https://stackoverflow.com/questions/42964094/mongoose-query-array-of-objects-by-id
 router.post("/drop-class", async (req, res) => {
 
     let firstName = req.user.firstName;
@@ -334,6 +335,9 @@ router.post("/drop-class", async (req, res) => {
 
         }
     });
+
+    // end adaptation
+
 });
 
 
