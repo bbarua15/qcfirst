@@ -147,6 +147,12 @@ router.get("/available-courses", ensureAuthenticatedAdmin, (req, res) =>  {
     }).sort({"semester": 1})
 });
 
+// search query 
+router.get("/search-history", ensureAuthenticatedAdmin, (req, res) =>  {
+    res.render("search-history",{firstName: req.user.firstName, lastName: req.user.lastName})
+});
+
+
 // change password admin
 router.get("/change-password-admin", ensureAuthenticatedAdmin, (req, res) => {
     res.render("change-password-admin",{firstName: req.user.firstName, lastName: req.user.lastName})

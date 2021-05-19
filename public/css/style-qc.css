@@ -20,6 +20,14 @@ th {
   text-align: center;
 }
 
+.heading {
+  background-color: black;
+}
+
+.heading th {
+  color: white;
+}
+
 table, th, td {
   border: 1px solid #000;
   border-collapse: collapse;
