@@ -62,17 +62,20 @@
                                 <th>Enrollment Deadline</th>
                             </tr>
 
-                            <% classList.forEach(function(item){ %>
+                    <% if (classList.length > 0) {  %>
+                        <% classList.forEach(function(item){ %>
+                                <% let deadlineDate = new Date(item.startDate).toString().substring(0, 15); %>
                                 <tr>
                                     <td><%= item.courseNumber %></td>
                                     <td><%= item.semester %></td>
                                     <td><%= item.courseName %></td>
                                     <td><%= item.instructor %></td>
                                     <td><%= item.schedule %></td>
-                                    <td><%= item.startDate %></td>
+                                    <td><%= item.deadlineDate %></td>
                                 </tr>
                             <% }) %>
-                    </table>
+                    <% } %>
+                </table>
                     <!-- end adaptation -->
             </section>
         </div>
