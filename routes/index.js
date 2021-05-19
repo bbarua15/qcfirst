@@ -152,8 +152,6 @@ router.get("/change-password-admin", ensureAuthenticatedAdmin, (req, res) => {
     res.render("change-password-admin",{firstName: req.user.firstName, lastName: req.user.lastName})
 });
 
-
-
 /*=======================================================*/
 
 // STUDENT PAGES POST
@@ -684,8 +682,8 @@ router.post("/delete-class", async (req, res) => {
         return;
     }
 
-    // delete from user
-    userCreate.updateOne({ _id: req.user.id }, { "$pull": { "classes": { "courseNumber": courseToDelete } }}, { safe: true, multi:true }, (err, obj) => {
+    // delete from Instructor
+    userCreate.updateOne({ _id: req.user.id }, { "$pull": { "classes": { "courseNumber": courseToDelete } }}, { safe: true, multi:true }, async (err, obj) => {
 
         // if error
         if (err) return console.log(err);
@@ -703,6 +701,12 @@ router.post("/delete-class", async (req, res) => {
         }
 
         if (obj) {
+
+            // remove class from all students classes array after it's deleted
+            await userCreate.updateMany({}, { "$pull": { "classes": { "courseNumber": courseToDelete } }}, { safe: true, multi:true }, (err, obj) => {
+                console.log("Class deleted in db from all students");
+
+            });
 
             // delete from class list
             classCreate.deleteOne({courseNumber: courseToDelete}, (err, found) => {
@@ -722,6 +726,16 @@ router.post("/delete-class", async (req, res) => {
 /*=======================================================*/
 
 // ADMIN POSTS
+
+// user-search handle
+router.post("/change-password-admin", async (req, res) => {
+// TBA
+});
+
+// user-search handle
+router.post("/search-history", async (req, res) => {
+// TBA
+});
 
 // change password admin handle
 router.post("/change-password-admin", async (req, res) => {
@@ -806,6 +820,7 @@ router.post("/available-courses", async (req, res) => {
     let searchResult = req.body.search;
     let regex = new RegExp(searchResult, "i");
 
+    // displays classes based on inputted value in search bar
     await classCreate.find().or([
         {courseNumber: {$regex: regex}},
         {semester: {$regex: regex}},
