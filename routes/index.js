@@ -87,8 +87,22 @@ router.get("/student-course-dictionary", ensureAuthenticatedStudent, (req, res) 
 // INSTRUCTOR PAGES GET
 
 // instructor dashboard
-router.get("/instructor-dashboard", ensureAuthenticatedInstructor, (req, res) =>  {
-    res.render("instructor-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes})
+router.get("/instructor-dashboard", ensureAuthenticatedInstructor, async (req, res) =>  {
+
+    let courseList = {};
+
+    console.log(req.user)
+
+    // find course List
+    await userCreate.distinct("classes.courseName", async (err, courseResults) => {
+        if (err) console.log(err);
+        if (courseResults) {
+            courseList = await courseResults;
+        }
+    });
+// end adaptation
+
+    res.render("instructor-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes, courseList})
 });
 
 // change password instructor
