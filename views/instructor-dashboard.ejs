@@ -45,36 +45,49 @@
             <!-- display courses -->
             <section id="input">
 
-                    <!-- additional heading -->
-                    <h1 class="header">Courses</h1>
+                <!-- additional heading -->
+                <h1 class="header">Courses</h1>
 
-                <form id="select-class">
-                    <div class="vertical-container" id="input-background">
-                        <select name="class-roster">
-                            <option value="class1">CSCI355</option>
-                            <option value="class2">CSCI313</option>
+                <div id="input-background">
+                    <form class="course add-class" method="POST" action="/instructor-dashboard">
+                        <label for="courses">Courses:</label>
+                        <select name="department" id="department">
+                            <option disabled selected value>Select an option</option>
+                            <% if (courseList.length > 0) {  %>
+                                <% courseList.forEach(function(item){ %>
+                                    <tr>
+                                        <option value="<%= item %>"><%= item %></option>
+                                    </tr>
+                                <% }) %>
+                            <% } %>
                         </select>
-                    </div>
-                </form>
+                    </form>
+                </div>
 
                 <!-- Adapted from [4/16/2021]:https://getbootstrap.com/docs/4.0/content/tables/, https://medium.com/appnroll-publication/5-practical-solutions-to-make-responsive-data-tables-ff031c48b122 -->
                 <table class="table-striped table-bordered center">
                     <tr>
+                        <th>Course Number</th>
+                        <th>Semester</th>
                         <th>Course Name</th>
-                        <th>Course Id</th>
-                        <th>Instructor</th>
                         <th>Schedule</th>
                         <th>Enrollment Deadline</th>
                         <th>Student Roster</th>
                     </tr>
-                    <tr>
-                        <td>Test a</td>
-                        <td>Test b</td>
-                        <td>Test c</td>
-                        <td>Test d</td>
-                        <td>Test e</td>
-                        <td>Test f</td>
-                    </tr>
+
+                    <% if (classList.length > 0) {  %>
+                        <% classList.forEach(function(item){ %>
+                            <tr>
+                                <td><%= item.courseNumber %></td>
+                                <td><%= item.semester %></td>
+                                <td><%= item.courseName %></td>
+                                <td><%= item.schedule %></td>
+                                <td><%= item.startDate %></td>
+                                <td><%= item.rosterStudent %></td>
+                            </tr>
+                        <% }) %>
+                    <% } %>
+
                 </table>
                 <!-- end adaptation -->
             </section>

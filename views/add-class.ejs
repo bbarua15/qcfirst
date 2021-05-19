@@ -47,14 +47,16 @@
 
     <div id="input-background">
         <form class="course add-class" method="POST" action="/add-class">
-            <label for="department">Course:</label>
+            <label for="department">Department:</label>
             <select name="department" id="department">
                 <option disabled selected value>Select an option</option>
-                <% departmentList.forEach(function(item){ %>
-                    <tr>
-                        <option value="<%= item %>"><%= item %></option>
-                    </tr>
-                <% }) %>
+                <% if (departmentList.length > 0) {  %>
+                    <% departmentList.forEach(function(item){ %>
+                        <tr>
+                            <option value="<%= item %>"><%= item %></option>
+                        </tr>
+                    <% }) %>
+                <% } %>
 
             </select>
             <br><br>
@@ -92,7 +94,6 @@
                     </tr>
                 <% }) %>
             <% } %>
-
         </table>
     </div>
 </div>
