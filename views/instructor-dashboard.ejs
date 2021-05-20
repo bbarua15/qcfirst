@@ -79,9 +79,8 @@
                         <th>Student Roster</th>
                     </tr>
 
-                    <% if (classList.length > 0) {  %>
-                        <% classList.forEach(function(item){ %>
-                            <% let deadlineDate = new Date(item.startDate).toString().substring(0, 15); %>
+                    <% if (rosterList.length > 0) {  %>
+                        <% rosterList.forEach(function(item){ %>
                             <tr>
                                 <td><%= item.rosterStudent %></td>
                             </tr>

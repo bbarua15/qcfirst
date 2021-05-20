@@ -56,13 +56,20 @@
               <th>Classes</th>
             </tr>
 
-            <% classList.forEach(function(item){ %>
+          <% if (userList.length > 0) {  %>
+              <% userList.forEach(function(item) { %>
+               <% let deadlineDate = new Date(item.creationDate).toString().substring(0, 15); %>
               <tr>
                 <td><%= item.firstName %></td>
                 <td><%= item.lastName %></td>
+                <td><%= item.userName %></td>
                 <td><%= item.userType %></td>
+                <td><%= deadlineDate %></td>
+                <td><%= item.classes %></td>
               </tr>
             <% }) %>
+          <% }  %>
+
           </table>
         </div>
 
