@@ -41,13 +41,20 @@
 
         <div class="horizontal-container">
 
-            <p>An administrator has the ability to view the contents of each</p>
-
-            <!-- Buttons -->
             <!-- adapted from: [4/14/2021]: https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
-            <button type="button" class="buttons" onclick="location.href='/user-search'">User Search</button>
-            <button type="button" class="buttons" onclick="location.href='/available-courses'">Available Courses</button>
-            <button type="button" class="buttons" onclick="location.href='/search-history'">User Search History</button>
+            <div class="vertical-container">
+
+                <p>Here you will be able to search different users and display the information about their account.</p>
+                <button type="button" class="buttons" onclick="location.href='/user-search'">User Search</button>
+
+                <p>Here you will be able to view all of the available courses listed inside the database.</p>
+                <button type="button" class="buttons" onclick="location.href='/available-courses'">Available Courses</button>
+
+                <p>Here you will be able to view the search history of any user registered inside the database</p>
+                <button type="button" class="buttons" onclick="location.href='/search-history'">User Search History</button>
+
+            </div>
+
         </div>
 
     </div>
