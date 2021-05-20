@@ -81,7 +81,6 @@ router.get("/add-class", ensureAuthenticatedStudent, async (req, res) => {
     await res.render("add-class", {
         firstName: req.user.firstName, lastName: req.user.lastName, classList, departmentList, selectedDepart
     });
-
 });
 
 // drop class
@@ -109,21 +108,8 @@ router.get("/student-course-dictionary", ensureAuthenticatedStudent, (req, res) 
 
 // instructor dashboard
 router.get("/instructor-dashboard", ensureAuthenticatedInstructor, async (req, res) =>  {
-
-    let courseList = {};
-
-    console.log(req.user)
-
-    // find course List
-    await userCreate.distinct("classes.courseName", async (err, courseResults) => {
-        if (err) console.log(err);
-        if (courseResults) {
-            courseList = await courseResults;
-        }
-    });
-// end adaptation
-
-    res.render("instructor-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes, courseList})
+    let userList = {};
+    res.render("instructor-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes, userList})
 });
 
 // change password instructor
@@ -173,7 +159,7 @@ router.get("/user-search", ensureAuthenticatedAdmin, (req, res) =>  {
     res.render("user-search",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes})
 });
 
-// available courses 
+// available courses
 router.get("/available-courses", ensureAuthenticatedAdmin, (req, res) =>  {
     classCreate.find({}, function(err, classes) {
         res.render("available-courses", {
@@ -182,7 +168,7 @@ router.get("/available-courses", ensureAuthenticatedAdmin, (req, res) =>  {
     }).sort({"semester": 1})
 });
 
-// search query 
+// search query
 router.get("/search-history", ensureAuthenticatedAdmin, (req, res) =>  {
     res.render("search-history",{firstName: req.user.firstName, lastName: req.user.lastName})
 });
@@ -219,7 +205,7 @@ router.post("/change-password-student", async (req, res) => {
         errors.push({msg: "The confirm password field does not match!"});
     }
 
-    // password strenth check
+    // password strength check
     // adapted from: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
     regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
     // end adaptation
@@ -365,7 +351,6 @@ router.post("/drop-class", async (req, res) => {
             req.flash("success_msg", "Class dropped successfully!");
             res.redirect("/drop-class");
         }
-
     });
 });
 // end adaptation
@@ -588,7 +573,6 @@ router.post("/create-class", (req, res) => {
                         // end adaptation
                     }
                 });
-
         } catch (err) {console.log(err);}
     }
 });
@@ -782,7 +766,31 @@ router.post("/delete-class", async (req, res) => {
 
 // user-search handle
 router.post("/user-search", async (req, res) => {
-// TBA
+
+    const firstName = req.user.firstName;
+    const lastName = req.user.lastName;
+    let usernameInput = req.body.userSearch;
+
+    await userCreate.findOne({userName: usernameInput}, (err, userInfo) => {
+
+        // if there is an error
+        if(err) return console.log(err);
+
+        if (!userInfo) {
+            req.flash("error_msg", "Username not in database!");
+            res.redirect("/user-search");
+        }
+
+        // otherwise if list is found
+        if (userInfo) {
+
+            res.render("user-search", {
+                firstName,
+                lastName,
+                userInfo
+            });
+        }
+    });
 });
 
 // search-history handle
