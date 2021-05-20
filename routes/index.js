@@ -9,6 +9,7 @@ const { ensureAuthenticatedStudent, ensureAuthenticatedInstructor, ensureAuthent
 // user model
 const classCreate = require("../models/classCreate");
 const userCreate =  require("../models/userCreate");
+const userHistory =  require("../models/userHistory");
 
 // home page
 router.get("/", (req, res) => res.render("index"));
@@ -91,8 +92,6 @@ router.get("/instructor-dashboard", ensureAuthenticatedInstructor, async (req, r
 
     let courseList = {};
 
-    console.log(req.user)
-
     // find course List
     await userCreate.distinct("classes.courseName", async (err, courseResults) => {
         if (err) console.log(err);
@@ -152,7 +151,7 @@ router.get("/user-search", ensureAuthenticatedAdmin, (req, res) =>  {
     res.render("user-search",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes})
 });
 
-// available courses 
+// available courses
 router.get("/available-courses", ensureAuthenticatedAdmin, (req, res) =>  {
     classCreate.find({}, function(err, classes) {
         res.render("available-courses", {
@@ -161,7 +160,7 @@ router.get("/available-courses", ensureAuthenticatedAdmin, (req, res) =>  {
     }).sort({"semester": 1})
 });
 
-// search query 
+// search query
 router.get("/search-history", ensureAuthenticatedAdmin, (req, res) =>  {
     res.render("search-history",{firstName: req.user.firstName, lastName: req.user.lastName})
 });
@@ -269,6 +268,13 @@ router.post("/student-course-dictionary", async (req, res) => {
         {description: {$regex: regex}},
         {schedule: {$regex: regex}}]).exec((err, classList) => {
         if(err) return console.log(err);
+
+        // save the search result
+        let userhistory = new userHistory({history: searchResult, userEmail: req.user.userName, results: classList});
+
+        userhistory.save((err, saved) => {
+            if (err) return console.log(err);
+        });
 
         res.render("student-course-dictionary", {
             classList,
@@ -407,8 +413,15 @@ router.post("/add-class", async (req, res) => {
 
                 // add student to class student roster
                 const studentName = req.user.firstName + " " + req.user.lastName;
-                classCreate.findOneAndUpdate({courseNumber: courseNumber}, {$push: {rosterStudent: studentName}}, {new: true}, (err, updated) => {
+                await classCreate.findOneAndUpdate({courseNumber: courseNumber}, {$push: {rosterStudent: studentName}}, {new: true}, (err, updated) => {
                     if (err) return console.log(err);
+                });
+
+                // add student to class student roster in instructors classes array
+                //TBA
+                await userCreate.updateMany({userType: "Instructor", courseNumber: courseNumber}, {"$push": {"classes": { "rosterStudent": studentName}}}, {new: true}, (err, updated) => {
+                    if (err) return console.log(err);
+                    //console.log(updated);
                 });
 
                 // add class to student classes array
@@ -658,6 +671,13 @@ router.post("/instructor-course-dictionary", async (req, res) => {
         {schedule: {$regex: regex}}]).exec((err, classList) => {
         if(err) return console.log(err);
 
+        // save the search result
+        let userhistory = new userHistory({history: searchResult, userEmail: req.user.userName, results: classList});
+
+        userhistory.save((err, saved) => {
+            if (err) return console.log(err);
+        });
+
         res.render("instructor-course-dictionary", {
             classList,
             firstName,
@@ -850,6 +870,13 @@ router.post("/available-courses", async (req, res) => {
         {description: {$regex: regex}},
         {schedule: {$regex: regex}}]).exec((err, classList) => {
         if(err) return console.log(err);
+
+        // save the search result
+        let userhistory = new userHistory({history: searchResult, userEmail: req.user.userName, results: classList});
+
+        userhistory.save((err, saved) => {
+            if (err) return console.log(err);
+        });
 
         res.render("available-courses", {
             classList,

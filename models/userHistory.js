@@ -22,7 +22,9 @@ const CLASS  = new Schema({
 // schema for new Users
 const HISTORY = new Schema({
     history: {type: String},
-    results: [CLASS]
+    userEmail: {type: String},
+    results: [CLASS],
+    date: {type: Date, default: Date.now}
 });
 
 // create model
