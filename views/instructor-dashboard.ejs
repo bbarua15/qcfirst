@@ -93,29 +93,14 @@
 
                 <div id="input-background">
                     <form class="course add-class" method="POST" action="/instructor-dashboard">
-                        <label for="courses">Courses:</label>
-                        <select name="department" id="department">
-                            <option disabled selected value>Select an option</option>
-                            <% if (courseList.length > 0) {  %>
-                                <% courseList.forEach(function(item){ %>
-                                    <tr>
-                                        <option value="<%= item %>"><%= item %></option>
-                                    </tr>
-                                <% }) %>
-                            <% } %>
-                        </select>
+                        <div class="horizontal-container">
+                            <input type="text" id="rosterSearch" name="rosterSearch" placeholder="Enter class ID to load roster">
+                            <button type="submit" id="load" name="load">Load</button>
+                        </div>
                     </form>
                 </div>
             </section>
         </div>
-
-        <div class="horizontal-container">
-            <!-- Buttons -->
-            <!-- adapted from: [4/14/2021]: https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
-            <button type="button" class="buttons" onclick="location.href='/instructor-course-dictionary'">Course Dictionary</button>
-            <button type="button" class="buttons" onclick="location.href='/class-deadline-instructor'">Course Deadlines</button>
-        </div>
-
     </div>
 
     <!--footer-->
