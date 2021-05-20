@@ -9,6 +9,7 @@ const { ensureAuthenticatedStudent, ensureAuthenticatedInstructor, ensureAuthent
 // user model
 const classCreate = require("../models/classCreate");
 const userCreate =  require("../models/userCreate");
+const userHistory = require("../models/userHistory");
 
 // home page
 router.get("/", (req, res) => res.render("index"));
