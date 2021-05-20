@@ -72,31 +72,33 @@
                 <!-- end adaptation -->
 
                 <h2 class="header">Student Roster:</h2>
-
+                <div id="input-background">
+                    <form class="course add-class" method="GET" action="/instructor-dashboard">
+                        <div class="horizontal-container">
+                            <input type="text" id="rosterSearch" name="rosterSearch" placeholder="Enter class ID to load roster">
+                            <button type="submit" >Load</button>
+                        </div>
+                    </form>
+                </div>
+                <% if (rosterList.length > 0) {  %>
                 <!-- Adapted from [4/16/2021]:https://getbootstrap.com/docs/4.0/content/tables/, https://medium.com/appnroll-publication/5-practical-solutions-to-make-responsive-data-tables-ff031c48b122 -->
                 <table class="table-striped table-bordered center">
                     <tr>
                         <th>Student Roster</th>
                     </tr>
 
-                    <% if (rosterList.length > 0) {  %>
+                   
                         <% rosterList.forEach(function(item){ %>
                             <tr>
-                                <td><%= item.rosterStudent %></td>
+                                <td><%= item %></td>
                             </tr>
                         <% }) %>
-                    <% } %>
+                  
                 </table>
+                <% } %>
                 <!-- end adaptation -->
 
-                <div id="input-background">
-                    <form class="course add-class" method="POST" action="/instructor-dashboard">
-                        <div class="horizontal-container">
-                            <input type="text" id="rosterSearch" name="rosterSearch" placeholder="Enter class ID to load roster">
-                            <button type="submit" id="load" name="load">Load</button>
-                        </div>
-                    </form>
-                </div>
+                
             </section>
         </div>
     </div>
