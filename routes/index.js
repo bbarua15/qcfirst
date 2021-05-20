@@ -560,7 +560,8 @@ router.post("/create-class", (req, res) => {
                             instructor: instructor,
                             description: description,
                             schedule: schedule,
-                            capacity: capacity
+                            capacity: capacity,
+                            startDate: startDate
                         });
 
                         // save class
