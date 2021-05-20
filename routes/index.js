@@ -45,7 +45,7 @@ router.get("/add-class", ensureAuthenticatedStudent, async (req, res) => {
     if (req.query.dep) {
         selectedDepart = req.query.dep;
     }
-  
+
     var departmentList = {};
     var classList = {};
 
@@ -770,13 +770,10 @@ router.post("/delete-class", async (req, res) => {
                 req.flash("success_msg", "Class deleted successfully!");
                 res.redirect("/delete-class");
             });
-
         }
     });
-
-// end adaptation
-
 });
+// end adaptation
 
 /*=======================================================*/
 
@@ -787,9 +784,33 @@ router.post("/user-search", async (req, res) => {
 // TBA
 });
 
-// user-search handle
+// search-history handle
 router.post("/search-history", async (req, res) => {
-// TBA
+
+    const firstName = req.user.firstName;
+    const lastName = req.user.lastName;
+    let usernameInput = req.body.searchHistory;
+
+    await userHistory.findOne({userEmail: usernameInput}, (err, searchList) => {
+
+        // if there is an error
+        if(err) return console.log(err);
+
+        if (!searchList) {
+            req.flash("error_msg", "Username not in database!");
+            res.redirect("/search-history");
+        }
+
+        // otherwise if list is found
+        if (searchList) {
+
+            res.render("search-history", {
+                firstName,
+                lastName,
+                searchList
+            });
+        }
+    });
 });
 
 // change password admin handle
