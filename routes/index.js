@@ -110,6 +110,18 @@ router.get("/instructor-dashboard", ensureAuthenticatedInstructor, async (req, r
         }
       });
     }
+
+    // adapted from [5/20/2021]: https://docs.mongodb.com/manual/tutorial/query-arrays/, https://docs.mongodb.com/compass/current/query/filter/ 
+    if (isFound) {
+      let selectedClass = await classCreate.findOne({ courseNumber: courseNo }).exec();
+      if (selectedClass) {
+        var filteredArray = selectedClass.rosterStudent.filter(function (item, pos) {
+          return selectedClass.rosterStudent.indexOf(item) == pos;
+        });
+        rosterList = filteredArray;
+      }
+    }
+
     res.render("instructor-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes, userList, rosterList})
 });
 
