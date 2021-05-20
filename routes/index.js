@@ -9,6 +9,7 @@ const { ensureAuthenticatedStudent, ensureAuthenticatedInstructor, ensureAuthent
 // user model
 const classCreate = require("../models/classCreate");
 const userCreate =  require("../models/userCreate");
+const userHistory =  require("../models/userHistory");
 
 // home page
 router.get("/", (req, res) => res.render("index"));
@@ -289,6 +290,13 @@ router.post("/student-course-dictionary", async (req, res) => {
         {description: {$regex: regex}},
         {schedule: {$regex: regex}}]).exec((err, classList) => {
         if(err) return console.log(err);
+
+        // save the search result
+        let userhistory = new userHistory({history: searchResult, userEmail: req.user.userName, results: classList});
+
+        userhistory.save((err, saved) => {
+            if (err) return console.log(err);
+        });
 
         res.render("student-course-dictionary", {
             classList,
@@ -678,6 +686,13 @@ router.post("/instructor-course-dictionary", async (req, res) => {
         {schedule: {$regex: regex}}]).exec((err, classList) => {
         if(err) return console.log(err);
 
+        // save the search result
+        let userhistory = new userHistory({history: searchResult, userEmail: req.user.userName, results: classList});
+
+        userhistory.save((err, saved) => {
+            if (err) return console.log(err);
+        });
+
         res.render("instructor-course-dictionary", {
             classList,
             firstName,
@@ -768,7 +783,7 @@ router.post("/delete-class", async (req, res) => {
 // ADMIN POSTS
 
 // user-search handle
-router.post("/change-password-admin", async (req, res) => {
+router.post("/user-search", async (req, res) => {
 // TBA
 });
 
@@ -870,6 +885,13 @@ router.post("/available-courses", async (req, res) => {
         {description: {$regex: regex}},
         {schedule: {$regex: regex}}]).exec((err, classList) => {
         if(err) return console.log(err);
+
+        // save the search result
+        let userhistory = new userHistory({history: searchResult, userEmail: req.user.userName, results: classList});
+
+        userhistory.save((err, saved) => {
+            if (err) return console.log(err);
+        });
 
         res.render("available-courses", {
             classList,
