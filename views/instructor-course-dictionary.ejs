@@ -73,6 +73,7 @@
                         <th>Schedule</th>
                     </tr>
 
+              <% if (classList.length > 0) {  %>
                     <% classList.forEach(function(item){ %>
                     <tr>
                       <td><%= item.courseNumber %></td>
@@ -84,7 +85,9 @@
                       <td><%= item.schedule %></td>
                   </tr>
                   <% }) %>
-              </table>
+              <% } %>
+
+                </table>
               <!-- end adaptation -->
             </section>
         </div>
