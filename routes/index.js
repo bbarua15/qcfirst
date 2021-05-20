@@ -99,7 +99,17 @@ router.get("/student-course-dictionary", ensureAuthenticatedStudent, (req, res) 
 // instructor dashboard
 router.get("/instructor-dashboard", ensureAuthenticatedInstructor, async (req, res) =>  {
     let userList = {};
-    let rosterList = {};
+    let rosterList = [];
+    let courseNo = req.query.rosterSearch;
+    let isFound = false;
+
+    if (courseNo && courseNo != "" && req.user && req.user.classes) {
+      req.user.classes.forEach((_class) => {
+        if (_class.courseNumber == courseNo) {
+          isFound = true;
+        }
+      });
+    }
     res.render("instructor-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes, userList, rosterList})
 });
 

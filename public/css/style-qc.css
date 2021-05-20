@@ -20,13 +20,6 @@ th {
   text-align: center;
 }
 
-.row {
-  background-color: black;
-}
-
-.row th {
-  color: white;
-}
 
 table, th, td {
   border: 1px solid #000;
