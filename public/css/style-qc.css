@@ -20,11 +20,11 @@ th {
   text-align: center;
 }
 
-.heading {
+.row {
   background-color: black;
 }
 
-.heading th {
+.row th {
   color: white;
 }
 

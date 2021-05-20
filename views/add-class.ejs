@@ -106,5 +106,26 @@
 </footer>
 <!-- end adaptation -->
 
+<script>
+    document.getElementById('department').onchange = function() {
+        let redirectUrl=`${window.location.origin}/add-class?dep=${this.value}`
+            window.location.href=redirectUrl;
+            return false;
+    }
+    //Get select object
+    var objSelect = document.getElementById("department");
+
+    //Set selected
+    setSelectedValue(objSelect, "<%=selectedDepart%>");
+    function setSelectedValue(selectObj, valueToSet) {
+        for (var i = 0; i < selectObj.options.length; i++) {
+            if (selectObj.options[i].text== valueToSet) {
+                selectObj.options[i].selected = true;
+                return;
+            }
+        }
+    }
+</script>
+
 </body>
 </html>
