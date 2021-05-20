@@ -106,6 +106,7 @@
 </footer>
 <!-- end adaptation -->
 
+<!--adapted from [05/19/2021]: //https://stackoverflow.com/questions/52415476/how-to-display-the-value-of-select-option-as-response-using-node-js/52415541, https://stackoverflow.com/questions/12388954/redirect-form-to-different-url-based-on-select-option-element -->
 <script>
     document.getElementById('department').onchange = function() {
         let redirectUrl=`${window.location.origin}/add-class?dep=${this.value}`
@@ -126,6 +127,7 @@
         }
     }
 </script>
+<!-- end adaptation -->
 
 </body>
 </html>
