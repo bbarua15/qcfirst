@@ -12,7 +12,6 @@ const CLASS  = new Schema({
     courseName: {type: String},
     department: {type: String},
     instructor: {type: String},
-    rosterStudent: {type: [String]},
     description: {type: String},
     schedule: {type: String},
     capacity: {type: Number},

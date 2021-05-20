@@ -40,7 +40,6 @@ router.get("/class-deadline-student", ensureAuthenticatedStudent, (req, res) => 
 // add class
 // adapted from [5/17/2021]: https://docs.mongodb.com/manual/reference/method/db.collection.distinct/
 router.get("/add-class", ensureAuthenticatedStudent, async (req, res) => {
-    console.log(req.query);
     var selectedDepart = "";
     if (req.query.dep) {
         selectedDepart = req.query.dep;
@@ -60,16 +59,8 @@ router.get("/add-class", ensureAuthenticatedStudent, async (req, res) => {
 
     // find class List
     if (selectedDepart && selectedDepart != "") {
-        //console.log("getting classes by" + selectedDepart);
         classList = await classCreate.find({ department: selectedDepart }).exec();
-        // await classCreate.find(
-        //   { department: selectedDepart },
-        //   async (err, classes) => {
-        //     console.log("query executed");
-        //     if (err) console.log(err);
-        //     classList = await classes;
-        //   }
-        // );
+
     } else {
         await classCreate.find({}, async (err, classes) => {
             if (err) console.log(err);
@@ -77,7 +68,6 @@ router.get("/add-class", ensureAuthenticatedStudent, async (req, res) => {
         });
     }
 
-    console.log(classList, "class list");
     await res.render("add-class", {
         firstName: req.user.firstName, lastName: req.user.lastName, classList, departmentList, selectedDepart
     });
@@ -109,7 +99,8 @@ router.get("/student-course-dictionary", ensureAuthenticatedStudent, (req, res) 
 // instructor dashboard
 router.get("/instructor-dashboard", ensureAuthenticatedInstructor, async (req, res) =>  {
     let userList = {};
-    res.render("instructor-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes, userList})
+    let rosterList = {};
+    res.render("instructor-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes, userList, rosterList})
 });
 
 // change password instructor
@@ -156,7 +147,8 @@ router.get("/admin-dashboard", ensureAuthenticatedAdmin, (req, res) =>  {
 
 // user search
 router.get("/user-search", ensureAuthenticatedAdmin, (req, res) =>  {
-    res.render("user-search",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes})
+    let userList = {};
+    res.render("user-search",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes, userList});
 });
 
 // available courses
@@ -170,7 +162,8 @@ router.get("/available-courses", ensureAuthenticatedAdmin, (req, res) =>  {
 
 // search query
 router.get("/search-history", ensureAuthenticatedAdmin, (req, res) =>  {
-    res.render("search-history",{firstName: req.user.firstName, lastName: req.user.lastName})
+    let searchResults = {};
+    res.render("search-history",{firstName: req.user.firstName, lastName: req.user.lastName, searchResults})
 });
 
 
@@ -384,6 +377,10 @@ router.post("/add-class", async (req, res) => {
             let currentEnrolled = parseInt((found.rosterStudent).length);
 
             //if the class deadline date is greater than the current date
+
+            console.log(todayDate);
+            console.log(deadlineDate);
+
             if (deadlineDate < todayDate) {
                 authenticatedFlag = false;
                 req.flash("error_msg", "The enrollment date deadline has already passed!");
@@ -771,23 +768,23 @@ router.post("/user-search", async (req, res) => {
     const lastName = req.user.lastName;
     let usernameInput = req.body.userSearch;
 
-    await userCreate.findOne({userName: usernameInput}, (err, userInfo) => {
+    await userCreate.findOne({userName: usernameInput}, (err, userList) => {
 
         // if there is an error
         if(err) return console.log(err);
 
-        if (!userInfo) {
+        if (!userList) {
             req.flash("error_msg", "Username not in database!");
             res.redirect("/user-search");
         }
 
         // otherwise if list is found
-        if (userInfo) {
+        if (userList) {
 
             res.render("user-search", {
                 firstName,
                 lastName,
-                userInfo
+                userList
             });
         }
     });
@@ -800,23 +797,22 @@ router.post("/search-history", async (req, res) => {
     const lastName = req.user.lastName;
     let usernameInput = req.body.searchHistory;
 
-    await userHistory.findOne({userEmail: usernameInput}, (err, searchList) => {
+    await userHistory.findOne({userEmail: usernameInput}, (err, searchResults) => {
 
         // if there is an error
         if(err) return console.log(err);
 
-        if (!searchList) {
+        if (!searchResults) {
             req.flash("error_msg", "Username not in database!");
             res.redirect("/search-history");
         }
 
         // otherwise if list is found
-        if (searchList) {
-
+        if (searchResults) {
             res.render("search-history", {
                 firstName,
                 lastName,
-                searchList
+                searchResults
             });
         }
     });
