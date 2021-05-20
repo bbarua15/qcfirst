@@ -9,7 +9,6 @@ const { ensureAuthenticatedStudent, ensureAuthenticatedInstructor, ensureAuthent
 // user model
 const classCreate = require("../models/classCreate");
 const userCreate =  require("../models/userCreate");
-const userHistory =  require("../models/userHistory");
 
 // home page
 router.get("/", (req, res) => res.render("index"));
@@ -40,7 +39,12 @@ router.get("/class-deadline-student", ensureAuthenticatedStudent, (req, res) => 
 // add class
 // adapted from [5/17/2021]: https://docs.mongodb.com/manual/reference/method/db.collection.distinct/
 router.get("/add-class", ensureAuthenticatedStudent, async (req, res) => {
-
+    console.log(req.query);
+    var selectedDepart = "";
+    if (req.query.dep) {
+        selectedDepart = req.query.dep;
+    }
+  
     var departmentList = {};
     var classList = {};
 
@@ -51,16 +55,31 @@ router.get("/add-class", ensureAuthenticatedStudent, async (req, res) => {
             departmentList = await departmentResults;
         }
     });
-// end adaptation
+    // end adaptation
 
     // find class List
-    await classCreate.find({}, async (err, classes) => {
-        if (err) console.log(err);
-        classList = await classes;
-    });
+    if (selectedDepart && selectedDepart != "") {
+        //console.log("getting classes by" + selectedDepart);
+        classList = await classCreate.find({ department: selectedDepart }).exec();
+        // await classCreate.find(
+        //   { department: selectedDepart },
+        //   async (err, classes) => {
+        //     console.log("query executed");
+        //     if (err) console.log(err);
+        //     classList = await classes;
+        //   }
+        // );
+    } else {
+        await classCreate.find({}, async (err, classes) => {
+            if (err) console.log(err);
+            classList = await classes;
+        });
+    }
 
+    console.log(classList, "class list");
     await res.render("add-class", {
-        firstName: req.user.firstName, lastName: req.user.lastName, classList, departmentList});
+        firstName: req.user.firstName, lastName: req.user.lastName, classList, departmentList, selectedDepart
+    });
 
 });
 
@@ -91,6 +110,8 @@ router.get("/student-course-dictionary", ensureAuthenticatedStudent, (req, res) 
 router.get("/instructor-dashboard", ensureAuthenticatedInstructor, async (req, res) =>  {
 
     let courseList = {};
+
+    console.log(req.user)
 
     // find course List
     await userCreate.distinct("classes.courseName", async (err, courseResults) => {
@@ -151,7 +172,7 @@ router.get("/user-search", ensureAuthenticatedAdmin, (req, res) =>  {
     res.render("user-search",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes})
 });
 
-// available courses
+// available courses 
 router.get("/available-courses", ensureAuthenticatedAdmin, (req, res) =>  {
     classCreate.find({}, function(err, classes) {
         res.render("available-courses", {
@@ -160,7 +181,7 @@ router.get("/available-courses", ensureAuthenticatedAdmin, (req, res) =>  {
     }).sort({"semester": 1})
 });
 
-// search query
+// search query 
 router.get("/search-history", ensureAuthenticatedAdmin, (req, res) =>  {
     res.render("search-history",{firstName: req.user.firstName, lastName: req.user.lastName})
 });
@@ -268,13 +289,6 @@ router.post("/student-course-dictionary", async (req, res) => {
         {description: {$regex: regex}},
         {schedule: {$regex: regex}}]).exec((err, classList) => {
         if(err) return console.log(err);
-
-        // save the search result
-        let userhistory = new userHistory({history: searchResult, userEmail: req.user.userName, results: classList});
-
-        userhistory.save((err, saved) => {
-            if (err) return console.log(err);
-        });
 
         res.render("student-course-dictionary", {
             classList,
@@ -413,15 +427,8 @@ router.post("/add-class", async (req, res) => {
 
                 // add student to class student roster
                 const studentName = req.user.firstName + " " + req.user.lastName;
-                await classCreate.findOneAndUpdate({courseNumber: courseNumber}, {$push: {rosterStudent: studentName}}, {new: true}, (err, updated) => {
+                classCreate.findOneAndUpdate({courseNumber: courseNumber}, {$push: {rosterStudent: studentName}}, {new: true}, (err, updated) => {
                     if (err) return console.log(err);
-                });
-
-                // add student to class student roster in instructors classes array
-                //TBA
-                await userCreate.updateMany({userType: "Instructor", courseNumber: courseNumber}, {"$push": {"classes": { "rosterStudent": studentName}}}, {new: true}, (err, updated) => {
-                    if (err) return console.log(err);
-                    //console.log(updated);
                 });
 
                 // add class to student classes array
@@ -671,13 +678,6 @@ router.post("/instructor-course-dictionary", async (req, res) => {
         {schedule: {$regex: regex}}]).exec((err, classList) => {
         if(err) return console.log(err);
 
-        // save the search result
-        let userhistory = new userHistory({history: searchResult, userEmail: req.user.userName, results: classList});
-
-        userhistory.save((err, saved) => {
-            if (err) return console.log(err);
-        });
-
         res.render("instructor-course-dictionary", {
             classList,
             firstName,
@@ -870,13 +870,6 @@ router.post("/available-courses", async (req, res) => {
         {description: {$regex: regex}},
         {schedule: {$regex: regex}}]).exec((err, classList) => {
         if(err) return console.log(err);
-
-        // save the search result
-        let userhistory = new userHistory({history: searchResult, userEmail: req.user.userName, results: classList});
-
-        userhistory.save((err, saved) => {
-            if (err) return console.log(err);
-        });
 
         res.render("available-courses", {
             classList,
