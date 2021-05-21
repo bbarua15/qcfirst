@@ -341,8 +341,15 @@ router.post("/drop-class", async (req, res) => {
 
         // if dropped
         if (obj) {
-            req.flash("success_msg", "Class dropped successfully!");
-            res.redirect("/drop-class");
+
+            // remove the course from the class's roster student
+            const studentName = req.user.userName +": " + req.user.firstName + " " + req.user.lastName;
+            classCreate.updateOne({courseNumber: courseToDrop}, { "$pull": { "rosterStudent": studentName }}, { safe: true, multi:true }, (err, obj) => {
+                if(err) return console.log(err);
+
+                req.flash("success_msg", "Class dropped successfully!");
+                res.redirect("/drop-class");
+            });
         }
     });
 });
@@ -413,8 +420,8 @@ router.post("/add-class", async (req, res) => {
                 mongoose.set('useFindAndModify', false);
 
                 // add student to class student roster
-                const studentName = req.user.firstName + " " + req.user.lastName;
-                classCreate.findOneAndUpdate({courseNumber: courseNumber}, {$push: {rosterStudent: studentName}}, {new: true}, (err, updated) => {
+                const studentName = req.user.userName +": " + req.user.firstName + " " + req.user.lastName;
+                classCreate.findOneAndUpdate({courseNumber: courseNumber}, {$push: {rosterStudent:studentName}}, {new: true}, (err, updated) => {
                     if (err) return console.log(err);
                 });
 
