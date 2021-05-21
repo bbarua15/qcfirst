@@ -78,11 +78,6 @@ router.get("/drop-class", ensureAuthenticatedStudent, (req, res) => {
     res.render("drop-class",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes})
 });
 
-// shopping cart
-router.get("/shopping-cart", ensureAuthenticatedStudent, (req, res) =>  {
-    res.render("shopping-cart",{firstName: req.user.firstName, lastName: req.user.lastName})
-});
-
 // student course dictionary
 router.get("/student-course-dictionary", ensureAuthenticatedStudent, (req, res) =>  {
     classCreate.find({}, function(err, classes) {
