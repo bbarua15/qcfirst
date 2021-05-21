@@ -52,24 +52,27 @@
             </tr>
 
             <!-- adapted from: https://www.geeksforgeeks.org/find-the-length-of-a-javascript-object/ -->
-        <% if (Object.keys(searchResults).length > 0) {  %>
-
-                <% let searchDate = new Date(searchResults.date).toString().substring(0, 20); %>
-                <td><%= searchResults.userEmail %></td>
-                <td><%= searchResults.history %></td>
-                <td><%= searchDate %></td>
-                <td><%= searchResults.results %></td>
+            <% if (Object.keys(searchResults).length > 0) {  %>
+                <% searchResults.forEach(function(item){ %>
+                    <% let searchDate = new Date(item.date).toString(); %>
+                    <tr>
+                        <td><%= item.userEmail %></td>
+                        <td><%= item.history %></td>
+                        <td><%= searchDate %></td>
+                        <td><%= item.results %></td>
+                    </tr>
+                <% }); %>
             <% }  %>
         </table><br>
     </div>
 </div>
 
 <!--footer-->
-    <!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
-    <footer id="footer">
-        <%- include ("./partials/footerUser"); %>
-    </footer>
-    <!-- end adaptation -->
+<!--adapted from [3/31/2021]: https://www.youtube.com/watch?v=KUHrMzN7ey8&ab_channel=MarcHinton -->
+<footer id="footer">
+    <%- include ("./partials/footerUser"); %>
+</footer>
+<!-- end adaptation -->
 
 </body>
 </html>

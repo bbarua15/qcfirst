@@ -99,29 +99,7 @@ router.get("/student-course-dictionary", ensureAuthenticatedStudent, (req, res) 
 // instructor dashboard
 router.get("/instructor-dashboard", ensureAuthenticatedInstructor, async (req, res) =>  {
     let userList = {};
-    let rosterList = [];
-    let courseNo = req.query.rosterSearch;
-    let isFound = false;
-
-    if (courseNo && courseNo != "" && req.user && req.user.classes) {
-      req.user.classes.forEach((_class) => {
-        if (_class.courseNumber == courseNo) {
-          isFound = true;
-        }
-      });
-    }
-
-    // adapted from [5/20/2021]: https://docs.mongodb.com/manual/tutorial/query-arrays/, https://docs.mongodb.com/compass/current/query/filter/ 
-    if (isFound) {
-      let selectedClass = await classCreate.findOne({ courseNumber: courseNo }).exec();
-      if (selectedClass) {
-        var filteredArray = selectedClass.rosterStudent.filter(function (item, pos) {
-          return selectedClass.rosterStudent.indexOf(item) == pos;
-        });
-        rosterList = filteredArray;
-      }
-    }
-
+    let rosterList = {};
     res.render("instructor-dashboard",{firstName: req.user.firstName, lastName: req.user.lastName, classList: req.user.classes, userList, rosterList})
 });
 
@@ -399,9 +377,6 @@ router.post("/add-class", async (req, res) => {
             let currentEnrolled = parseInt((found.rosterStudent).length);
 
             //if the class deadline date is greater than the current date
-
-            console.log(todayDate);
-            console.log(deadlineDate);
 
             if (deadlineDate < todayDate) {
                 authenticatedFlag = false;
@@ -819,7 +794,7 @@ router.post("/search-history", async (req, res) => {
     const lastName = req.user.lastName;
     let usernameInput = req.body.searchHistory;
 
-    await userHistory.findOne({userEmail: usernameInput}, (err, searchResults) => {
+    await userHistory.find({userEmail: usernameInput}, (err, searchResults) => {
 
         // if there is an error
         if(err) return console.log(err);
