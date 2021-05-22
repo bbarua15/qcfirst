@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  Name: Marinos Dakis
+  Name: Marinos Dakis & Badhan Barua
   Date: 05.24.2021
   Section: CS 355
   The admin dashboard will inform an admin on what tools they have that can be used to view other users' account details
@@ -42,16 +42,42 @@
         <div class="horizontal-container">
 
             <!-- adapted from: [4/14/2021]: https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
-            <div class="vertical-container">
+            <div class="horizontal-container">
+        		<div class="box-card">
+          			<div class="box-title-wrapper">
+            			<div class="box-title">User Search</div>
+          			</div>
+          			<div class="box-card-wrapper">
+            			<div class="box-body-wrapper">
+               				<div class="box-body">Search different users and display the information about their account.</div>
+            			</div>
+                  		<div class="box-link"><a href="/user-search" tabindex="0">Search</a></div>
+                	</div>
+      			</div>
 
-                <h4>Here you will be able to search different users and display the information about their account.</h4>
-                <button type="button" class="buttons" onclick="location.href='/user-search'">User Search</button>
+      			<div class="box-card">
+          			<div class="box-title-wrapper">
+            			<div class="box-title">Available Courses</div>
+          			</div>
+          			<div class="box-card-wrapper">
+            			<div class="box-body-wrapper">
+               				<div class="box-body">View all of the available courses listed inside the database.</div>
+            			</div>
+                  		<div class="box-link"><a href="/available-courses" tabindex="0">View</a></div>
+                	</div>
+      			</div>
 
-                <h4>Here you will be able to view all of the available courses listed inside the database.</h4>
-                <button type="button" class="buttons" onclick="location.href='/available-courses'">Available Courses</button>
-
-                <h4>Here you will be able to view the search history of any user registered inside the database</h4>
-                <button type="button" class="buttons" onclick="location.href='/search-history'">User Search History</button>
+                <div class="box-card">
+          			<div class="box-title-wrapper">
+            			<div class="box-title">Search History</div>
+          			</div>
+          			<div class="box-card-wrapper">
+            			<div class="box-body-wrapper">
+               				<div class="box-body">View the search history of any user registered inside the database.</div>
+            			</div>
+                  		<div class="box-link"><a href="/search-history" tabindex="0">View</a></div>
+                	</div>
+      			</div>
 
             </div>
 
