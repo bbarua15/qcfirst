@@ -130,7 +130,10 @@ label {
 }
 /* end of adaptation */
 
-/* admin-dashboard */
+/*
+[admin-dashboard]
+<!--adapted from [5/20/2021]: https://css-tricks.com/best-way-implement-wrapper-css/ -->
+*/
 .box-card {
     width: 300px;
     min-height: 230px !important;
@@ -175,3 +178,5 @@ label {
 .box-link a {
     font-weight: 650;
 }
+
+/* end of adaptation */
