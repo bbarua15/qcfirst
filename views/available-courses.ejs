@@ -44,7 +44,7 @@
             <div class="form-outline">
                 <!-- taken from: https://www.w3schools.com/howto/howto_css_search_button.asp -->
                 <input type="text" placeholder="Search..." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
+                <button type="submit" class="searchBtn"><i class="fa fa-search"></i></button>
             </div>
         </form>
         <!-- end adaptation -->
@@ -64,6 +64,7 @@
                         <th>Description</th>
                         <th>Schedule</th>
                         <th>Capacity</th>
+                        <th># Enrolled</th>
                         <th>Roster</th>
                     </tr>
 
@@ -77,6 +78,7 @@
                       <td><%= item.instructor %></td>
                       <td><%= item.description %></td>
                       <td><%= item.schedule %></td>
+                      <td><%= item.capacity %></td>
                       <td><%= item.capacity %></td>
                       <td><%= item.rosterStudent %></td>
                     </tr>
