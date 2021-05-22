@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-
+<!--
+  Name: Marinos Dakis
+  Date: 05.24.2021
+  Section: CS 355
+  The available courses will display all the courses that are registered in the database and an admin will be able to search through them
+-->
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -59,6 +64,7 @@
                         <th>Description</th>
                         <th>Schedule</th>
                         <th>Capacity</th>
+                        <th>Roster</th>
                     </tr>
 
                <% if (classList.length > 0) {  %>
@@ -72,9 +78,10 @@
                       <td><%= item.description %></td>
                       <td><%= item.schedule %></td>
                       <td><%= item.capacity %></td>
-                  </tr>
+                      <td><%= item.rosterStudent %></td>
+                    </tr>
                   <% }) %>
-            <% } %>
+                <% } %>
 
               </table>
               <!-- end adaptation -->

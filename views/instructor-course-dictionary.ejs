@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
   Name: Marinos Dakis
-  Date: 04.20.2021
+  Date: 05.24.2021
   Section: CS 355
   The Course Dictionary will contain a table with all the classes that have been created.
   Here each user will be able to view what classes are available.
@@ -71,6 +71,7 @@
                         <th>Instructor</th>
                         <th>Description</th>
                         <th>Schedule</th>
+                        <th>Capacity</th>
                     </tr>
 
               <% if (classList.length > 0) {  %>
@@ -83,7 +84,8 @@
                       <td><%= item.instructor %></td>
                       <td><%= item.description %></td>
                       <td><%= item.schedule %></td>
-                  </tr>
+                      <td><%= item.capacity %></td>
+                    </tr>
                   <% }) %>
               <% } %>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
   Name: Marinos Dakis
-  Date: 04.20.2021
+  Date: 05.24.2021
   Section: CS 355
 
   The Course Dictionary will contain a table with all the classes that have been created.
@@ -72,6 +72,7 @@
                     <th>Instructor</th>
                     <th>Description</th>
                     <th>Schedule</th>
+                    <th>Capacity</th>
                 </tr>
 
                 <% classList.forEach(function(item){ %>
@@ -83,6 +84,7 @@
                         <td><%= item.instructor %></td>
                         <td><%= item.description %></td>
                         <td><%= item.schedule %></td>
+                        <td><%= item.capacity %></td>
                     </tr>
                 <% }) %>
             </table>
