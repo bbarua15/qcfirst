@@ -1,11 +1,17 @@
 ## Link to app
-Our website can be viewed here: https://replit.com/@marinosdakis/qcfirst#index.js
+Our website can be viewed here: https://qcfirst--marinosdakis.repl.co/
 _______________________________
 ## Contributors:
-Marinos Dakis (https://github.com/MarinosDakis)
+**Marinos Dakis** (https://github.com/MarinosDakis) Role: Front & Backend-development.
 
-Badhan Barua (https://github.com/bbarua15) 
+**Badhan Barua** (https://github.com/bbarua15) Role: Front & Backend-development.
 ____________
+***Remaining Deliverable***
+
+
+
+
+
 ***User Management Deliverable***
 
 Marinos: For this deliverable I integrated the current webpage we had to Replit so that Nodejs could be integrated. Initially, I had major issues in getting the website to show its attributes, but learned after searching online that the root issue was due to pathing mistakes. Moreover, I was unable to find a solution to send multiple html files to users so I added the header and footer attributes to each HTML page. 
@@ -13,9 +19,6 @@ Marinos: For this deliverable I integrated the current webpage we had to Replit 
 Afterwards I created the GET methods to all the HTML pages and worked on creating the post requests for the user creation page, and the login page. I used the body-parser module to help get information from the forms and then integrated Mongodb to store the user's account details. When I got the account creation and user login POST requests working I then focused on the additional detail required for the deliverable, i.e. using regex to make sure a user puts a secure password and their starting email ends like a CUNY (@login.cuny.edu) email. All passwords in the database are also secured by the bcrypt module to make sure that each user's password is secure.
 
 What stands next is to get user sessions to work effectively so that only authorized users can go to their respected pages and I believe I will have to integrate some middleware functions to accomplish this. Also, getting JQuery to work as intended for user login errors.
-
-
-
 
 ***HTML Deliverable***
 
@@ -32,10 +35,10 @@ Badhan: Using CSS, we implemented styling to the form (such as the log in, sign 
 ____
 # qcfirst
 
-**QCFirst** is a prototype course enrollment application where users (i.e. students and instructors)
+**QCFirst** is a prototype course enrollment application where users (i.e. students, instructors and admins)
 can access features to help simulate an online enrollment environment.
 
-The following application will contain features of: **User Management**, **Course Management**, and **Enrollment Management**.
+The following application will contain features of: **User Management**, **Course Management**, **Enrollment Management**, and an **Administrator view**.
 
 **User Management** will focus on creating a responsive environment for both students and instructors when
 accessing the course enrollment application.
@@ -44,32 +47,64 @@ accessing the course enrollment application.
 
 **Enrollment Management** will focus on allowing students to register for classes for an upcoming semester.
 
-## Features
-* Students and instructors can access our website by creating an account and then logging in
-* Students can enroll in classes, drop classes and view their current enrolled courses.
-* Instructors are able to create and delete classes. They can view which classes they're teaching and the roster of students. 
-* The website is responsive to mobile, tablet and desktop
+**Administrator view** will provide front-end access to data stored in the database.
+
+## Features:
+
+### Users
+* Users are able to create an account and identify as either a student or an instructor; moreover, users are able to reset their password without being logged, where a temporary password is sent to their registered email address.
+### Students
+* Logged in students can view the classes they have enrolled in on their student dashboard. Additionally, they can add and drop classes to their course table. Students can also view all the available courses in the database with their details in the course dictionary page, and have the ability to change their password.
+### Instructors 
+* Logged in instructors can view the classes they created on their instructor dashboard, as well as view all the students registered for one of their classes. As mentioned, instructors can create classes that are added to their class list and course dictionary, and delete classes that they created. Similarly, instructors can view all available courses in the course dictionary and can change their password as well.
+### Administrators
+* Logged in administrators have privileged access to data stored in the database. These privileges include: a user search, which allows admins to view all the data associated with a registered user in the database. An available courses page which works similarly to the course dictionary except it also shows all the students registered for a class. A search history page that allows an admin to view a user's search history from the course dictionary. Lastly, they can also change their password like other users as well.
+### Miscellaneous
+* The website is responsive on mobile, tablet and desktop.
+* All pages associated with specific users are enclosed in a private session where that specific user must be signed in to access the features associated with that user.
 
 ___
-## Feature links
-Login Page: https://qcfirst.marinosdakis.repl.co/login-page-html.html
+## Feature links:
 
-Create Account Page: https://qcfirst.marinosdakis.repl.co/create-account-page.html
+### All users
+**Login Page**: https://qcfirst.marinosdakis.repl.co/users/login
 
-**TBA:**
+**Create Account Page:** https://qcfirst.marinosdakis.repl.co/users/register
 
-Enroll Class Page:
+**Forgot Password Page:** https://qcfirst.marinosdakis.repl.co/users/forgot
 
-Drop Class Page:
+### Students
 
-Create Class Page:
+**Student Dashboard:** https://qcfirst.marinosdakis.repl.co/student-dashboard
 
-Delete Class Page:
+**Add Class Page:** https://qcfirst.marinosdakis.repl.co/add-class
 
-Instructor Dashboard:
+**Drop Class Page:** https://qcfirst.marinosdakis.repl.co/drop-class
 
-Student Dashboard:
+**Course dictionary:** https://qcfirst.marinosdakis.repl.co/student-course-dictionary
 
+**Change Password:** https://qcfirst.marinosdakis.repl.co/change-password-student
+
+### Instructors
+
+**Instructor Dashboard:** https://qcfirst.marinosdakis.repl.co/instructor-dashboard
+
+**Create Class Page:** https://qcfirst.marinosdakis.repl.co/create-class
+
+**Delete Class Page:** https://qcfirst.marinosdakis.repl.co/delete-class
+
+**Course dictionary:** https://qcfirst.marinosdakis.repl.co/instructor-course-dictionary
+
+**Change Password:** https://qcfirst.marinosdakis.repl.co/change-password-instructor
+
+### Administrators
+**User search:** https://qcfirst.marinosdakis.repl.co/user-search
+
+**Available courses:** https://qcfirst.marinosdakis.repl.co/available-courses
+
+**Search history:** https://qcfirst.marinosdakis.repl.co/search-history
+
+**Change Password:** https://qcfirst.marinosdakis.repl.co/change-password-admin
 ___
 
 ## Client-side Technologies:
@@ -77,6 +112,8 @@ ___
 * CSS
 * JavaScript
 * jQuery
+* Ejs
+* Bootstrap
 ___
 ## Server-side Technologies:
 * Node-js
@@ -212,7 +249,11 @@ Students will be able to view the classes they have selected to take and enroll 
 ___
 ## Differences between wireframes and final outcome:
 
-For the most part our web application follows our wireframes closely. Some noticeable differences are: the structure of some elements (i.e. they follow more of a vertical placement on top of each other as opposed to being horizontal in some cases); a navigation bar has been added to the first 4 pages of the site map for users who have not logged in; additional footer details have been added; more images utilized throughout the website (and can be seen on the footer, header, shopping-cart page, and the course dictionary pages); additional textboxes added in the account creation page; and lastly, the log out button was integrated into the navigation bar.
+For the most part our web application follows our wireframes closely. Some noticeable differences are: the structure of some elements (i.e. they follow more of a vertical placement on top of each other as opposed to being horizontal in some cases); a navigation bar has been added to the first 4 pages of the site map for users who have not logged in; additional footer details have been added; more images utilized throughout the website (and can be seen on the footer, header, add class page, and the course dictionary pages); additional textboxes added in the account creation page; and lastly, the log out button was integrated into the navigation bar.
+
+Following the initial changes above, we decided to remove the shopping cart page entirely and integrate it into the add class page. Moreover, when the requirements for the project requested for an admin section we integrated pages with a similar aesthetic to both the instructor and student pages.
+
+Finally, additional hyperlinks were added to the starting pages of the application to make it more convenient for users to navigate, and the instructor dashboard has a section on the bottom to show the students who are entrolled in the class.
 
 
 
