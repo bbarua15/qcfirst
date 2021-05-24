@@ -72,7 +72,22 @@
                 <td><%= userList.password %></td>
                 <td><%= userList.userType %></td>
                 <td><%= deadlineDate %></td>
-                <td><%= userList.classes %></td>
+
+                <td>
+                    <% userList.classes.forEach(function(item){ %>
+                        <% let deadlineDate = new Date(item.startDate).toString().substring(0, 15); %>
+                        <li><b>Course Number:</b> <%= item.courseNumber %> </li>
+                        <li><b>Semester:</b> <%= item.semester %> </li>
+                        <li><b>Course Name:</b> <%= item.courseName %> </li>
+                        <li><b>Department:</b> <%= item.department %> </li>
+                        <li><b>Instructor:</b> <%= item.instructor %> </li>
+                        <li><b>Description:</b> <%= item.description %> </li>
+                        <li><b>Schedule:</b> <%= item.schedule %> </li>
+                        <li><b>Capacity:</b> <%= item.capacity %> </li>
+                        <li><b>Start Date:</b> <%= deadlineDate %> </li>
+                        <li><b>__________</b></li>
+                    <% });  %>
+                </td>
                 <% }  %>
 
         </table>
