@@ -32,8 +32,17 @@ The back-end sections that I created specifically with the help of my sources we
 
 **additional:** slight modifications to existing ejs pages and css, and updated the README.
 
+Badhan: In the previous deliverable, I attempted to implmement user session authentication so that any user types would not have access to all pages without being logged into their rightful account with their specific user type. I also tried using role-based authentication to do the same job, however, my partner was able to solve this issue by using middleware functions. 
 
+In the Add Class page, all the available classes are listed in the table, however, we wanted a way so that when a specific department/subject is clicked on the dropdown menu, it would only show those classes in the table. Therefore, I used Javascript by adding onchange event to select based on the element by the id. Then, by using that function it would redirect to whichever department is clicked. The select object and set selected function were defined so that it would show correctly without an error. The selectedDepart was also defined in index.js for add-class GET method and by using find to look through the specific department that's been selected in the class list, it would redirect and display what's needed. 
 
+In the Instructor Dashboard, we implemented student roster so that instructors can view the students who are enrolled in the class. By typing in the course number, the instructors will be able to see the roster. For the GET method of instructor-dashboard, the roster list is defined as an array. If the course number that's typed in matches the one in query, isFound will be true and if isFound is true, it will filter the array of roster list. 
+
+For the course directory of student and instructor, all of the available classes needed to be shown in a table so the data needed to be displayed from database. For the GET method of the course directories, the data was fetched by using find to search for all the documents in the database. The data displayed is also sorted by the semester so that it's in order. The ejs files were edited to display that data by the classList that was defined in the GET method. This was also similar to available courses for admin which lists all the courses.
+
+The class deadline for enrollment shows specific deadline date and time for students and instructor. It was implemented in a way that if the semester is Fall 2021, the deadline would be 8/27/2021 and if the semester is Summer 2021, the deadline would be 6/6/2021. These dates were selected because this was chosen as the start date when instructors created the class. 
+
+Additional changes were added and made to ejs files and css. The admin dashboard summarizes what the user can do. In a box layout there's a navigation link to each of the features, such as go to search user's history, view available courses and to view user's search queries. 
 
 ***User Management Deliverable***
 
