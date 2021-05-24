@@ -99,22 +99,22 @@ router.get("/instructor-dashboard", ensureAuthenticatedInstructor, async (req, r
     let isFound = false;
 
     if (courseNo && courseNo != "" && req.user && req.user.classes) {
-      req.user.classes.forEach((_class) => {
-        if (_class.courseNumber == courseNo) {
-          isFound = true;
-        }
-      });
+        req.user.classes.forEach((_class) => {
+            if (_class.courseNumber == courseNo) {
+                isFound = true;
+            }
+        });
     }
 
     // adapted from [5/20/2021]: https://docs.mongodb.com/manual/tutorial/query-arrays/, https://docs.mongodb.com/compass/current/query/filter/ 
     if (isFound) {
-      let selectedClass = await classCreate.findOne({ courseNumber: courseNo }).exec();
-      if (selectedClass) {
-        var filteredArray = selectedClass.rosterStudent.filter(function (item, pos) {
-          return selectedClass.rosterStudent.indexOf(item) == pos;
-        });
-        rosterList = filteredArray;
-      }
+        let selectedClass = await classCreate.findOne({ courseNumber: courseNo }).exec();
+        if (selectedClass) {
+            var filteredArray = selectedClass.rosterStudent.filter(function (item, pos) {
+                return selectedClass.rosterStudent.indexOf(item) == pos;
+            });
+            rosterList = filteredArray;
+        }
     }
     // end adaptation
 
@@ -401,8 +401,10 @@ router.post("/add-class", async (req, res) => {
             let currentEnrolled = parseInt((found.rosterStudent).length);
 
             //if the class deadline date is greater than the current date
+            let dateNow = new Date();
+            let deadlineDateCompare = new Date(found.startDate);
 
-            if (deadlineDate < todayDate) {
+            if (deadlineDateCompare < dateNow) {
                 authenticatedFlag = false;
                 req.flash("error_msg", "The enrollment date deadline has already passed!");
                 res.redirect("/add-class");
