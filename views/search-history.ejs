@@ -58,17 +58,29 @@
                 <th>Search results</th>
             </tr>
 
-            <!-- adapted from: https://www.geeksforgeeks.org/find-the-length-of-a-javascript-object/ -->
+            <!-- adapted from: https://www.geeksforgeeks.org/find-the-length-of-a-javascript-object/, https://stackoverflow.com/questions/17546953/cant-access-object-property-even-though-it-shows-up-in-a-console-log -->
             <% if (Object.keys(searchResults).length > 0) {  %>
-                <% searchResults.forEach(function(item){ %>
-                    <% let searchDate = new Date(item.date).toString(); %>
-                    <tr>
-                        <td><%= item.userEmail %></td>
-                        <td><%= item.history %></td>
-                        <td><%= searchDate %></td>
-                        <td><%= item.results %></td>
-                    </tr>
-                <% }); %>
+                <% let deadlineDate = new Date(JSON.parse(JSON.stringify(searchResults[0].date))).toString().substring(0, 15); %>
+                <td><%= JSON.parse(JSON.stringify(searchResults[0].userEmail)) %></td>
+                <td><%= JSON.parse(JSON.stringify(searchResults[0].history)) %></td>
+                <td><%= deadlineDate %></td>
+                <td>
+                    <% JSON.parse(JSON.stringify(searchResults[0].results)).forEach(function(item){ %>
+                        <% let deadlineDate = new Date(item.startDate).toString().substring(0, 15); %>
+                        <li><b>Course Number:</b> <%= item.courseNumber %> </li>
+                        <li><b>Semester:</b> <%= item.semester %> </li>
+                        <li><b>Course Name:</b> <%= item.courseName %> </li>
+                        <li><b>Department:</b> <%= item.department %> </li>
+                        <li><b>Instructor:</b> <%= item.instructor %> </li>
+                        <li><b>Description:</b> <%= item.description %> </li>
+                        <li><b>Schedule:</b> <%= item.schedule %> </li>
+                        <li><b>Capacity:</b> <%= item.capacity %> </li>
+                        <li><b>Start Date:</b> <%= deadlineDate %> </li>
+                        <li><b>Roster:</b> <%= item.rosterStudent %> </li>
+
+                        <li><b>__________</b></li>
+                    <% });  %>
+                </td>
             <% }  %>
         </table><br>
     </div>
