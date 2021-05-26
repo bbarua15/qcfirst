@@ -1,3 +1,4 @@
+// adapted from: https://www.youtube.com/watch?v=6FOq4cUdH8k&ab_channel=TraversyMedia,
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');

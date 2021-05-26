@@ -915,6 +915,7 @@ router.post("/change-password-admin", async (req, res) => {
 });
 
 // available courses search handle
+// adapted from [5/15/2021]: https://docs.mongodb.com/manual/reference/operator/query/regex/, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions, https://www.semicolonworld.com/question/47801/node-js-and-mongoose-regex-query-on-multiple-fields
 router.post("/available-courses", async (req, res) => {
 
     let firstName = req.user.firstName;
